@@ -1238,3 +1238,7 @@ footer {
 
 }
 
+.blog-wrap img {
+    max-width: 100%;
+    height: auto;
+}

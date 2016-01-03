@@ -154,6 +154,7 @@
                                     <label for="">Nội dung</label>
                                     <p><button type="button" class="btn btn-default button-media"><i class="fa fa-image"></i> Media</button>
                                         <button type="button" class='bton-upload btn btn-default'><i class="fa fa-upload"></i> Upload file</button></p>
+                                        <textarea name="blog_extra" class="form-control">{{(isset($rs->blog_extra)?$rs->blog_extra:"")}}</textarea>
                                         <textarea style="height:500px;" name="blog_content" class="tinymce">{{(isset($rs->blog_content)?$rs->blog_content:"")}}</textarea>
                                         <hr>
                                     </div>

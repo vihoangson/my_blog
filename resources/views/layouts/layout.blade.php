@@ -84,7 +84,7 @@
 						<!-- SECTION 1 - HOMEPAGE -->
 						<section class="no-display">
 							<div class="profile" id="1">
-								<h2>Hello, I am <span>Robb Armstrong</span><br>Designer and Front-end Developer</h2>
+								<h2>Hello, I am <span>Vi Hoàng Sơn</span><br>PHP Developer</h2>
 								<div class="sep1"></div>
 								<p>I have ten years experience as a web/interface designer. I have a love of clean, elegant styling, and I have lots of experience in the production of CSS and (X)HTML for modern websites. I have a reasonable grasp of using JavaScript frameworks, specifically jQuery.</p>
 								<div class="personal-info col-md-12 no-padding">
@@ -92,22 +92,22 @@
 									<div class="sep2"></div>
 									<ul>
 										<li>
-											<div class="p-info"><em>name</em><span>Robb Armstrong</span></div>
+											<div class="p-info"><em>name</em><span>Vi Hoàng Sơn</span></div>
 										</li>
 										<li>
-											<div class="p-info"><em>date of birth</em><span>September 06, 1976</span></div>
+											<div class="p-info"><em>date of birth</em><span>October 06, 1986</span></div>
 										</li>
 										<li>
-											<div class="p-info"><em>e-mail</em><span>info@yourdomain.com</span></div>
+											<div class="p-info"><em>e-mail</em><span>vihoangson@gmail.com</span></div>
 										</li>
 										<li>
-											<div class="p-info"><em>address</em><span>121 King St, Melbourne VIC</span></div>
+											<div class="p-info"><em>address</em><span>178/7p Hậu Giang Tp.HCM</span></div>
 										</li>
 										<li>
-											<div class="p-info"><em>phone</em><span>012-3456-7890</span></div>
+											<div class="p-info"><em>phone</em><span>0121-885-1144</span></div>
 										</li>
 										<li>
-											<div class="p-info"><em>website</em><span>www.themeforest.net</span></div>
+											<div class="p-info"><em>website</em><span><a href='http://www.vihoangson.com'>www.vihoangson.com</a></span></div>
 										</li>
 									</ul>
 								</div>
@@ -499,14 +499,14 @@
 				<footer>
 					<div class="row">
 						<div class="col-md-7">
-							<p>&copy; 2014 Robb Armstrong. All Rights Reserved</p>
+							<p>&copy; 2014 <a href='/blogs'>Vi Hoàng Sơn</a>. All Rights Reserved</p>
 						</div>
 						<div class="col-md-5">
 							<ul class="social">
-								<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-								<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-								<li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-								<li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+								<li><a href="http://facebook.com/vihoangson"><i class="fa fa-facebook"></i></a></li>
+								<li><a href="http://facebook.com/vihoangson"><i class="fa fa-twitter"></i></a></li>
+								<li><a href="http://facebook.com/vihoangson"><i class="fa fa-dribbble"></i></a></li>
+								<li><a href="http://facebook.com/vihoangson"><i class="fa fa-pinterest"></i></a></li>
 							</ul>
 						</div>
 					</div>

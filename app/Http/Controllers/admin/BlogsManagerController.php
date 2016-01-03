@@ -43,7 +43,7 @@ class BlogsManagerController extends Controller
         $data =[
         "blog_title"   => $request->get("blog_title"),
         "blog_content" => $request->get("blog_content"),
-        
+        "blog_extra" => $request->get("blog_extra"),
         ];
         $this->upload_file_blog($request,$data);
         Blogs::create($data);
@@ -87,6 +87,8 @@ class BlogsManagerController extends Controller
         $data = [
             "blog_title"   => $rs["blog_title"],
             "blog_content" => $rs["blog_content"],
+            "blog_extra" => $rs["blog_extra"],
+            
         ];
         $this->upload_file_blog($request,$data);
         Blogs::where("id",$id)->update($data);

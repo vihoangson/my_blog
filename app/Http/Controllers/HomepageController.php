@@ -13,4 +13,10 @@ class HomepageController  extends BaseController
     	$rs = Blogs::orderBy("id","desc")->get();
     	return view("homepage",compact("rs"));
     }
+
+    public function show($id){
+    	$rs = Blogs::find($id);
+    	return view("blog_sigle",compact("rs"));
+    }
+
 }

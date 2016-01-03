@@ -12,6 +12,7 @@
 */
 Route::get('/', "HomepageController@index");
 
+Route::get('blog-single-{id}.html', "HomepageController@show");
 
 
 Route::get('/blogs/', "admin\BlogsManagerController@index");
