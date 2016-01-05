@@ -86,7 +86,7 @@
 							<div class="profile" id="1">
 								<h2>Hello, I am <span>Vi Hoàng Sơn</span><br>PHP Developer</h2>
 								<div class="sep1"></div>
-								<p>I have ten years experience as a web/interface designer. I have a love of clean, elegant styling, and I have lots of experience in the production of CSS and (X)HTML for modern websites. I have a reasonable grasp of using JavaScript frameworks, specifically jQuery.</p>
+								<p>Tôi có kinh nghiệm trên 5 năm với vị trí lập trình viên website PHP. Niềm đam mê của tôi là được tìm tòi những điều mới mẻ và tạo ra những sản phẩm tốt nhất. Thông qua những dự án đã làm tôi có nhiều kỹ năng với các nền tảng frameword PHP như Laravel, Sympony, Codeigniter ... </p>
 								<div class="personal-info col-md-12 no-padding">
 									<h4>Personal Info</h4>
 									<div class="sep2"></div>
