@@ -467,6 +467,7 @@
 								<div class="contact-form">
 									<h4>Send us a message</h4>
 									<form id="contactForm" action="/contact" method="post">
+										<input name="_token" value="{{csrf_token()}}" type="hidden">
 										<div class="row">
 											<div class="col-md-4">
 												<input type="text" name="senderName" id="senderName" placeholder="name">
