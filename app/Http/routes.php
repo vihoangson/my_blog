@@ -14,6 +14,7 @@ Route::get('/', "HomepageController@index");
 
 Route::get('blog-single-{id}.html', "HomepageController@show");
 
+Route::post('contact', "HomepageController@send_mail");
 
 Route::get('/blogs/', "admin\BlogsManagerController@index");
 Route::get('/blogs/create', "admin\BlogsManagerController@create");
@@ -24,6 +25,13 @@ Route::get('/blogs/delete/{id}', 'admin\BlogsManagerController@destroy');
 Route::post('/blogs/post_newblog', "admin\BlogsManagerController@store");
 Route::post('/blogs/post_popup_img', 'admin\BlogsManagerController@post_popup_img');
 Route::get('/blogs/popup_img', 'admin\BlogsManagerController@popup_img');
+
+
+
+Route::get('/bootstrapcdn', function(){
+	return view("bootstrapcdn");
+});
+
 
 /*
 |--------------------------------------------------------------------------

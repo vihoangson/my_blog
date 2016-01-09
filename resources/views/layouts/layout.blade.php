@@ -466,7 +466,7 @@
 								</div>
 								<div class="contact-form">
 									<h4>Send us a message</h4>
-									<form id="contactForm" action="php/contact.php" method="post">
+									<form id="contactForm11" action="/contact" method="post">
 										<div class="row">
 											<div class="col-md-4">
 												<input type="text" name="senderName" id="senderName" placeholder="name">
