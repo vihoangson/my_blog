@@ -42,11 +42,11 @@ jQuery(document).ready(function($) {
 jQuery(document).ready(function($) {
 	"use strict";
 	$('.skills-info').appear(function() {
-	$('.skill1').css('width', '71%');
-	$('.skill2').css('width', '85%');
-	$('.skill3').css('width', '76%');
-	$('.skill4').css('width', '53%');
-	$('.skill5').css('width', '69%');
+    
+    $("span[class*='skill']").each(function(index, el) {
+      var value_percent = $(this).parent().parent().find("p span",0).text();
+      $(this).css('width', value_percent);
+    });
 	},{accX: 0, accY: -150});
 });
 

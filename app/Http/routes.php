@@ -11,7 +11,9 @@
 |
 */
 Route::get('/', "HomepageController@index");
-
+Route::get('/resume', function(){
+	return view("widgets.ele_resume");
+});
 Route::get('blog-single-{id}.html', "HomepageController@show");
 
 Route::post('contact', "HomepageController@send_mail");
