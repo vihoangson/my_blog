@@ -14,11 +14,3 @@
 			</div>
 		</div>
 	</article>
-									{{-- <div class="link-post">
-										<div class="row">
-											<div class="col-md-12">
-												<i class="fa fa-link"></i>
-												<a href="http://www.themeforest.net" target="_blank">www.themeforest.net</a>
-											</div>
-										</div>
-									</div> --}}

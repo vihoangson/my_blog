@@ -37,6 +37,9 @@
 				</li>
 			</ul>
 		</div>
+
+
+
 		<div class="skills-info">
 			<h4>Skills</h4>
 			<div class="sep2"></div>
@@ -70,11 +73,29 @@
 					<div class="skills-bg"><span class="skill7"></span></div>
 				</li>
 				<li>
-					<p>Ruby on rail <span>40%</span></p>
+					<p>Ruby on rail <span>20%</span></p>
 					<div class="skills-bg"><span class="skill8"></span></div>
 				</li>
 			</ul>
 		</div>
+
+		<div class="resume-info">
+			<h4>Work Experience</h4>
+			<div class="sep2"></div>
+			<ul>
+				<li>
+					<h5>Lập trình viên tại công ty Vihan</h5>
+					<span class="year"><i class="fa fa-calendar"></i> 2010 - 2014</span>
+					<p> Lầp trình viên </p>
+				</li>
+				<li>
+					<h5>Lập trình viên tại công ty Cybridge Asia</h5>
+					<span class="year"><i class="fa fa-calendar"></i> 2014 - 2016</span>
+					<p> Lầp trình viên </p>
+				</li>
+			</ul>
+		</div>
+
 		<div class="services-info hidden">
 			<h4>Services</h4>
 			<div class="sep2"></div>
@@ -105,8 +126,32 @@
 				</li>
 			</ul>
 		</div>
+
+
+		<div class="row skill-box">
+			<h4>Level</h4>
+			<div class="sep2"></div>
+			<style>
+			.skill-box * {
+				font-size:14px;
+			}
+			</style>
+			<div class="col-md-6">
+				<?php $i=0; ?>
+				@foreach ($skill_level as $key=>$element)
+				<p>{{$key}} {!! show_star($element) !!}</p>
+				<?php
+				if($i == round(count($skill_level)/2)){
+					echo "</div><div class='col-md-6'>";
+				}
+				$i++;
+				?>
+				@endforeach
+			</div>
+		</div>
+
 		<div class="resume-info">
-			<h4>Work Experience</h4>
+			<h4>Đã làm tại các Cty</h4>
 			<div class="sep2"></div>
 			<ul>
 				<li>
@@ -121,5 +166,7 @@
 				</li>
 			</ul>
 		</div>
+
+
 	</div>
 </section>

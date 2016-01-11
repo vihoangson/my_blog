@@ -41,9 +41,10 @@ class BlogsManagerController extends Controller
     public function store(Request $request)
     {
         $data =[
-        "blog_title"   => $request->get("blog_title"),
-        "blog_content" => $request->get("blog_content"),
-        "blog_extra" => $request->get("blog_extra"),
+            "blog_title"    => $request->get("blog_title"),
+            "blog_content"  => $request->get("blog_content"),
+            "blog_extra"    => $request->get("blog_extra"),
+            "blog_show_img" => $request->get("show_img"),
         ];
         $this->upload_file_blog($request,$data);
         Blogs::create($data);
@@ -85,10 +86,10 @@ class BlogsManagerController extends Controller
     {
         $rs = $request->all();
         $data = [
-            "blog_title"   => $rs["blog_title"],
-            "blog_content" => $rs["blog_content"],
-            "blog_extra" => $rs["blog_extra"],
-            
+            "blog_title"    => $rs["blog_title"],
+            "blog_content"  => $rs["blog_content"],
+            "blog_extra"    => $rs["blog_extra"],
+            "blog_show_img" => $request->get("show_img"),
         ];
         $this->upload_file_blog($request,$data);
         Blogs::where("id",$id)->update($data);

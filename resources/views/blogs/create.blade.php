@@ -142,7 +142,7 @@
 
                     <form action="/blogs/{{(isset($rs->id)?$rs->id."/edit":"post_newblog")}}" method="POST" role="form" enctype="multipart/form-data">
                         <div class="row">
-                            <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">                            
+                            <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
                                 <div class="">
                                     {!! (isset($rs->id)?'<input type="hidden" name="_method" value="put" />':"") !!}
                                     <input name="_token" value="{{csrf_token()}}" type="hidden">
@@ -162,7 +162,8 @@
                                 <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
                                     <button type="submit" class="btn btn-primary btn-block"><i class="fa fa-floppy-o"></i> Save</button>
                                     @if(isset($rs->id))
-                                    <a href='/blogs/delete/{{$rs->id}}' class=""><i class="fa fa-trash"></i> Move to trash</a>
+                                    <a onclick="" target="_blank" href='/blog-single-{{$rs->id}}.html' class=" btn btn-info btn-block"><i class="fa fa-eye"></i> Go to page</a>
+                                    <a onclick="return confirm('Bạn có chắc chắn muốn xóa ?');" href='/blogs/delete/{{$rs->id}}' class=" btn btn-danger btn-block"><i class="fa fa-trash"></i> Move to trash</a>
                                     @endif
                                     <hr>
                                     <div class="well">
@@ -170,10 +171,11 @@
                                         <input type="file" name="userfile">
                                         {!! (isset($rs->blog_image)?"<div class='thumbnail'><img style='width:100px;' src='/uploads/".$rs->blog_image."'></div>":"") !!}
                                     </div>
+                                    <p> <input type="checkbox" name="show_img" value="1" {!! (( isset($rs->blog_show_img) && (int)$rs->blog_show_img != 1)?"":"checked=true") !!}> Hiển thị hình ra trang chi tiết</p>
                                 </div>
                             </div>
                         </div>
-                    </form>                                
+                    </form>
                 </div>
             </div>
         </div>

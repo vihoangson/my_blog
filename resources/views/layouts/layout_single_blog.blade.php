@@ -101,7 +101,7 @@
 									<article>
 										<div class="row">
 											<div class="col-md-12 blog-single-img">
-												@if(isset($rs->blog_image))
+												@if(isset($rs->blog_image)&&( $rs->blog_show_img==1))
 												<img src="/uploads/{{$rs->blog_image}}" class="img-responsive" alt=""/>
 												@endif
 											</div>

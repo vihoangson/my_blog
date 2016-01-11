@@ -40,7 +40,7 @@
 	<link rel="stylesheet" href="<?= PATH_THEME; ?>css/nivo-lightbox.css" />
 	<link rel="stylesheet" href="<?= PATH_THEME; ?>images/themes/default/default.css" />
 	<link rel="stylesheet" href="<?= PATH_THEME; ?>css/animate.css" />
-
+	<script src="<?= PATH_THEME; ?>js/jquery-1.11.3.min.js"></script>
 	<!--[if lt IE 9]>
 	<script src="/js/libs/html5.js"></script>
 	<![endif]-->
@@ -50,7 +50,6 @@
 
 </head>
 <body>
-
 <!-- LOADING MASK -->
 <div id="mask">   
     <div class="loader">
@@ -245,7 +244,7 @@
 <!-- MAIN CONTENT -->
 
 <!-- JavaScript -->
-<script src="<?= PATH_THEME; ?>js/jquery-1.11.3.min.js"></script>
+
 <script src="<?= PATH_THEME; ?>js/bootstrap.js"></script>
 <script src="<?= PATH_THEME; ?>js/jquery.flexslider.js"></script>
 <script src="<?= PATH_THEME; ?>js/jquery.easing.js"></script>
