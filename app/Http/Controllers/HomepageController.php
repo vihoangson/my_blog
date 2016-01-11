@@ -17,88 +17,93 @@ class HomepageController  extends BaseController
 			[
 				"url"=>"http://sua.vn",
 				"img"=>"sua.vn.png",
-				"title"=>"sua.vn",
-				"desc" =>"",
+				"title"=>"SUA.VN",
+				"desc" =>"Trang web sữa hàng đầu Việt Nam",
 			],
 
 			[
 				"url"=>"http://daivietgroup.net",
 				"img"=>"daivietgroup.net.png",
-				"title"=>"daivietgroup.net",
-				"desc" =>"",
+				"title"=>"Daivietgroup",
+				"desc" =>"Tập đoàn Đại Việt",
 			],
 
 			[
 				"url"=>"http://cbah.org.vn",
 				"img"=>"cbah.org.vn.png",
-				"title"=>"cbah.org.vn",
-				"desc" =>"",
+				"title"=>"CBAH",
+				"desc" =>"Hiệp hội doanh nghiệp Trung Quốc",
 			],
 
 			[
 				"url"=>"http://hellobb.vn",
 				"img"=>"hellobb.vn.png",
 				"title"=>"hellobb.vn",
-				"desc" =>"",
+				"desc" =>"Hệ thống thương hiệu HelloBB",
 			],
 
 			[
 				"url"=>"http://babylovevn.com",
 				"img"=>"babylovevn.com.png",
 				"title"=>"babylovevn.com",
-				"desc" =>"",
+				"desc" =>"Cửa hàng trực tuyến",
 			],
 
 			[
 				"url"=>"http://bighost.vn",
 				"img"=>"bighost.vn.png",
 				"title"=>"bighost.vn",
-				"desc" =>"",
+				"desc" =>"Trang web kinh doanh domain & hosting",
 			],
 
 			[
 				"url"=>"http://namsaigon.edu.vn",
 				"img"=>"namsaigon.edu.vn.png",
 				"title"=>"namsaigon.edu.vn",
-				"desc" =>"",
+				"desc" =>"Trường trung cấp nghề Nam Sài Gòn",
 			],
 
 			[
 				"url"=>"http://thuexechauau.com",
 				"img"=>"thuexechauau.com.png",
 				"title"=>"thuexechauau.com",
-				"desc" =>"",
+				"desc" =>"Dịch vụ thuê xe",
 			],
 
 			[
 				"url"=>"http://hoancau.com",
 				"img"=>"hoancau.com.png",
 				"title"=>"hoancau.com",
-				"desc" =>"",
+				"desc" =>"Công ty Hoàn Cầu",
 			],
 
 			[
 				"url"=>"http://ankhanhtech.com.vn",
 				"img"=>"ankhanhtech.com.vn.png",
 				"title"=>"ankhanhtech.com.vn",
-				"desc" =>"",
+				"desc" =>"Cửa hàng kinh doanh thiết bị dụng cụ",
 			],
 
 			[
 				"url"=>"http://showaglove.co.jp",
 				"img"=>"showaglove.co.jp.png",
 				"title"=>"showaglove.co.jp",
-				"desc" =>"",
+				"desc" =>"Tập đoàn quốc tế Showa",
 			],
 
 			[
 				"url"=>"http://asuchan.tv",
 				"img"=>"asuchan.tv.png",
 				"title"=>"asuchan.tv",
-				"desc" =>"",
+				"desc" =>"Asuchan TV",
 			],
 
     	];
+    	// Nếu public thì mới có dữ liệu
+    	// Config: My_blog/my_config/public
+    	if(!config("My_blog.my_config.public")){
+    		$array_web=[];
+    	}
     	return view("homepage",compact("rs","array_web"));
     }
 

@@ -121,5 +121,14 @@
 				</li>
 			</ul>
 		</div>
+		<div class="resume-info">
+			<h4>Experience</h4>
+			<div class="sep2"></div>
+			<div class="row">
+				<div class="col-md-4">1</div>
+				<div class="col-md-4">1</div>
+				<div class="col-md-4">1</div>
+			</div>
+		</div>	
 	</div>
 </section>
