@@ -13,7 +13,7 @@
 						</div>
 					</div>
 				</a>
-				<p><a href="{{$element["url"]}}" target="_blank">{{$element["title"]}}</a></p>
+				<p><a href="{{$element["url"]}}" target="_blank">{{$element["desc"]}}</a></p>
 			</li>
 		@endforeach
 	</ul>
