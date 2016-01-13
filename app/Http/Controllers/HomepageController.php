@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 use App\Models\Blogs;
+use App\Models\Articles;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -8,15 +9,18 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use Mail;
-
+use Log;
 class HomepageController  extends BaseController
 {
-	public function index(){
+	
 
+	public function index(){
+		$this->import_vnexpress();
+		die;
 		//
 		// Thông tin các trang web đã từng làm
 		//
-    	$array_web = [
+		$array_web = [
 			[
 				"url"=>"http://sua.vn",
 				"img"=>"sua.vn.png",
@@ -175,5 +179,143 @@ class HomepageController  extends BaseController
 		});
 		echo "success";
 	}
+
+	//============  ============
+	// ****** Function import_vnexpress() ******
+	// **Công dụng: Import tin tức từ trang vnexpress.net**
+	// **Ngày tạo: 13/1/2016**
+	// **Tác giả: Santosan**
+	// 
+	public function import_vnexpress($case = null){
+		if(true){
+			//============  ============
+			//
+			//
+			$array_site = [
+				0 => "http://vnexpress.net/tin-tuc/thoi-su",
+				1 => "http://vnexpress.net/tin-tuc/the-gioi",
+				2 => "http://kinhdoanh.vnexpress.net/",
+				3 => "http://giaitri.vnexpress.net/",
+				4 => "http://thethao.vnexpress.net",
+				5 => "http://vnexpress.net/tin-tuc/phap-luat",
+				6 => "http://vnexpress.net/tin-tuc/giao-duc",
+				7 => "http://suckhoe.vnexpress.net",
+				8 => "http://giadinh.vnexpress.net/",
+				9 => "http://dulich.vnexpress.net",
+				10 => "http://vnexpress.net/tin-tuc/khoa-hoc",
+				11 => "http://vnexpress.net/tin-tuc/khoa-hoc/page/2.html",
+				12 => "http://sohoa.vnexpress.net/",
+				13 => "http://vnexpress.net/tin-tuc/oto-xe-may",
+				14 => "http://vnexpress.net/tin-tuc/cong-dong",
+				15 => "http://vnexpress.net/tin-tuc/tam-su",
+				16 => "http://vnexpress.net/tin-tuc/tam-su/page/3.html",
+				17 => "http://vnexpress.net/tin-tuc/cuoi",
+			];
+			if(empty($array_site)){
+				echo "List null";
+				return;
+			}
+			if(empty($case)){
+				echo "Nhap gia tri";
+				return;
+			}
+			$array_site_a[0]=$array_site[(int)$case];
+
+			// foreach tất cả phần tử trong mảng $array_site
+			foreach ($array_site_a as $key_site => $value_site) {
+				// Khởi tạo biến dom của link $value_site
+				$dom = str_get_html(file_get_contents($value_site));
+				// Lấy ra tất cả các tag a có trong link $value_site
+				$m = $dom->find("a");
+				// foreach tất cả các tag a có trong link $value_site
+				foreach ($m as $key => $value) {
+
+					// Nếu tồn tại href thì vào trong
+					if(!empty($value->attr["href"])){
+
+						// Lấy các link có phần tử cuối là .html và độ dài từ 10 ký tự trở lên
+						if(preg_match("/.{10,}\.html$/", $value->attr["href"])){
+
+							// Log ban đầu
+							Log::info("Link: ".$value->attr["href"]);
+
+							//============  ============
+							//
+							//Khởi tạo biến title
+							//Phần tử trong có thể bao gồm
+							//1: plaintex
+							//2: img
+								// Kiểm tra trong link có phải hình hay không
+								if($value->find("img",0)){// Đúng là hình
+									if(!empty($value->find("img",0)->attr["alt"])){//Có alt gán biến title
+										$title = $value->find("img",0)->attr["alt"];
+									}else{//Nếu không có alt thì continue
+										Log::info("exit :0 __ ".$value->attr["href"]);
+										continue;
+									}
+								}else{// Không phải hình
+									$title = $value->innertext();
+								}
+							//
+							//============  ============
+
+							// Các trường hợp bắt lỗi
+							// 1: Link đã có trong DB
+							// 2: Chuỗi $title < 10 kỹ tự
+							if(Articles::where("article_link",$value->attr["href"])->count()!=0 || strlen(trim($title)) < 10 ){
+								Log::info("exit :1 __ ".$title);
+								continue;
+							}
+
+							// Nếu link là đường dẫn tương đối thì thêm domain vào
+							if(preg_match("/^\//", $value->attr["href"])){
+								$value->attr["href"] = "http://vnexpress.net".$value->attr["href"];
+							}
+
+							// Khởi tạo biến $dom2 với nội dung theo link $value->attr["href"]
+							$dom2    = str_get_html(file_get_contents($value->attr["href"]));
+
+							$title   = $title;
+							$link    = $value->attr["href"];
+							
+							// Rửa tổng biến $content
+							$content="";
+							// Tìm phần tử đầu tiên trong dom có giá trị là #left_calculator
+							if($dom2->find("#left_calculator",0)){
+								$content = $dom2->find("#left_calculator",0)->innertext();
+							}
+
+							//============  ============
+							// Save vào DB
+							//
+								if($content == ""){
+									$dom2->clear();
+									Log::info("exit : Content rỗng");
+									continue;
+								}
+								$data = [
+								"article_title" => $title,
+								"article_content" => $content,
+								"article_link" => $link
+								];
+								if(Articles::create($data)){
+									Log::info("!!! Saved: ".$title);
+								}else{
+									Log::info("!!! Could't Save: ".$title);
+								}
+							//
+							//============  ============
+						}
+					}
+				} // End foreach $m
+			}// End foreach $array_site
+				// Dừng chương trình
+				die;
+			//
+			//  ============  ============ 
+		}// End if
+	}// End function import_vnexpress()
+	//
+	//============ import_vnexpress() ============
 
 }

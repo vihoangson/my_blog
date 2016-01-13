@@ -12,9 +12,9 @@ class AddColumnShowImg extends Migration
      */
     public function up()
     {
-        Schema::table('blogs', function( Blueprint $table) {
-            $table->string("blog_show_img")->nullable();
-        });
+        // Schema::table('blogs', function( Blueprint $table) {
+        //     $table->string("blog_show_img")->nullable();
+        // });
     }
 
     /**
@@ -24,8 +24,8 @@ class AddColumnShowImg extends Migration
      */
     public function down()
     {
-        Schema::table('blogs', function( $table) {
-            $table->dropColumn('blog_show_img');
-        });
+        // Schema::table('blogs', function( $table) {
+        //     $table->dropColumn('blog_show_img');
+        // });
     }
 }

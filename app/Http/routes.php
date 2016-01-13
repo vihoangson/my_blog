@@ -15,6 +15,7 @@ Route::get('/resume', function(){
 	return view("widgets.ele_resume");
 });
 Route::get('blog-single-{id}.html', "HomepageController@show");
+Route::get('/article_detail/{id}', 'HomepageController@article_detail');
 
 Route::post('contact', "HomepageController@send_mail");
 
@@ -27,7 +28,6 @@ Route::get('/blogs/delete/{id}', 'admin\BlogsManagerController@destroy');
 Route::post('/blogs/post_newblog', "admin\BlogsManagerController@store");
 Route::post('/blogs/post_popup_img', 'admin\BlogsManagerController@post_popup_img');
 Route::get('/blogs/popup_img', 'admin\BlogsManagerController@popup_img');
-
 
 
 Route::get('/bootstrapcdn', function(){
