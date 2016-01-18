@@ -25,7 +25,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('inspire')
-                 ->hourly();
+        $schedule->command('import_vnexpress:santo home')
+                 ->cron("0 */3 * * * *");//3h chạy 1 lần
+
     }
 }

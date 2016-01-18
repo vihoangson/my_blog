@@ -12,11 +12,33 @@ use Mail;
 use Log;
 class HomepageController  extends BaseController
 {
-	
+	public $array_site;
 
+	public function __construct(){
+		define("LOG_INFO_FLAG_IMPORT", false);
+		//parent::__construct();
+		$this->array_site = [
+			0 => "http://vnexpress.net/tin-tuc/thoi-su",
+			1 => "http://vnexpress.net/tin-tuc/the-gioi",
+			2 => "http://kinhdoanh.vnexpress.net/",
+			3 => "http://giaitri.vnexpress.net/",
+			4 => "http://thethao.vnexpress.net",
+			5 => "http://vnexpress.net/tin-tuc/phap-luat",
+			6 => "http://vnexpress.net/tin-tuc/giao-duc",
+			7 => "http://suckhoe.vnexpress.net",
+			8 => "http://giadinh.vnexpress.net/",
+			9 => "http://dulich.vnexpress.net",
+			10 => "http://vnexpress.net/tin-tuc/khoa-hoc",
+			11 => "http://vnexpress.net/tin-tuc/khoa-hoc/page/2.html",
+			12 => "http://sohoa.vnexpress.net/",
+			13 => "http://vnexpress.net/tin-tuc/oto-xe-may",
+			14 => "http://vnexpress.net/tin-tuc/cong-dong",
+			15 => "http://vnexpress.net/tin-tuc/tam-su",
+			16 => "http://vnexpress.net/tin-tuc/tam-su/page/3.html",
+			17 => "http://vnexpress.net/tin-tuc/cuoi",
+		];
+	}
 	public function index(){
-		$this->import_vnexpress();
-		die;
 		//
 		// Thông tin các trang web đã từng làm
 		//
@@ -185,43 +207,35 @@ class HomepageController  extends BaseController
 	// **Công dụng: Import tin tức từ trang vnexpress.net**
 	// **Ngày tạo: 13/1/2016**
 	// **Tác giả: Santosan**
-	// 
+	// open
 	public function import_vnexpress($case = null){
+		Log::info("Do log import_vnexpress in ".date("Y-m-d h:i:s"));
 		if(true){
 			//============  ============
 			//
 			//
-			$array_site = [
-				0 => "http://vnexpress.net/tin-tuc/thoi-su",
-				1 => "http://vnexpress.net/tin-tuc/the-gioi",
-				2 => "http://kinhdoanh.vnexpress.net/",
-				3 => "http://giaitri.vnexpress.net/",
-				4 => "http://thethao.vnexpress.net",
-				5 => "http://vnexpress.net/tin-tuc/phap-luat",
-				6 => "http://vnexpress.net/tin-tuc/giao-duc",
-				7 => "http://suckhoe.vnexpress.net",
-				8 => "http://giadinh.vnexpress.net/",
-				9 => "http://dulich.vnexpress.net",
-				10 => "http://vnexpress.net/tin-tuc/khoa-hoc",
-				11 => "http://vnexpress.net/tin-tuc/khoa-hoc/page/2.html",
-				12 => "http://sohoa.vnexpress.net/",
-				13 => "http://vnexpress.net/tin-tuc/oto-xe-may",
-				14 => "http://vnexpress.net/tin-tuc/cong-dong",
-				15 => "http://vnexpress.net/tin-tuc/tam-su",
-				16 => "http://vnexpress.net/tin-tuc/tam-su/page/3.html",
-				17 => "http://vnexpress.net/tin-tuc/cuoi",
-			];
-			if(empty($array_site)){
+			if(empty($this->array_site)){
 				echo "List null";
 				return;
 			}
+
 			if(empty($case)){
 				echo "Nhap gia tri";
 				return;
 			}
-			$array_site_a[0]=$array_site[(int)$case];
+			switch ($case){
+				case "home":
+					$array_site_a[0]="http://vnexpress.net";
+				break;
+				case "all":
+					$array_site_a=$this->array_site;
+				break;
+				default:
+					$array_site_a[0]=$this->array_site[(int)$case];
+				break;
+			}
 
-			// foreach tất cả phần tử trong mảng $array_site
+			// foreach tất cả phần tử trong mảng $this->array_site
 			foreach ($array_site_a as $key_site => $value_site) {
 				// Khởi tạo biến dom của link $value_site
 				$dom = str_get_html(file_get_contents($value_site));
@@ -237,7 +251,10 @@ class HomepageController  extends BaseController
 						if(preg_match("/.{10,}\.html$/", $value->attr["href"])){
 
 							// Log ban đầu
-							Log::info("Link: ".$value->attr["href"]);
+							echo "=== Link: ".$value->attr["href"].PHP_EOL;
+							if(LOG_INFO_FLAG_IMPORT){
+								Log::info("Link: ".$value->attr["href"]);
+							}
 
 							//============  ============
 							//
@@ -250,7 +267,9 @@ class HomepageController  extends BaseController
 									if(!empty($value->find("img",0)->attr["alt"])){//Có alt gán biến title
 										$title = $value->find("img",0)->attr["alt"];
 									}else{//Nếu không có alt thì continue
-										Log::info("exit :0 __ ".$value->attr["href"]);
+										if(LOG_INFO_FLAG_IMPORT){
+											Log::info("exit :0 __ ".$value->attr["href"]);
+										}
 										continue;
 									}
 								}else{// Không phải hình
@@ -263,7 +282,9 @@ class HomepageController  extends BaseController
 							// 1: Link đã có trong DB
 							// 2: Chuỗi $title < 10 kỹ tự
 							if(Articles::where("article_link",$value->attr["href"])->count()!=0 || strlen(trim($title)) < 10 ){
-								Log::info("exit :1 __ ".$title);
+								if(LOG_INFO_FLAG_IMPORT){
+									Log::info("exit :1 __ ".$title);
+								}
 								continue;
 							}
 
@@ -290,7 +311,9 @@ class HomepageController  extends BaseController
 							//
 								if($content == ""){
 									$dom2->clear();
-									Log::info("exit : Content rỗng");
+									if(LOG_INFO_FLAG_IMPORT){
+										Log::info("exit : Content rỗng");
+									}
 									continue;
 								}
 								$data = [
@@ -299,16 +322,21 @@ class HomepageController  extends BaseController
 								"article_link" => $link
 								];
 								if(Articles::create($data)){
-									Log::info("!!! Saved: ".$title);
+									echo "!!! Saved: ".$title.PHP_EOL;
+									if(LOG_INFO_FLAG_IMPORT){
+										Log::info("!!! Saved: ".$title);
+									}
 								}else{
-									Log::info("!!! Could't Save: ".$title);
+									if(LOG_INFO_FLAG_IMPORT){
+										Log::info("!!! Could't Save: ".$title);
+									}
 								}
 							//
 							//============  ============
 						}
 					}
 				} // End foreach $m
-			}// End foreach $array_site
+			}// End foreach $this->array_site
 				// Dừng chương trình
 				die;
 			//
