@@ -194,7 +194,7 @@
 								<div class="cat">
 									<a href="{{config("app.theme_news")}}">Mustreads</a>
 								</div>
-								<h3><a href="{{$box_top[0]->id}}">{{$box_top[0]->article_title}}</a></h3>
+								<h3><a href="/article/page/detail/{{$box_top[0]->id}}">{{$box_top[0]->article_title}}</a></h3>
 								<p class="excerpt-entry">article_content</p>
 								<div class="post-meta">
 									<span class="author">By <a href="{{config("app.theme_news")}}#">Paul Graham</a></span>
@@ -770,7 +770,7 @@
 								<div class="cat">
 									<a href="{{config("app.theme_news")}}#">Mustreads</a>
 								</div>
-								<h3><a href="{{config("app.theme_news")}}#">{{$social_media[0]->article_title}}</a></h3>
+								<h3><a href="">{{$social_media[0]->article_title}}</a></h3>
 								<p class="excerpt-entry">I think your best bet would be to start or join a startup. That's been a reliable way to get rich for hundreds of years.</p>
 								<div class="activity">
 									<span class="views">345</span><span class="comment"><a href="{{config("app.theme_news")}}#">15</a></span>

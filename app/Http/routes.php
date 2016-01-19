@@ -32,7 +32,8 @@ Route::get('/blogs/popup_img', 'admin\BlogsManagerController@popup_img');
 
 Route::get('/article/list', 'ArticlesController@index');
 Route::get('/article/', 'ArticlesController@homepage');
-Route::get('/article/detail/{id}', 'ArticlesController@detail');
+Route::get('/article/page/detail/{id}', 'ArticlesController@detail');
+Route::get('/article/detail/{id}', 'ArticlesController@detail_ajax');
 Route::get('edit_db', "ArticlesController@edit_db");
 
 
