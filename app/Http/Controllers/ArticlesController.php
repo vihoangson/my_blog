@@ -15,6 +15,12 @@ class ArticlesController  extends BaseController
 
 	public function __construct(){
 	}
+
+	public function list_a(){
+		$rs = Articles::limit(100)->orderBy("id","desc")->get();
+		return view("articles.index",compact("rs"));
+	}// End function index()
+
 	public function index(){
 		$rs = Articles::limit(100)->orderBy("id","desc")->get();
 		return view("articles.list",compact("rs"));

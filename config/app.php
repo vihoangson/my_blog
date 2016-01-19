@@ -1,7 +1,7 @@
 <?php
 
 return [
-
+    'theme_news' => "/templates/goodnews/",
     /*
     |--------------------------------------------------------------------------
     | Application Environment
