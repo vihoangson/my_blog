@@ -194,8 +194,8 @@
 								<div class="cat">
 									<a href="{{config("app.theme_news")}}">Mustreads</a>
 								</div>
-								<h3><a href="{{config("app.theme_news")}}#">If you wanted to get rich, how would you do it?</a></h3>
-								<p class="excerpt-entry">I think your best bet would be to start or join a startup. That's been a reliable way to get rich for hundreds of years.The word "startup" dates from the 1960s, but what happens in one is very similar.</p>
+								<h3><a href="{{$box_top[0]->id}}">{{$box_top[0]->article_title}}</a></h3>
+								<p class="excerpt-entry">article_content</p>
 								<div class="post-meta">
 									<span class="author">By <a href="{{config("app.theme_news")}}#">Paul Graham</a></span>
 									<div class="activity">
@@ -212,7 +212,7 @@
 								<div class="cat">
 									<a href="{{config("app.theme_news")}}">Tech</a>
 								</div>
-								<h3><a href="{{config("app.theme_news")}}#">Startups usually involve technology, so much so that the phrase "high-tech startup" is almost redundant.</a></h3>
+								<h3><a href="{{$box_top[1]->id}}">{{$box_top[1]->article_title}}</a></h3>
 								<div class="activity">
 									<span class="views">12</span><span class="comment"><a href="{{config("app.theme_news")}}#">15</a></span>
 								</div>
@@ -224,7 +224,7 @@
 								<div class="cat">
 									<a href="{{config("app.theme_news")}}">Social media</a>
 								</div>
-								<h3><a href="{{config("app.theme_news")}}#">Startups usually involve technology, so much so that the phrase "high-tech startup" is almost redundant.</a></h3>
+								<h3><a href="{{$box_top[2]->id}}">{{$box_top[2]->article_title}}</a></h3>
 								<div class="activity">
 									<span class="views">12</span><span class="comment"><a href="{{config("app.theme_news")}}#">15</a></span>
 								</div>
@@ -243,7 +243,7 @@
 							<div class="cat">
 								<a href="{{config("app.theme_news")}}">Social media</a>
 							</div>
-							<h3><a href="{{config("app.theme_news")}}#">Like all back-of-the-envelope calculations, this one has a lot of wiggle room.</a></h3>
+							<h3><a href="{{config("app.theme_news")}}#">{{$highlights[0]->article_title}}</a></h3>
 							<div class="activity">
 								<span class="views">12</span><span class="comment"><a href="{{config("app.theme_news")}}#">0</a></span>
 							</div>
@@ -255,7 +255,7 @@
 							<div class="cat">
 								<a href="{{config("app.theme_news")}}">Social media</a>
 							</div>
-							<h3><a href="{{config("app.theme_news")}}#">I'm not claiming the multiplier is precisely 36, but it is certainly more than 10...</a></h3>
+							<h3><a href="{{config("app.theme_news")}}#">{{$highlights[1]->article_title}}</a></h3>
 							<div class="activity">
 								<span class="views">12</span><span class="comment"><a href="{{config("app.theme_news")}}#">0</a></span>
 							</div>
@@ -267,7 +267,7 @@
 							<div class="cat">
 								<a href="{{config("app.theme_news")}}">Social media</a>
 							</div>
-							<h3><a href="{{config("app.theme_news")}}#">Like all back-of-the-envelope calculations, this one has a lot of wiggle room.</a></h3>
+							<h3><a href="{{config("app.theme_news")}}#">{{$highlights[2]->article_title}}</a></h3>
 							<div class="activity">
 								<span class="views">12</span><span class="comment"><a href="{{config("app.theme_news")}}#">0</a></span>
 							</div>
@@ -279,7 +279,7 @@
 							<div class="cat">
 								<a href="{{config("app.theme_news")}}">Social media</a>
 							</div>
-							<h3><a href="{{config("app.theme_news")}}#">I'm not claiming the multiplier is precisely 36, but it is certainly more than 10...</a></h3>
+							<h3><a href="{{config("app.theme_news")}}#">{{$highlights[3]->article_title}}</a></h3>
 							<div class="activity">
 								<span class="views">12</span><span class="comment"><a href="{{config("app.theme_news")}}#">0</a></span>
 							</div>
@@ -432,7 +432,7 @@
 										<a href="{{config("app.theme_news")}}"><img src="{{config("app.theme_news")}}images/thumbs/2.jpg" alt="img"></a>
 									</div>
 									<div class="content">
-										<h3><a href="{{config("app.theme_news")}}#">Lots of people get rich knowing nothing more than that.</a></h3>
+										<h3><a href="{{config("app.theme_news")}}#">{{$box_right_top[0]->article_title}}</a></h3>
 										<div class="date">7:00 am on Feb 28</div>
 									</div>
 								</li>
@@ -441,7 +441,7 @@
 										<a href="{{config("app.theme_news")}}"><img src="{{config("app.theme_news")}}images/thumbs/2-2.jpg" alt="img"></a>
 									</div>
 									<div class="content">
-										<h3><a href="{{config("app.theme_news")}}#">Lots of people get rich knowing nothing more than that.</a></h3>
+										<h3><a href="{{config("app.theme_news")}}#">{{$box_right_top[1]->article_title}}</a></h3>
 										<div class="date">7:00 am on Feb 28</div>
 									</div>
 								</li>
@@ -450,7 +450,7 @@
 										<a href="{{config("app.theme_news")}}"><img src="{{config("app.theme_news")}}images/thumbs/2-3.jpg" alt="img"></a>
 									</div>
 									<div class="content">
-										<h3><a href="{{config("app.theme_news")}}#">Lots of people get rich knowing nothing more than that.</a></h3>
+										<h3><a href="{{config("app.theme_news")}}#">{{$box_right_top[2]->article_title}}</a></h3>
 										<div class="date">7:00 am on Feb 28</div>
 									</div>
 								</li>
@@ -465,23 +465,23 @@
 							<ul>
 								<li>
 									<div class="order">1</div>
-									<p><a href="{{config("app.theme_news")}}">The World’s Youngest Billionaire is Just 24 and She’s From Hong Kong</a></p>
+									<p><a href="{{config("app.theme_news")}}">{{$most_popular[0]->article_title}}</a></p>
 								</li>
 								<li>
 									<div class="order">2</div>
-									<p><a href="{{config("app.theme_news")}}">The World’s Youngest Billionaire is Just 24 and She’s From Hong Kong</a></p>
+									<p><a href="{{config("app.theme_news")}}">{{$most_popular[1]->article_title}}</a></p>
 								</li>
 								<li>
 									<div class="order">3</div>
-									<p><a href="{{config("app.theme_news")}}">The World’s Youngest Billionaire is Just 24 and She’s From Hong Kong</a></p>
+									<p><a href="{{config("app.theme_news")}}">{{$most_popular[2]->article_title}}</a></p>
 								</li>
 								<li>
 									<div class="order">4</div>
-									<p><a href="{{config("app.theme_news")}}">The World’s Youngest Billionaire is Just 24 and She’s From Hong Kong</a></p>
+									<p><a href="{{config("app.theme_news")}}">{{$most_popular[3]->article_title}}</a></p>
 								</li>
 								<li>
 									<div class="order">5</div>
-									<p><a href="{{config("app.theme_news")}}">The World’s Youngest Billionaire is Just 24 and She’s From Hong Kong</a></p>
+									<p><a href="{{config("app.theme_news")}}">{{$most_popular[4]->article_title}}</a></p>
 								</li>
 							</ul>
 						</div><!-- /.widget-popular -->

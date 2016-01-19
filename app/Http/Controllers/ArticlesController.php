@@ -16,9 +16,13 @@ class ArticlesController  extends BaseController
 	public function __construct(){
 	}
 
-	public function list_a(){
-		$rs = Articles::limit(100)->orderBy("id","desc")->get();
-		return view("articles.index",compact("rs"));
+	public function homepage(){
+		$rs            = Articles::limit(100)->orderBy("id","desc")->get();
+		$box_top       = Articles::limit(3)->orderBy("id","desc")->get();
+		$box_right_top = Articles::limit(3)->orderBy("id","desc")->get();
+		$most_popular  = Articles::limit(5)->orderBy("id","desc")->get();
+		$highlights = Articles::limit(5)->orderBy("id","desc")->get();
+		return view("articles.index",compact("rs","box_top","box_right_top","most_popular","highlights"));
 	}// End function index()
 
 	public function index(){
