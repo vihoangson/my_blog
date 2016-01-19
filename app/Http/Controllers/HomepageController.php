@@ -202,6 +202,8 @@ class HomepageController  extends BaseController
 		echo "success";
 	}
 
+
+
 	//============  ============
 	// ****** Function import_vnexpress() ******
 	// **Công dụng: Import tin tức từ trang vnexpress.net**
@@ -209,7 +211,7 @@ class HomepageController  extends BaseController
 	// **Tác giả: Santosan**
 	// open
 	public function import_vnexpress($case = null){
-		Log::info("Do log import_vnexpress in ".date("Y-m-d h:i:s"));
+		Log::info("Do log import_vnexpress in ".date("Y-m-d H:i:s"));
 		if(true){
 			//============  ============
 			//
@@ -345,5 +347,4 @@ class HomepageController  extends BaseController
 	}// End function import_vnexpress()
 	//
 	//============ import_vnexpress() ============
-
 }
