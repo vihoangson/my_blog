@@ -22,7 +22,11 @@ class ArticlesController  extends BaseController
 		$box_right_top = Articles::limit(3)->orderBy("id","desc")->get();
 		$most_popular  = Articles::limit(5)->orderBy("id","desc")->get();
 		$highlights = Articles::limit(5)->orderBy("id","desc")->get();
-		return view("articles.index",compact("rs","box_top","box_right_top","most_popular","highlights"));
+		$editors_picks = Articles::limit(3)->orderBy("id","desc")->get();
+		$popular_posts = Articles::limit(7)->orderBy("id","desc")->get();
+		$trending = Articles::limit(17)->orderBy("id","desc")->get();
+		$social_media = Articles::limit(4)->orderBy("id","desc")->get();
+		return view("articles.index",compact("rs","box_top","box_right_top","most_popular","highlights","editors_picks","popular_posts","trending","social_media"));
 	}// End function index()
 
 	public function index(){

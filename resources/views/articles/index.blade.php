@@ -299,7 +299,7 @@
 									<div class="cat">
 										<a href="{{config("app.theme_news")}}">Mustreads</a>
 									</div>
-									<h3><a href="{{config("app.theme_news")}}#">If you wanted to get rich, how would you do it?</a></h3>
+									<h3><a href="{{config("app.theme_news")}}#">{{$editors_picks[0]->article_title}}</a></h3>
 									<p class="excerpt-entry">Economically, you can think of a startup as a way to compress your whole working life into a few years.</p>
 									<div class="post-meta">
 										<span class="author">By <a href="{{config("app.theme_news")}}#">Anna Chapman</a></span>
@@ -315,7 +315,7 @@
 									<div class="cat">
 										<a href="{{config("app.theme_news")}}">Mustreads</a>
 									</div>
-									<h3><a href="{{config("app.theme_news")}}#">If you wanted to get rich, how would you do it?</a></h3>
+									<h3><a href="{{config("app.theme_news")}}#">{{$editors_picks[1]->article_title}}</a></h3>
 									<p class="excerpt-entry">Instead of working at a low intensity for forty years, you work as hard as you possibly can for four.</p>
 									<div class="post-meta">
 										<span class="author">By <a href="{{config("app.theme_news")}}#">John Doe</a></span>
@@ -331,7 +331,7 @@
 									<div class="cat">
 										<a href="{{config("app.theme_news")}}">Mustreads</a>
 									</div>
-									<h3><a href="{{config("app.theme_news")}}#">If you wanted to get rich, how would you do it?</a></h3>
+									<h3><a href="{{config("app.theme_news")}}#">{{$editors_picks[2]->article_title}}</a></h3>
 									<p class="excerpt-entry">I think your best bet would be to start or join a startup. </p>
 									<div class="post-meta">
 										<span class="author">By <a href="{{config("app.theme_news")}}#">Mike Tyson</a></span>
@@ -354,7 +354,7 @@
 								<div class="cat">
 									<a href="{{config("app.theme_news")}}">Mustreads</a>
 								</div>
-								<h3><a href="{{config("app.theme_news")}}#">If you wanted to get rich</a></h3>
+								<h3><a href="{{config("app.theme_news")}}#">{{$popular_posts[0]->article_title}}</a></h3>
 								<p class="excerpt-entry">I think your best bet would be to start or join a startup. That's been a reliable way to get rich for hundreds of years.The word "startup" dates from the 1960s, but what happens in one is very similar.</p>
 								<div class="post-meta">
 									<span class="author">By <a href="{{config("app.theme_news")}}#">John Doe</a></span>
@@ -370,7 +370,7 @@
 									<a href="{{config("app.theme_news")}}#"><img src="{{config("app.theme_news")}}images/thumbs/2.jpg" alt="img"></a>
 								</div>
 								<div class="content">
-									<h3><a href="{{config("app.theme_news")}}#">Lots of people get rich knowing nothing more than that.</a></h3>
+									<h3><a href="{{config("app.theme_news")}}#">{{$popular_posts[1]->article_title}}</a></h3>
 									<span class="date">7:00 am on Feb 28</span>
 								</div>
 							</article><!--  /.post -->
@@ -379,7 +379,7 @@
 									<a href="{{config("app.theme_news")}}#"><img src="{{config("app.theme_news")}}images/thumbs/2-2.jpg" alt="img"></a>
 								</div>
 								<div class="content">
-									<h3><a href="{{config("app.theme_news")}}#">Lots of people get rich knowing nothing more than that.</a></h3>
+									<h3><a href="{{config("app.theme_news")}}#">{{$popular_posts[2]->article_title}}</a></h3>
 									<span class="date">7:00 am on Feb 28</span>
 								</div>
 							</article><!--  /.post -->
@@ -388,7 +388,7 @@
 									<a href="{{config("app.theme_news")}}#"><img src="{{config("app.theme_news")}}images/thumbs/2-3.jpg" alt="img"></a>
 								</div>
 								<div class="content">
-									<h3><a href="{{config("app.theme_news")}}#">Lots of people get rich knowing nothing more than that.</a></h3>
+									<h3><a href="{{config("app.theme_news")}}#">{{$popular_posts[3]->article_title}}</a></h3>
 									<span class="date">7:00 am on Feb 28</span>
 								</div>
 							</article><!--  /.post -->
@@ -397,7 +397,7 @@
 									<a href="{{config("app.theme_news")}}#"><img src="{{config("app.theme_news")}}images/thumbs/2-4.jpg" alt="img"></a>
 								</div>
 								<div class="content">
-									<h3><a href="{{config("app.theme_news")}}#">Lots of people get rich knowing nothing more than that.</a></h3>
+									<h3><a href="{{config("app.theme_news")}}#">{{$popular_posts[4]->article_title}}</a></h3>
 									<span class="date">7:00 am on Feb 28</span>
 								</div>
 							</article><!--  /.post -->
@@ -406,7 +406,7 @@
 									<a href="{{config("app.theme_news")}}#"><img src="{{config("app.theme_news")}}images/thumbs/2-5.jpg" alt="img"></a>
 								</div>
 								<div class="content">
-									<h3><a href="{{config("app.theme_news")}}#">Lots of people get rich knowing nothing more than that.</a></h3>
+									<h3><a href="{{config("app.theme_news")}}#">{{$popular_posts[5]->article_title}}</a></h3>
 									<span class="date">7:00 am on Feb 28</span>
 								</div>
 							</article><!--  /.post -->
@@ -415,7 +415,7 @@
 									<a href="{{config("app.theme_news")}}#"><img src="{{config("app.theme_news")}}images/thumbs/2-6.jpg" alt="img"></a>
 								</div>
 								<div class="content">
-									<h3><a href="{{config("app.theme_news")}}#">Lots of people get rich knowing nothing more than that.</a></h3>
+									<h3><a href="{{config("app.theme_news")}}#">{{$popular_posts[6]->article_title}}</a></h3>
 									<span class="date">7:00 am on Feb 28</span>
 								</div>
 							</article><!--  /.post -->
@@ -672,23 +672,23 @@
 									<a href="{{config("app.theme_news")}}#"><img src="{{config("app.theme_news")}}images/thumbs/5.jpg" alt="img"></a>
 								</div>
 								<span class="date">October 6, 2013</span>
-								<h3><a href="{{config("app.theme_news")}}#">This pays especially well in technology, where you earn a premium for working fast.</a></h3>
+								<h3><a href="{{config("app.theme_news")}}#">{{$trending[0]->article_title}}</a></h3>
 							</article><!--  /.post -->
 							<article class="post">
 								<span class="date">October 6, 2013</span>
-								<h3><a href="{{config("app.theme_news")}}#">Here is a brief sketch of the economic proposition.</a></h3>
+								<h3><a href="{{config("app.theme_news")}}#">{{$trending[1]->article_title}}</a></h3>
 							</article><!--  /.post -->
 							<article class="post">
 								<span class="date">October 6, 2013</span>
-								<h3><a href="{{config("app.theme_news")}}#">Startups are not magic.</a></h3>
+								<h3><a href="{{config("app.theme_news")}}#">{{$trending[2]->article_title}}</a></h3>
 							</article><!--  /.post -->
 							<article class="post">
 								<span class="date">October 6, 2013</span>
-								<h3><a href="{{config("app.theme_news")}}#">Like all back-of-the-envelope calculations, this one has a lot of wiggle room.</a></h3>
+								<h3><a href="{{config("app.theme_news")}}#">{{$trending[3]->article_title}}</a></h3>
 							</article><!--  /.post -->
 							<article class="post">
 								<span class="date">October 6, 2013</span>
-								<h3><a href="{{config("app.theme_news")}}#">Imagine the stress of working for the Post Office for fifty years.</a></h3>
+								<h3><a href="{{config("app.theme_news")}}#">{{$trending[4]->article_title}}</a></h3>
 							</article><!--  /.post -->
 						</div>
 						<div class="one-fourth gn-animation" data-animation="fadeInUp" data-animation-delay="0.2s" data-animation-offset="75%">
@@ -697,19 +697,19 @@
 									<a href="{{config("app.theme_news")}}#"><img src="{{config("app.theme_news")}}images/thumbs/5-2.jpg" alt="img"></a>
 								</div>
 								<span class="date">October 6, 2013</span>
-								<h3><a href="{{config("app.theme_news")}}#">Lots of people get rich knowing nothing more than that.</a></h3>
+								<h3><a href="{{config("app.theme_news")}}#">{{$trending[5]->article_title}}</a></h3>
 							</article><!--  /.post -->
 							<article class="post">
 								<span class="date">October 6, 2013</span>
-								<h3><a href="{{config("app.theme_news")}}#">If you're a good hacker in your mid twenties, you can get a job paying about $80,000 per year.</a></h3>
+								<h3><a href="{{config("app.theme_news")}}#">{{$trending[6]->article_title}}</a></h3>
 							</article><!--  /.post -->
 							<article class="post">
 								<span class="date">October 6, 2013</span>
-								<h3><a href="{{config("app.theme_news")}}#">They don't change the laws of wealth creation.</a></h3>
+								<h3><a href="{{config("app.theme_news")}}#">{{$trending[7]->article_title}}</a></h3>
 							</article><!--  /.post -->
 							<article class="post">
 								<span class="date">October 6, 2013</span>
-								<h3><a href="{{config("app.theme_news")}}#">I wouldn't try to defend the actual numbers. But I stand by the structure of the calculation.</a></h3>
+								<h3><a href="{{config("app.theme_news")}}#">{{$trending[8]->article_title}}</a></h3>
 							</article><!--  /.post -->
 						</div>
 						<div class="one-fourth gn-animation" data-animation="fadeInUp" data-animation-delay="0.4s" data-animation-offset="75%">
@@ -718,19 +718,19 @@
 									<a href="{{config("app.theme_news")}}#"><img src="{{config("app.theme_news")}}images/thumbs/5-3.jpg" alt="img"></a>
 								</div>
 								<span class="date">October 6, 2013</span>
-								<h3><a href="{{config("app.theme_news")}}#">I think your best bet would be to start or join a startup.</a></h3>
+								<h3><a href="{{config("app.theme_news")}}#">{{$trending[9]->article_title}}</a></h3>
 							</article><!--  /.post -->
 							<article class="post">
 								<span class="date">October 6, 2013</span>
-								<h3><a href="{{config("app.theme_news")}}#">You could probably work twice as many hours as a corporate employee.</a></h3>
+								<h3><a href="{{config("app.theme_news")}}#">{{$trending[10]->article_title}}</a></h3>
 							</article><!--  /.post -->
 							<article class="post">
 								<span class="date">October 6, 2013</span>
-								<h3><a href="{{config("app.theme_news")}}#">Imagine the stress of working for the Post Office for fifty years. In a startup you compress all this stress into three or four years.</a></h3>
+								<h3><a href="{{config("app.theme_news")}}#">{{$trending[11]->article_title}}</a></h3>
 							</article><!--  /.post -->
 							<article class="post">
 								<span class="date">October 6, 2013</span>
-								<h3><a href="{{config("app.theme_news")}}#">This pays especially well in technology, where you earn a premium for working fast.</a></h3>
+								<h3><a href="{{config("app.theme_news")}}#">{{$trending[12]->article_title}}</a></h3>
 							</article><!--  /.post -->
 						</div>
 						<div class="one-fourth last gn-animation" data-animation="fadeInUp" data-animation-delay="0.6s" data-animation-offset="75%">
@@ -739,19 +739,19 @@
 									<a href="{{config("app.theme_news")}}#"><img src="{{config("app.theme_news")}}images/thumbs/5-4.jpg" alt="img"></a>
 								</div>
 								<span class="date">October 6, 2013</span>
-								<h3><a href="{{config("app.theme_news")}}#">That's been a reliable way to get rich for hundreds of years.</a></h3>
+								<h3><a href="{{config("app.theme_news")}}#">{{$trending[13]->article_title}}</a></h3>
 							</article><!--  /.post -->
 							<article class="post">
 								<span class="date">October 6, 2013</span>
-								<h3><a href="{{config("app.theme_news")}}#">Like all back-of-the-envelope calculations, this one has a lot of wiggle room.</a></h3>
+								<h3><a href="{{config("app.theme_news")}}#">{{$trending[14]->article_title}}</a></h3>
 							</article><!--  /.post -->
 							<article class="post">
 								<span class="date">October 6, 2013</span>
-								<h3><a href="{{config("app.theme_news")}}#">Three million? How do I get to be a billionaire, like Bill Gates?</a></h3>
+								<h3><a href="{{config("app.theme_news")}}#">{{$trending[15]->article_title}}</a></h3>
 							</article><!--  /.post -->
 							<article class="post">
 								<span class="date">October 6, 2013</span>
-								<h3><a href="{{config("app.theme_news")}}#">If $3 million a year seems high to some people, it will seem low to others.</a></h3>
+								<h3><a href="{{config("app.theme_news")}}#">{{$trending[16]->article_title}}</a></h3>
 							</article><!--  /.post -->
 						</div>
 					</div><!-- /.trending-posts -->
@@ -770,7 +770,7 @@
 								<div class="cat">
 									<a href="{{config("app.theme_news")}}#">Mustreads</a>
 								</div>
-								<h3><a href="{{config("app.theme_news")}}#">If you wanted to get rich.</a></h3>
+								<h3><a href="{{config("app.theme_news")}}#">{{$social_media[0]->article_title}}</a></h3>
 								<p class="excerpt-entry">I think your best bet would be to start or join a startup. That's been a reliable way to get rich for hundreds of years.</p>
 								<div class="activity">
 									<span class="views">345</span><span class="comment"><a href="{{config("app.theme_news")}}#">15</a></span>
@@ -785,7 +785,7 @@
 								<div class="cat">
 									<a href="{{config("app.theme_news")}}#">Mustreads</a>
 								</div>
-								<h3><a href="{{config("app.theme_news")}}#">Startups are not magic.</a></h3>
+								<h3><a href="{{config("app.theme_news")}}#">{{$social_media[1]->article_title}}</a></h3>
 								<p class="excerpt-entry">That's been a reliable way to get rich for hundreds of years.The word "startup" dates from the 1960s, but what happens in one is very similar.</p>
 								<div class="activity">
 									<span class="views">345</span><span class="comment"><a href="{{config("app.theme_news")}}#">15</a></span>
@@ -800,7 +800,7 @@
 								<div class="cat">
 									<a href="{{config("app.theme_news")}}#">Mustreads</a>
 								</div>
-								<h3><a href="{{config("app.theme_news")}}#">They don't change the laws of wealth creation.</a></h3>
+								<h3><a href="{{config("app.theme_news")}}#">{{$social_media[2]->article_title}}</a></h3>
 								<p class="excerpt-entry">That's been a reliable way to get rich for hundreds of years.The word "startup" dates from the 1960s.</p>
 								<div class="activity">
 									<span class="views">345</span><span class="comment"><a href="{{config("app.theme_news")}}#">15</a></span>
@@ -815,7 +815,7 @@
 								<div class="cat">
 									<a href="{{config("app.theme_news")}}#">Mustreads</a>
 								</div>
-								<h3><a href="{{config("app.theme_news")}}#">They just represent a point at the far end of the curve.</a></h3>
+								<h3><a href="{{config("app.theme_news")}}#">{{$social_media[3]->article_title}}</a></h3>
 								<p class="excerpt-entry">That's been a reliable way to get rich for hundreds of years.The word "startup" dates from the 1960s.</p>
 								<div class="activity">
 									<span class="views">345</span><span class="comment"><a href="{{config("app.theme_news")}}#">15</a></span>
