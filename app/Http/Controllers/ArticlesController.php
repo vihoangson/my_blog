@@ -35,6 +35,11 @@ class ArticlesController  extends BaseController
 		return view("articles.detail",compact("rs"));
 	}
 
+	public function article_endless(){
+		$rs = Articles::limit(100)->orderBy("id","desc")->get();
+		return view("articles.article-endless",compact("rs"));
+	}
+
 	public function index(){
 		$rs = Articles::limit(100)->orderBy("id","desc")->get();
 		return view("articles.list",compact("rs"));
@@ -44,8 +49,33 @@ class ArticlesController  extends BaseController
 
 	public function detail_ajax($id){
 		$rs = Articles::find($id);
-		echo "<h2>".$rs->article_title."</h2>";
-		echo $rs->article_content;
+		?>
+			<div class="head-post">
+				<h2><a href="#"><?= $rs->article_title; ?></a></h2>
+				<p>I think your best bet would be to start or join a startup. That's been a reliable way to get rich for hundreds of years.The word "startup" dates from the 1960s, but what happens in one is very similar.</p>
+				<div class="meta">
+					<span class="author">By <a href="#">Anna Chapman</a></span>
+					<span class="time"> Published on May 07, 2004.</span>
+				</div>
+			</div><!-- /.head-post -->
+			<div class="body-post">
+				<div class="main-post">
+					<div class="entry-post">
+						<?= $rs->article_content; ?>
+					</div><!-- /.entry-post -->
+					<div class="tags">
+						<h4>In this article:</h4>
+						<a href="#">Startups</a>
+						<a href="#">Technology</a>
+						<a href="#">Millions of dollars</a>
+						<a href="#">Paul Graham</a>
+					</div>
+					<div class="load-comment">
+						<a href="#">Load Comments (35)</a>
+					</div>
+				</div><!-- /.main-post -->
+			</div><!-- /.body-post -->
+		<?php
 	}
 
 
