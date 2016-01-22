@@ -81,13 +81,23 @@ class ArticlesController  extends BaseController
 
 	public function edit_db(){
 
-		$rs = Articles::limit(5100)->get();
+		$rs = Articles::limit(1)->get();
 		foreach ($rs as $key => $value) {
-			preg_match_all("/src=[\"'](.+?)[\"']/",$value->article_content,$match);
+			$content = $value->article_content;
+			$content2 = strip_tags($content);
+			//preg_match_all("/([\p{L}\p{N}!\s]+)\s/u", $content2, $matches);
+			preg_match_all("/(.+?)\s/", $content2, $matches);
 			echo "<pre>";
-			print_r($match);
+			$matches = array_filter($matches);
+			//$matches = array_map("trim", $matches);
+			print_r($matches);
 			echo "</pre>";
-			echo "<hr>";
+
+			// preg_match_all("/src=[\"'](.+?)[\"']/",$value->article_content,$match);
+			// echo "<pre>";
+			// print_r($match);
+			// echo "</pre>";
+			// echo "<hr>";
 		}
 	}
 }

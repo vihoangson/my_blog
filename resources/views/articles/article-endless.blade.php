@@ -80,36 +80,7 @@
 				<div class="col-md-8">
 					<div class="post-wrap posts posts-list">
 						<article class="post"></article><!-- /.post -->
-						<article class="postss hidden">
-							<div class="head-post">
-								<h2><a href="#">All they had to do was play hardball with licensees and copy more innovative products reasonably promptly.</a></h2>
-								<p>I think your best bet would be to start or join a startup. That's been a reliable way to get rich for hundreds of years.The word "startup" dates from the 1960s, but what happens in one is very similar.</p>
-								<div class="meta">
-									<span class="author">By <a href="#">Paul Graham</a></span>
-									<span class="time"> Published on May 07, 2004.</span>
-								</div>
-							</div><!-- /.head-post -->
-							<div class="body-post">
-								<div class="main-post">
-									<div class="entry-post">
-										<p>If you wanted to get rich, how would you do it? I think your best bet would be to start or join a startup. That's been a reliable way to get rich for hundreds of years. The word "startup" dates from the 1960s, but what happens in one is very similar to the venture-backed trading voyages of the Middle Ages.</p>
-										<p>Startups usually involve technology, so much so that the phrase "high-tech startup" is almost redundant. A startup is a small company that takes on a hard technical problem.</p>
-										<img src="{{config("app.theme_news")}}images/image-content.jpg" alt="image">
-										<p>Here is a brief sketch of the economic proposition. If you're a good hacker in your mid twenties, you can get a job paying about $80,000 per year. So on average such a hacker must be able to do at least $80,000 worth of work per year for the company just to break even. You could probably work twice as many hours as a corporate employee, and if you focus you can probably get three times as much done in an hour. [1] You should get another multiple of two, at least, by eliminating the drag of the pointy-haired middle manager who would be your boss in a big company. Then there is one more multiple: how much smarter are you than your job description expects you to be? Suppose another multiple of three. Combine all these multipliers, and I'm claiming you could be 36 times more productive than you're expected to be in a random corporate job. [2] If a fairly good hacker is worth $80,000 a year at a big company, then a smart hacker working very hard without any corporate bullshit to slow him down should be able to do work worth about $3 million a year.</p>
-									</div><!-- /.entry-post -->
-									<div class="tags">
-										<h4>In this article:</h4>
-										<a href="#">Startups</a>
-										<a href="#">Technology</a>
-										<a href="#">Millions of dollars</a>
-										<a href="#">Paul Graham</a>
-									</div>
-									<div class="load-comment">
-										<a href="#">Load Comments (35)</a>
-									</div>
-								</div><!-- /.main-post -->
-							</div><!-- /.body-post -->
-						</article><!-- /.post -->
+						<!-- /.post -->
 						<div class="loadding">
 							<span class="infinite"></span>
 						</div>
