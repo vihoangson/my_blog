@@ -81,23 +81,58 @@ class ArticlesController  extends BaseController
 
 	public function edit_db(){
 
-		$rs = Articles::limit(1)->get();
+		$rs = Articles::where("article_extra_content = ''")->limit(100)->get();
 		foreach ($rs as $key => $value) {
 			$content = $value->article_content;
-			$content2 = strip_tags($content);
-			//preg_match_all("/([\p{L}\p{N}!\s]+)\s/u", $content2, $matches);
-			preg_match_all("/(.+?)\s/", $content2, $matches);
-			echo "<pre>";
-			$matches = array_filter($matches);
-			//$matches = array_map("trim", $matches);
-			print_r($matches);
-			echo "</pre>";
+			$strip_text = trim(strip_tags($content));
+			if(preg_match("/^Thứ/", $strip_text)){
+				$content  = $this->filter_content_vnexpress($content);
+			}
+			$extra_text = trim(strip_tags($content));
+			// ============ ============  ============  ============ 
+			// Lưu vào csdl
+			// extra_text
+				if(empty($value->article_extra_content)){
+					if($value->update(["article_extra_content" => $extra_text])){
+						echo "<p>done</p>";
+					}else{
+						echo "<p>error</p>";
+					}
+				}
 
-			// preg_match_all("/src=[\"'](.+?)[\"']/",$value->article_content,$match);
-			// echo "<pre>";
-			// print_r($match);
-			// echo "</pre>";
-			// echo "<hr>";
+			//
+			//  ============ ============  ============  ============ 
+			echo mb_substr($extra_text,0,400);
+			echo "<hr>";
+		}	
+	}
+
+	function filter_content_vnexpress($content){
+		$dom = str_get_html($content);
+		echo "<h2>title_news</h2>";
+		if($dom->find(".title_news")){
+			$dom->find(".title_news",0)->outertext ="";
 		}
+
+		echo "<h2>block_timer_share</h2>";
+		if($dom->find(".block_timer_share")){
+			$dom->find(".block_timer_share",0)->outertext ="";
+		}
+
+		echo "<h2>relative_new</h2>";
+		if($dom->find(".relative_new")){
+			$dom->find(".relative_new",0)->outertext ="";
+		}
+		echo "<h2>title_div_fbook</h2>";
+		if($dom->find(".title_div_fbook")){
+			$dom->find(".title_div_fbook",0)->outertext ="";
+		}
+		echo "<h2>Normal</h2>";
+		if($dom->find(".Normal")){
+			$dom->find(".Normal",0)->outertext ="";
+		}
+		$return = $dom->__toString();
+		$dom->clear();
+		return $return;
 	}
 }
