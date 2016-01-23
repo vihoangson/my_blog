@@ -111,7 +111,7 @@ class ArticlesController  extends BaseController
 		}	
 	}
 
-	function filter_content_vnexpress($content){
+	private function filter_content_vnexpress($content){
 		$dom = str_get_html($content);
 		echo "<h2>title_news</h2>";
 		if($dom->find(".title_news")){
