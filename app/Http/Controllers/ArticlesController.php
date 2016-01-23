@@ -79,9 +79,9 @@ class ArticlesController  extends BaseController
 	}
 
 
-	public function edit_db(){
+	public static function edit_db(){
 
-		$rs = Articles::where("article_extra_content = ''")->limit(100)->get();
+		$rs = Articles::whereraw("article_extra_content is null")->limit(100)->get();
 		foreach ($rs as $key => $value) {
 			$content = $value->article_content;
 			$strip_text = trim(strip_tags($content));
@@ -89,9 +89,13 @@ class ArticlesController  extends BaseController
 				$content  = $this->filter_content_vnexpress($content);
 			}
 			$extra_text = trim(strip_tags($content));
+
+			//echo $extra_text;
+
 			// ============ ============  ============  ============ 
 			// Lưu vào csdl
 			// extra_text
+				if(true)
 				if(empty($value->article_extra_content)){
 					if($value->update(["article_extra_content" => $extra_text])){
 						echo "<p>done</p>";
@@ -102,7 +106,7 @@ class ArticlesController  extends BaseController
 
 			//
 			//  ============ ============  ============  ============ 
-			echo mb_substr($extra_text,0,400);
+			//echo mb_substr($extra_text,0,400);
 			echo "<hr>";
 		}	
 	}
