@@ -30,6 +30,7 @@ class Update_extra_text extends Command
      */
     public function handle()
     {
-    	ArticlesController::edit_db();
+    	$c = new ArticlesController;
+    	$c->edit_db();
     }
 }
