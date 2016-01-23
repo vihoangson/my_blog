@@ -79,9 +79,9 @@ class ArticlesController  extends BaseController
 	}
 
 
-	public static function edit_db(){
+	public function edit_db(){
 
-		$rs = Articles::whereraw("article_extra_content is null")->limit(100)->get();
+		$rs = Articles::whereraw("article_extra_content is null")->limit(500)->get();
 		foreach ($rs as $key => $value) {
 			$content = $value->article_content;
 			$strip_text = trim(strip_tags($content));

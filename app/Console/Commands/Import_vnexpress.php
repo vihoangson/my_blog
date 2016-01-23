@@ -5,6 +5,8 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use Illuminate\Foundation\Inspiring;
 use App\Http\Controllers\HomepageController;
+use App\Http\Controllers\ArticlesController;
+
 class Import_vnexpress extends Command
 {
     /**
@@ -31,5 +33,7 @@ class Import_vnexpress extends Command
         $myc = $this->argument('myc');
         $tmp = new HomepageController;
         $tmp->import_vnexpress($myc);
+        $c = new ArticlesController;
+        $c->edit_db();
     }
 }
