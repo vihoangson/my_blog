@@ -1,4 +1,4 @@
-<?php 
+<?php
 	function show_star($count){
 		$return ="";
 		for ($i=0; $i < $count; $i++) {

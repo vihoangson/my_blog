@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use Mail;
 use Log;
+
 class ArticlesController  extends BaseController
 {
 
@@ -78,9 +79,9 @@ class ArticlesController  extends BaseController
 		<?php
 	}
 
-	//============ ============  ============  ============ 
+	//============ ============  ============  ============
 	// Update db phần mở đầu của mỗi bản tin
-	// 
+	//
 	public function get_extra_content(){
 
 		$rs = Articles::whereraw("article_extra_content is null")->limit(500)->get();
@@ -88,9 +89,12 @@ class ArticlesController  extends BaseController
 			$content = $value->article_content;
 			$strip_text = trim(strip_tags($content));
 			if(preg_match("/^Thứ/", $strip_text)){
-				// ============ ============  ============  ============ 
+				// ============ ============  ============  ============
 				// Bỏ tất cả những thứ trên đầu
-				// 
+				//
+				echo PHP_EOL."== Filter_content_vnexpress ==".PHP_EOL;
+
+				//Loại bỏ các mục thừa không cần thiết của article_content
 				$content  = $this->filter_content_vnexpress($content);
 
 				//update lại article_content
@@ -100,7 +104,7 @@ class ArticlesController  extends BaseController
 			// Lọc bỏ hết tag
 			$extra_text = trim(strip_tags($content));
 
-			// ============ ============  ============  ============ 
+			// ============ ============  ============  ============
 				if(empty($value->article_extra_content)){
 					// Lưu vào csdl
 					if($value->update(["article_extra_content" => $extra_text])){
@@ -111,34 +115,30 @@ class ArticlesController  extends BaseController
 				}
 
 			//
-			//  ============ ============  ============  ============ 
-		}	
+			//  ============ ============  ============  ============
+		}
 	}
 
-	// ============ ============  ============  ============ 
+	// ============ ============  ============  ============
 	// Bỏ tất cả những thứ trên đầu của content
-	// 
+	// Desc: Loại bỏ các mục thừa không cần thiết của article_content
+	//
 	private function filter_content_vnexpress($content){
 		$dom = str_get_html($content);
-		echo "<h2>title_news</h2>";
 		if($dom->find(".title_news")){
 			$dom->find(".title_news",0)->outertext ="";
 		}
 
-		echo "<h2>block_timer_share</h2>";
 		if($dom->find(".block_timer_share")){
 			$dom->find(".block_timer_share",0)->outertext ="";
 		}
 
-		echo "<h2>relative_new</h2>";
 		if($dom->find(".relative_new")){
 			$dom->find(".relative_new",0)->outertext ="";
 		}
-		echo "<h2>title_div_fbook</h2>";
 		if($dom->find(".title_div_fbook")){
 			$dom->find(".title_div_fbook",0)->outertext ="";
 		}
-		echo "<h2>Normal</h2>";
 		if($dom->find(".Normal")){
 			$dom->find(".Normal",0)->outertext ="";
 		}
@@ -147,29 +147,91 @@ class ArticlesController  extends BaseController
 		return $return;
 	}
 	//
-	//============ ============  ============  ============ 
+	//============ ============  ============  ============
 
 
-	//============ ============  ============  ============ 
+	//============ ============  ============  ============
 	// Lấy các bản tin và show ra hình chính
 	//
 	public function update_main_img(){
-		$rs = Articles::limit(10)->get();
-		foreach ($rs as $key => $value) {
-			$this->get_main_img($value->article_content);
-		}
+		//============  ============
+		// Lấy dữ liệu từ trong bảng
+		//============  ============
+		$rs = Articles::whereraw("article_imgs is null ")->limit(3000)->get();
+		//$rs = Articles::limit(3000)->get();
+
+		//============  ============
+		//  Vòng lập duyệt toàn bộ array
+			foreach ($rs as $key => $value) {
+				//============  ============
+				//  Chuyen thanh mang json
+				//============  ============
+				$article_imgs = json_encode((array)$this->get_main_img($value->article_content));
+				//============  ============
+				// Update vào cột article_imgs
+				//============  ============
+				if($value->update(["article_imgs"=>$article_imgs])){
+					echo "[done]";
+				}else{
+					echo "[error]";
+				}
+				echo PHP_EOL;
+			}
+		//
+		//============  ============
 	}
 	//
-	//============ ============  ============  ============ 
+	//============ ============  ============  ============
 
-	//============ ============  ============  ============ 
+	//============ ============  ============  ============
 	//  Function lấy các hình chính trong content
-	public function get_main_img($content){		
-		preg_match_all("/src=['\"](.+?jpg|gif|png)['\"]>/",$content,$match);
-		dd($match);
+	public function get_main_img($content){
+		$return=[];
+		//============  ============
+		// Match các link có trong bài viết
+		//============  ============
+		preg_match_all("/<img(.+?)src=[\"'](.+?)[\"']/",$content,$match);
+		foreach ($match[2] as $key => $value) {
+			//============  ============
+			// Lọc ra các từ không cần thiết
+			//============  ============
+			if(!(preg_match("/(icons\/social_|img_blank|icon_)/", $value))){
+				$return[] = $value;
+			}
+		}
+		return $return;
 	}
-	//  
-	//  ============ ============  ============  ============ 
+	//
+	//  ============ ============  ============  ============
 
+	//============  ============
+	//  Hàm check tất cả hình còn sống không
+	public function article_imgs_check_img_exist(){
+		// Dùng get_headers để kiểm tra
+		//
+		$rs = Articles::limit(40)->get();
+		foreach ($rs as $key => $value) {
+			$array = json_decode($value->article_imgs,true);
+			foreach ($array as $key2 => $value2) {
+			}
+		}
+	}
+
+	public function article_imgs_show_all_img_article(){
+		$rs = Articles::limit(40)->get();
+		foreach ($rs as $key => $value) {
+			$array = json_decode($value->article_imgs,true);
+			foreach ($array as $key2 => $value2) {
+
+
+			}
+		}
+		//============  ============
+		// $json = json_encode($return);
+		// Lưu file ngoài root
+		// file_put_contents(time().".json", $json);
+
+		dd($return);
+	}
 
 }
