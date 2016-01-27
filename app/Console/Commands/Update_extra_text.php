@@ -31,6 +31,6 @@ class Update_extra_text extends Command
     public function handle()
     {
     	$c = new ArticlesController;
-    	$c->edit_db();
+    	$c->get_extra_content();
     }
 }
