@@ -34,6 +34,6 @@ class Import_vnexpress extends Command
         $tmp = new HomepageController;
         $tmp->import_vnexpress($myc);
         $c = new ArticlesController;
-        $c->edit_db();
+        $c->get_extra_content();
     }
 }

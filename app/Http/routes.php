@@ -37,6 +37,7 @@ Route::get('/article/detail/{id}', 'ArticlesController@detail_ajax');
 Route::get('/article/article-endless', 'ArticlesController@article_endless');
 
 Route::get('edit_db', "ArticlesController@edit_db");
+Route::get('update_main_img', "ArticlesController@update_main_img");
 
 
 Route::get('/bootstrapcdn', function(){

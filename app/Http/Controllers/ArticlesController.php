@@ -19,7 +19,7 @@ class ArticlesController  extends BaseController
 	public function homepage(){
 		//$rs            = Articles::limit(100)->orderBy("id","desc")->get();
 		$rs=[];
-		$box_top       = Articles::limit(3)->orderBy("id","desc")->get();
+		$box_top       = Articles::where("article_link","like","%kinh-te%")->limit(3)->orderBy("id","desc")->get();
 		$box_right_top = Articles::limit(3)->orderBy("id","desc")->get();
 		$most_popular  = Articles::limit(5)->orderBy("id","desc")->get();
 		$highlights    = Articles::limit(5)->orderBy("id","desc")->get();
@@ -78,39 +78,46 @@ class ArticlesController  extends BaseController
 		<?php
 	}
 
-
-	public function edit_db(){
+	//============ ============  ============  ============ 
+	// Update db phần mở đầu của mỗi bản tin
+	// 
+	public function get_extra_content(){
 
 		$rs = Articles::whereraw("article_extra_content is null")->limit(500)->get();
 		foreach ($rs as $key => $value) {
 			$content = $value->article_content;
 			$strip_text = trim(strip_tags($content));
 			if(preg_match("/^Thứ/", $strip_text)){
+				// ============ ============  ============  ============ 
+				// Bỏ tất cả những thứ trên đầu
+				// 
 				$content  = $this->filter_content_vnexpress($content);
+
+				//update lại article_content
+				$value->update(["article_content"=>$content]);
+
 			}
+			// Lọc bỏ hết tag
 			$extra_text = trim(strip_tags($content));
 
-			//echo $extra_text;
-
 			// ============ ============  ============  ============ 
-			// Lưu vào csdl
-			// extra_text
-				if(true)
 				if(empty($value->article_extra_content)){
+					// Lưu vào csdl
 					if($value->update(["article_extra_content" => $extra_text])){
-						echo "<p>done</p>";
+						echo "<p>done</p>".PHP_EOL;
 					}else{
-						echo "<p>error</p>";
+						echo "<p>error</p>".PHP_EOL;
 					}
 				}
 
 			//
 			//  ============ ============  ============  ============ 
-			//echo mb_substr($extra_text,0,400);
-			echo "<hr>";
 		}	
 	}
 
+	// ============ ============  ============  ============ 
+	// Bỏ tất cả những thứ trên đầu của content
+	// 
 	private function filter_content_vnexpress($content){
 		$dom = str_get_html($content);
 		echo "<h2>title_news</h2>";
@@ -139,4 +146,30 @@ class ArticlesController  extends BaseController
 		$dom->clear();
 		return $return;
 	}
+	//
+	//============ ============  ============  ============ 
+
+
+	//============ ============  ============  ============ 
+	// Lấy các bản tin và show ra hình chính
+	//
+	public function update_main_img(){
+		$rs = Articles::limit(10)->get();
+		foreach ($rs as $key => $value) {
+			$this->get_main_img($value->article_content);
+		}
+	}
+	//
+	//============ ============  ============  ============ 
+
+	//============ ============  ============  ============ 
+	//  Function lấy các hình chính trong content
+	public function get_main_img($content){		
+		preg_match_all("/src=['\"](.+?jpg|gif|png)['\"]>/",$content,$match);
+		dd($match);
+	}
+	//  
+	//  ============ ============  ============  ============ 
+
+
 }

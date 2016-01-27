@@ -61,7 +61,7 @@
 									<a href="{{config("app.theme_news")}}">Mustreads</a>
 								</div>
 								<h3><a href="/article/page/detail/{{$box_top[0]->id}}">{{$box_top[0]->article_title}}</a></h3>
-								<p class="excerpt-entry">article_content</p>
+								<p class="excerpt-entry">{{show_extra_content($box_top[0]->article_extra_content)}}</p>
 								<div class="post-meta">
 									<span class="author">By <a href="{{config("app.theme_news")}}#">Paul Graham</a></span>
 									<div class="activity">
@@ -166,7 +166,7 @@
 										<a href="{{config("app.theme_news")}}">Mustreads</a>
 									</div>
 									<h3><a href="/article/page/detail/{{$editors_picks[0]->id}}">{{$editors_picks[0]->article_title}}</a></h3>
-									<p class="excerpt-entry">Economically, you can think of a startup as a way to compress your whole working life into a few years.</p>
+									<p class="excerpt-entry">{{show_extra_content($editors_picks[0]->article_extra_content)}}</p>
 									<div class="post-meta">
 										<span class="author">By <a href="{{config("app.theme_news")}}#">Anna Chapman</a></span>
 										<span class="time"> - 16 hours ago</span>
@@ -182,7 +182,7 @@
 										<a href="{{config("app.theme_news")}}">Mustreads</a>
 									</div>
 									<h3><a href="/article/page/detail/{{$editors_picks[1]->id}}">{{$editors_picks[1]->article_title}}</a></h3>
-									<p class="excerpt-entry">Instead of working at a low intensity for forty years, you work as hard as you possibly can for four.</p>
+									<p class="excerpt-entry">{{show_extra_content($editors_picks[1]->article_extra_content)}}</p>
 									<div class="post-meta">
 										<span class="author">By <a href="{{config("app.theme_news")}}#">John Doe</a></span>
 										<span class="time"> - 16 hours ago</span>
@@ -198,7 +198,7 @@
 										<a href="{{config("app.theme_news")}}">Mustreads</a>
 									</div>
 									<h3><a href="/article/page/detail/{{$editors_picks[2]->id}}">{{$editors_picks[2]->article_title}}</a></h3>
-									<p class="excerpt-entry">I think your best bet would be to start or join a startup. </p>
+									<p class="excerpt-entry">{{show_extra_content($editors_picks[2]->article_extra_content)}} </p>
 									<div class="post-meta">
 										<span class="author">By <a href="{{config("app.theme_news")}}#">Mike Tyson</a></span>
 										<span class="time"> - 16 hours ago</span>
@@ -221,7 +221,7 @@
 									<a href="{{config("app.theme_news")}}">Mustreads</a>
 								</div>
 								<h3><a href="/article/page/detail/{{$popular_posts[0]->id}}">{{$popular_posts[0]->article_title}}</a></h3>
-								<p class="excerpt-entry">I think your best bet would be to start or join a startup. That's been a reliable way to get rich for hundreds of years.The word "startup" dates from the 1960s, but what happens in one is very similar.</p>
+								<p class="excerpt-entry">{{show_extra_content($popular_posts[0]->article_extra_content)}}</p>
 								<div class="post-meta">
 									<span class="author">By <a href="{{config("app.theme_news")}}#">John Doe</a></span>
 									<div class="activity">
@@ -628,66 +628,24 @@
 						<div class="section-title">
 							<h4><a href="{{config("app.theme_news")}}#">Social Media</a></h4>
 						</div>
-						<article class="post">
-							<div class="thumb">
-								<a href="{{config("app.theme_news")}}#"><img src="{{config("app.theme_news")}}images/thumbs/6.jpg" alt="img"></a>
-							</div>
-							<div class="content">
-								<div class="cat">
-									<a href="{{config("app.theme_news")}}#">Mustreads</a>
+						@foreach ($social_media as $element)
+							<article class="post">
+								<div class="thumb">
+									<a href="{{config("app.theme_news")}}#"><img src="{{config("app.theme_news")}}images/thumbs/6.jpg" alt="img"></a>
 								</div>
-								<h3><a href="/article/page/detail/{{$social_media[0]->id}}">{{$social_media[0]->article_title}}</a></h3>
-								<p class="excerpt-entry">I think your best bet would be to start or join a startup. That's been a reliable way to get rich for hundreds of years.</p>
-								<div class="activity">
-									<span class="views">345</span><span class="comment"><a href="{{config("app.theme_news")}}#">15</a></span>
+								<div class="content">
+									<div class="cat">
+										<a href="{{config("app.theme_news")}}#">Mustreads</a>
+									</div>
+									<h3><a href="/article/page/detail/{{$element->id}}">{{$element->article_title}}</a></h3>
+									<p class="excerpt-entry">{{show_extra_content($element->article_extra_content)}}</p>
+									<div class="activity">
+										<span class="views">345</span><span class="comment"><a href="{{config("app.theme_news")}}#">15</a></span>
+									</div>
 								</div>
-							</div>
-						</article><!--  /.post -->
-						<article class="post">
-							<div class="thumb">
-								<a href="{{config("app.theme_news")}}#"><img src="{{config("app.theme_news")}}images/thumbs/6-2.jpg" alt="img"></a>
-							</div>
-							<div class="content">
-								<div class="cat">
-									<a href="{{config("app.theme_news")}}#">Mustreads</a>
-								</div>
-								<h3><a href="/article/page/detail/{{$social_media[1]->id}}">{{$social_media[1]->article_title}}</a></h3>
-								<p class="excerpt-entry">That's been a reliable way to get rich for hundreds of years.The word "startup" dates from the 1960s, but what happens in one is very similar.</p>
-								<div class="activity">
-									<span class="views">345</span><span class="comment"><a href="{{config("app.theme_news")}}#">15</a></span>
-								</div>
-							</div>
-						</article><!--  /.post -->
-						<article class="post">
-							<div class="thumb">
-								<a href="{{config("app.theme_news")}}#"><img src="{{config("app.theme_news")}}images/thumbs/6-3.jpg" alt="img"></a>
-							</div>
-							<div class="content">
-								<div class="cat">
-									<a href="{{config("app.theme_news")}}#">Mustreads</a>
-								</div>
-								<h3><a href="/article/page/detail/{{$social_media[2]->id}}">{{$social_media[2]->article_title}}</a></h3>
-								<p class="excerpt-entry">That's been a reliable way to get rich for hundreds of years.The word "startup" dates from the 1960s.</p>
-								<div class="activity">
-									<span class="views">345</span><span class="comment"><a href="{{config("app.theme_news")}}#">15</a></span>
-								</div>
-							</div>
-						</article><!--  /.post -->
-						<article class="post">
-							<div class="thumb">
-								<a href="{{config("app.theme_news")}}#"><img src="{{config("app.theme_news")}}images/thumbs/6-4.jpg" alt="img"></a>
-							</div>
-							<div class="content">
-								<div class="cat">
-									<a href="{{config("app.theme_news")}}#">Mustreads</a>
-								</div>
-								<h3><a href="/article/page/detail/{{$social_media[3]->id}}">{{$social_media[3]->article_title}}</a></h3>
-								<p class="excerpt-entry">That's been a reliable way to get rich for hundreds of years.The word "startup" dates from the 1960s.</p>
-								<div class="activity">
-									<span class="views">345</span><span class="comment"><a href="{{config("app.theme_news")}}#">15</a></span>
-								</div>
-							</div>
-						</article><!--  /.post -->
+							</article><!--  /.post -->
+						@endforeach
+
 					</div><!-- /.social-media-posts -->
 				</div><!-- /.col-md-8 -->
 			</div><!-- /.row -->

@@ -6,4 +6,8 @@
 		}
 		return $return;
 	}
+	function show_extra_content($string){
+		$return = mb_substr($string, 0,100);
+		return $return;
+	}
  ?>

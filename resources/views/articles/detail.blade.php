@@ -56,7 +56,6 @@
 						<article class="post">
 							<div class="head-post">
 								<h2>{{$rs->article_title}}</h2>
-								<p>I think your best bet would be to start or join a startup. That's been a reliable way to get rich for hundreds of years.The word "startup" dates from the 1960s, but what happens in one is very similar.</p>
 								<div class="meta">
 									<span class="author">By <a href="{{config("app.theme_news")}}#">Anna Chapman</a></span>
 									<span class="time"> Published on May 07, 2004.</span>
