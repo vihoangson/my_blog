@@ -31,10 +31,11 @@ class Import_vnexpress extends Command
     public function handle()
     {
         $myc = $this->argument('myc');
-        $tmp = new HomepageController;
-        $tmp->import_vnexpress($myc);
-        $c = new ArticlesController;
-        $c->get_extra_content();
-        $c->update_main_img();
+        $h = new HomepageController;
+        $h->import_vnexpress($myc);
+        $h->vnexpress_set_important_news();
+        $a = new ArticlesController;
+        $a->get_extra_content();
+        $a->update_main_img();
     }
 }

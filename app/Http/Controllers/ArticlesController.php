@@ -22,7 +22,7 @@ class ArticlesController  extends BaseController
 		$rs=[];
 		//============ ============  ============  ============ 
 		// "%tin-tuc/the-gioi%"
-		$box_top       = Articles::where("article_link","like","%tin-tuc/the-gioi%")->whereRaw("article_imgs != '' ")->where("article_imgs","!=","[]")->limit(3)->orderBy("article_imgs","desc")->get();
+		$box_top       = Articles::where("article_mode","1")->limit(3)->orderBy("article_imgs","desc")->get();
 		//============ ============  ============  ============ 
 		// "%tin-tuc/thoi-su%"
 		$box_right_top = Articles::where("article_link","like","%tin-tuc/thoi-su%")->whereRaw("article_imgs != '' ")->where("article_imgs","!=","[]")->limit(3)->orderBy("id","desc")->get();

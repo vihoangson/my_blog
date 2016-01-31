@@ -295,18 +295,18 @@ class HomepageController  extends BaseController
 								$value->attr["href"] = "http://vnexpress.net".$value->attr["href"];
 							}
 
-							//============ ============  ============  ============ 
+							//============ ============  ============  ============
 							//  Khởi tạo biến $dom2 với nội dung theo link $value->attr["href"]
 							// Bạn có thể dùng function get content của vihoangson
 							// Gist.github: https://gist.github.com/vihoangson/647d856380ac5ca353b0
 							// Desc: Function lấy nội dung html của trang web khác bằng cUrl
 							// Function curl_get($url)
-							// 
+							//
 							$dom2    = str_get_html(file_get_contents($value->attr["href"]));
 
 							$title   = $title;
 							$link    = $value->attr["href"];
-							
+
 							// Rửa tổng biến $content
 							$content="";
 							// Tìm phần tử đầu tiên trong dom có giá trị là #left_calculator
@@ -348,9 +348,34 @@ class HomepageController  extends BaseController
 				// Dừng chương trình
 				die;
 			//
-			//  ============  ============ 
+			//  ============  ============
 		}// End if
 	}// End function import_vnexpress()
 	//
 	//============ import_vnexpress() ============
+
+	public function test_case(){
+
+		$this->vnexpress_set_important_news();
+	}
+
+
+	public function vnexpress_set_important_news(){
+		//============  ============
+		//  Tạo column mới: article_mode
+		//
+		$html = file_get_contents("http://vnexpress.net");
+		$dom = str_get_html($html);
+		$link_important = $dom->find(".line_col_midnews_top .content_scoller li a");
+		foreach ($link_important as $key => $value) {
+			if(Articles::where("article_link",$value->attr["href"])->update(["article_mode"=>1])){
+				echo (Articles::where("article_link",$value->attr["href"])->first()->article_title).PHP_EOL;
+				// echo $value->attr["href"].PHP_EOL;
+			}
+		}
+		//
+		//============  ============
+
+	}
+
 }

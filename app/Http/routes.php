@@ -39,6 +39,7 @@ Route::get('/article/article-endless', 'ArticlesController@article_endless');
 Route::get('edit_db', "ArticlesController@edit_db");
 Route::get('update_main_img', "ArticlesController@update_main_img");
 
+Route::get('test_case', "HomepageController@test_case");
 
 Route::get('/bootstrapcdn', function(){
 	return view("bootstrapcdn");
