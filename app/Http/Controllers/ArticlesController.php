@@ -98,7 +98,7 @@ class ArticlesController  extends BaseController
 	}
 
 	public function category_article($cid){
-		$rs = Articles::where("article_link","like","%$cid%")->paginate(15);
+		$rs = Articles::where("article_link","like","%$cid%")->orderBy("id","desc")->paginate(15);
 		return view("articles.category",compact("rs"));
 	}
 
