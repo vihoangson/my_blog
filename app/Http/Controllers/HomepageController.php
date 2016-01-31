@@ -352,6 +352,15 @@ class HomepageController  extends BaseController
 			//
 			//  ============  ============
 		}// End if
+
+
+		// Lấy bài viết top
+        $this->vnexpress_set_important_news();
+        $c = new ArticlesController;
+        // Lấy phần mở đầu
+        $c->get_extra_content();
+        // lấy hình ảnh chính
+        $c->update_main_img();
 	}// End function import_vnexpress()
 	//
 	//============ import_vnexpress() ============

@@ -33,9 +33,5 @@ class Import_vnexpress extends Command
         $myc = $this->argument('myc');
         $h = new HomepageController;
         $h->import_vnexpress($myc);
-        $h->vnexpress_set_important_news();
-        $a = new ArticlesController;
-        $a->get_extra_content();
-        $a->update_main_img();
     }
 }
