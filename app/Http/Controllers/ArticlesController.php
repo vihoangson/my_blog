@@ -139,7 +139,7 @@ class ArticlesController  extends BaseController
 	// Bỏ tất cả những thứ trên đầu của content
 	// Desc: Loại bỏ các mục thừa không cần thiết của article_content
 	//
-	private function filter_content_vnexpress($content){
+	public function filter_content_vnexpress($content){
 		$dom = str_get_html($content);
 		if($dom->find(".title_news")){
 			$dom->find(".title_news",0)->outertext ="";
@@ -261,5 +261,6 @@ class ArticlesController  extends BaseController
 
 		dd($return);
 	}
+	
 
 }

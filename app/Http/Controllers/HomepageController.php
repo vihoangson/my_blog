@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 use App\Models\Blogs;
 use App\Models\Articles;
+use App\Http\Controllers\ArticlesController;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -324,6 +325,7 @@ class HomepageController  extends BaseController
 									}
 									continue;
 								}
+
 								$data = [
 								"article_title" => $title,
 								"article_content" => $content,
@@ -359,6 +361,16 @@ class HomepageController  extends BaseController
 		$this->vnexpress_set_important_news();
 	}
 
+	public function rebuild_content(){
+		$a = new ArticlesController;
+		$rs = Articles::limit(10)->get();
+		foreach ($rs as $key => $value) {
+			$content = $a -> filter_content_vnexpress($value->article_content);
+			$value->update(["article_content"=>$content]);
+			echo "[".$value->id."] ";
+		}
+
+	}
 
 	public function vnexpress_set_important_news(){
 		//============  ============
