@@ -361,9 +361,9 @@ class HomepageController  extends BaseController
 		$this->vnexpress_set_important_news();
 	}
 
-	public function rebuild_content(){
+	public function rebuild_content($star,$limit){
 		$a = new ArticlesController;
-		$rs = Articles::limit(10)->get();
+		$rs = Articles::limit($star,$limit)->get();
 		foreach ($rs as $key => $value) {
 			$content = $a -> filter_content_vnexpress($value->article_content);
 			$value->update(["article_content"=>$content]);
