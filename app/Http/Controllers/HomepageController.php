@@ -376,10 +376,10 @@ class HomepageController  extends BaseController
 	//  
 	public function vnexpress_rebuild_cat(){
 		//Xử lý cái này: article_cat
-		$rs = Articles::all();
+		$rs = Articles::whereRaw("article_cat is null")->get();
 		foreach ($rs as $key => $value) {
 			$match=[];
-			$pattern = "/thoi-su|the-gioi|kinhdoanh|giaitri|thethao|phap-luat|giao-duc|suckhoe|giadinh|dulich|khoa-hoc|oto-xe-may|cong-dong|tam-su|cuoi/";
+			$pattern = "/kinh-nghiem|thoi-su|the-gioi|kinhdoanh|giaitri|thethao|phap-luat|giao-duc|suckhoe|giadinh|dulich|khoa-hoc|oto-xe-may|cong-dong|tam-su|cuoi/";
 			preg_match($pattern, $value->article_link,$match);
 			if(empty($match)) continue;
 			$value->update(["article_cat"=>$match[0]]);
