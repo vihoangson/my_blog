@@ -2,7 +2,7 @@
 	<ul id="portfolio">
 		@foreach ($array_web as $key=>$element)
 			<li class="item col-md-6 webdesign">
-				<a title="Example 1" href="/img_preview/{{$element["img"]}}" data-lightbox-gallery="gallery1" class="nivo-lbox">
+				<a title="Example 1" href="/img_preview/fullsize/{{$element["img"]}}" data-lightbox-gallery="gallery1" class="nivo-lbox">
 					<div class="folio-img">
 						<img src="/img_preview/{{$element["img"]}}" alt="" class="img-responsive">
 						<div class="overlay">

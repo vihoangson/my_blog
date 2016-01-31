@@ -1,7 +1,7 @@
 	<article>
 		<div class="row">
 			<div class="col-md-5">
-				<img src="{{(isset($value->blog_image)?"/uploads/".$value->blog_image:"")}}" class="img-responsive" alt=""/>
+				<img src="" data-src="{{(isset($value->blog_image)?"/uploads/".$value->blog_image:"")}}" class="img-responsive" alt=""/>
 			</div>
 			<div class="col-md-7">
 				<h3><a href="/blog-single-{{$value->id}}.html">{{$value->blog_title}}</a></h3>

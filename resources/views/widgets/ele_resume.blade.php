@@ -39,6 +39,22 @@
 		</div>
 
 
+		<div class="resume-info">
+			<h4>Đã làm tại các Cty</h4>
+			<div class="sep2"></div>
+			<ul>
+				<li>
+					<h5>Lập trình viên tại công ty Vihan</h5>
+					<span class="year"><i class="fa fa-calendar"></i> 2010 - 2014</span>
+					<p> Lầp trình viên </p>
+				</li>
+				<li>
+					<h5>Lập trình viên tại công ty Cybridge Asia</h5>
+					<span class="year"><i class="fa fa-calendar"></i> 2014 - 2016</span>
+					<p> Lầp trình viên </p>
+				</li>
+			</ul>
+		</div>
 
 		<div class="skills-info">
 			<h4>Skills</h4>
@@ -79,22 +95,6 @@
 			</ul>
 		</div>
 
-		<div class="resume-info">
-			<h4>Work Experience</h4>
-			<div class="sep2"></div>
-			<ul>
-				<li>
-					<h5>Lập trình viên tại công ty Vihan</h5>
-					<span class="year"><i class="fa fa-calendar"></i> 2010 - 2014</span>
-					<p> Lầp trình viên </p>
-				</li>
-				<li>
-					<h5>Lập trình viên tại công ty Cybridge Asia</h5>
-					<span class="year"><i class="fa fa-calendar"></i> 2014 - 2016</span>
-					<p> Lầp trình viên </p>
-				</li>
-			</ul>
-		</div>
 
 		<div class="services-info hidden">
 			<h4>Services</h4>
@@ -126,8 +126,11 @@
 				</li>
 			</ul>
 		</div>
-
-
+		<br>
+		<div class="text-center">
+			<a href="#" class="btn btn-primary btn-lg"><i class="fa fa-user"></i> View my CV</a>
+		</div>
+		<br>
 		<div class="row skill-box">
 			<h4>Level</h4>
 			<div class="sep2"></div>
@@ -150,22 +153,6 @@
 			</div>
 		</div>
 
-		<div class="resume-info">
-			<h4>Đã làm tại các Cty</h4>
-			<div class="sep2"></div>
-			<ul>
-				<li>
-					<h5>Lập trình viên tại công ty Vihan</h5>
-					<span class="year"><i class="fa fa-calendar"></i> 2010 - 2014</span>
-					<p> Lầp trình viên </p>
-				</li>
-				<li>
-					<h5>Lập trình viên tại công ty Cybridge Asia</h5>
-					<span class="year"><i class="fa fa-calendar"></i> 2014 - 2016</span>
-					<p> Lầp trình viên </p>
-				</li>
-			</ul>
-		</div>
 
 
 	</div>

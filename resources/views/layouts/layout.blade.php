@@ -75,7 +75,14 @@
 				</ul>
 				</nav>
 			</div>
-
+<script>
+	$(".navigation> li:nth-child(4)").click(function(){
+		$(".img-responsive").each(function(){
+			var src = $(this).data("src");
+			$(this).attr("src",src);
+		});
+	});
+</script>
 			<div class="col-md-9 r-content">
 				<div class="flexslider">
 					<div class="slides">
@@ -181,12 +188,12 @@
 									</div>
 								</div>
 								<div class="contact-info">
-									<h4>Contact info</h4>
-									<p>This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio.</p>
+									<h4>Thông tin liên hệ</h4>
+									<p>Bạn có thể liên hệ với tôi theo thông tin bên dưới</p>
 									<ul>
-										<li><i class="fa fa-home"></i> lorem ipsum street</li>
-										<li><i class="fa fa-phone"></i> +399 (500) 321 9548</li>
-										<li><i class="fa fa-envelope"></i> info@domain.com</li>
+										<li><i class="fa fa-home"></i> 178/7p Hậu Giang F6 Q6 Tp.HCM</li>
+										<li><i class="fa fa-phone"></i> +84 01218851144</li>
+										<li><i class="fa fa-envelope"></i> vihoangson@gmail.com</li>
 									</ul>
 								</div>
 								<div class="contact-form">
