@@ -363,7 +363,7 @@ class HomepageController  extends BaseController
 
 	public function rebuild_content($star,$limit){
 		$a = new ArticlesController;
-		$rs = Articles::limit($star,$limit)->get();
+		$rs = Articles::skip($star)->take($limit)->get();
 		foreach ($rs as $key => $value) {
 			$content = $a -> filter_content_vnexpress($value->article_content);
 			$value->update(["article_content"=>$content]);
