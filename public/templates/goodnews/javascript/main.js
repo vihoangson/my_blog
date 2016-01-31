@@ -634,7 +634,7 @@ $(window).load(function(){
       });
       $("img").each(function(){
         if($(this).attr("src")==""){
-            $(this).attr("src","http://placehold.it/600x400");
+            $(this).attr("src","https://placeholdit.imgix.net/~text?txtsize=56&txt=No%20image&w=600&h=400");
             //$(this).remove();      
         }
       });

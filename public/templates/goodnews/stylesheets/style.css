@@ -4398,3 +4398,12 @@
 			background-size: 84px 73px;
 		}
 	}
+
+ul.pagination li {
+    display: inline-block;
+}
+
+ul.pagination li a,ul.pagination li span {
+    display: block;
+    padding: 8px;
+}

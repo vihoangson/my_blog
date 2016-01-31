@@ -174,54 +174,24 @@
 											<h4><a href="{{config("app.theme_news")}}#">Read These Next</a></h4>
 										</div>
 										<div class="post-wrap">
-											<article class="post">
-												<div class="thumb">
-													<a href="{{config("app.theme_news")}}#"><img src="{{config("app.theme_news")}}images/thumbs/3.jpg" alt="img"></a>
-												</div>
-												<div class="content">
-													<div class="cat">
-														<a href="{{config("app.theme_news")}}">Mustreads</a>
+											@foreach ($relation as $element)
+												<article class="post">
+													<div class="thumb">
+														<a href="{{config("app.theme_news")}}#"><img src="{{get_imgs($element->article_imgs)}}" alt="{{$element->article_title}}"></a>
 													</div>
-													<h3><a href="{{config("app.theme_news")}}#">If you wanted to get rich, how would you do it?</a></h3>
-													<p class="excerpt-entry">Economically, you can think of a startup as a way to compress your whole working life into a few years.</p>
-													<div class="post-meta">
-														<span class="author">By <a href="{{config("app.theme_news")}}#">Anna Chapman</a></span>
-														<span class="time"> - 16 hours ago</span>
+													<div class="content">
+														<div class="cat">
+															<a href="{{config("app.theme_news")}}">Mustreads</a>
+														</div>
+														<h3><a href="/article/page/detail/{{$element->id}}">{{$element->article_title}}</a></h3>
+														<p class="excerpt-entry">{{show_extra_content($element->article_extra_content)}}</p>
+														<div class="post-meta">
+															<span class="author">By <a href="{{config("app.theme_news")}}#">Anna Chapman</a></span>
+															<span class="time"> - 16 hours ago</span>
+														</div>
 													</div>
-												</div>
-											</article><!-- /.post -->
-											<article class="post">
-												<div class="thumb">
-													<a href="{{config("app.theme_news")}}#"><img src="{{config("app.theme_news")}}images/thumbs/3.jpg" alt="img"></a>
-												</div>
-												<div class="content">
-													<div class="cat">
-														<a href="{{config("app.theme_news")}}">Mustreads</a>
-													</div>
-													<h3><a href="{{config("app.theme_news")}}#">If you wanted to get rich, how would you do it?</a></h3>
-													<p class="excerpt-entry">Economically, you can think of a startup as a way to compress your whole working life into a few years.</p>
-													<div class="post-meta">
-														<span class="author">By <a href="{{config("app.theme_news")}}#">Anna Chapman</a></span>
-														<span class="time"> - 16 hours ago</span>
-													</div>
-												</div>
-											</article><!-- /.post -->
-											<article class="post">
-												<div class="thumb">
-													<a href="{{config("app.theme_news")}}#"><img src="{{config("app.theme_news")}}images/thumbs/3.jpg" alt="img"></a>
-												</div>
-												<div class="content">
-													<div class="cat">
-														<a href="{{config("app.theme_news")}}">Mustreads</a>
-													</div>
-													<h3><a href="{{config("app.theme_news")}}#">If you wanted to get rich, how would you do it?</a></h3>
-													<p class="excerpt-entry">Economically, you can think of a startup as a way to compress your whole working life into a few years.</p>
-													<div class="post-meta">
-														<span class="author">By <a href="{{config("app.theme_news")}}#">Anna Chapman</a></span>
-														<span class="time"> - 16 hours ago</span>
-													</div>
-												</div>
-											</article><!-- /.post -->
+												</article><!-- /.post -->
+											@endforeach
 										</div>
 					            	</div><!-- /.relate-posts -->
 					            	<div class="recommend-posts">
@@ -229,30 +199,22 @@
 											<h4><a href="{{config("app.theme_news")}}#">Recommended for You</a></h4>
 										</div>
 										<div class="post-wrap">
-											<article class="post">
-												<div class="thumb">
-													<a href="{{config("app.theme_news")}}#"><img src="{{config("app.theme_news")}}images/thumbs/7.jpg" alt="img"></a>
-												</div>
-												<div class="cat">
-													<a href="{{config("app.theme_news")}}">Social media</a>
-												</div>
-												<h3><a href="{{config("app.theme_news")}}#">Like all back-of-the-envelope calculations, this one has a lot of wiggle room.</a></h3>
-												<div class="activity">
-													<span class="views">12</span><span class="comment"><a href="{{config("app.theme_news")}}#">0</a></span>
-												</div>
-											</article><!-- /.post -->
-											<article class="post margin-b0 last">
-												<div class="thumb">
-													<a href="{{config("app.theme_news")}}#"><img src="{{config("app.theme_news")}}images/thumbs/7.jpg" alt="img"></a>
-												</div>
-												<div class="cat">
-													<a href="{{config("app.theme_news")}}">Social media</a>
-												</div>
-												<h3><a href="{{config("app.theme_news")}}#">Like all back-of-the-envelope calculations, this one has a lot of wiggle room.</a></h3>
-												<div class="activity">
-													<span class="views">12</span><span class="comment"><a href="{{config("app.theme_news")}}#">0</a></span>
-												</div>
-											</article><!-- /.post -->
+											@foreach ($recommen as $element)
+												<article class="post margin-b0 last">
+													<div class="thumb">
+														<a href="/article/page/detail/{{$element->id}}"><img src="{{get_imgs($element->article_imgs)}}" alt="{{$element->article_title}}"></a>
+													</div>
+													<div class="cat">
+														<a href="{{config("app.theme_news")}}">Social media</a>
+													</div>
+													{{-- <h3><a href="{{config("app.theme_news")}}#">Like all back-of-the-envelope calculations, this one has a lot of wiggle room.</a></h3> --}}
+													<h3><a href="/article/page/detail/{{$element->id}}">{{$element->article_title}}</a></h3>
+													<div class="activity">
+														<span class="views">12</span><span class="comment"><a href="{{config("app.theme_news")}}#">0</a></span>
+													</div>
+												</article><!-- /.post -->
+											@endforeach
+
 										</div>
 					            	</div><!-- /.recommend-posts -->
 								</div><!-- /.main-post -->

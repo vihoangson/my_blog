@@ -49,7 +49,10 @@ class ArticlesController  extends BaseController
 
 	public function detail($id){
 		$rs = Articles::find($id);
-		return view("articles.detail",compact("rs"));
+		$relation = Articles::limit(4)->orderBy("id","desc")->get();
+		$recommen = Articles::limit(4)->orderBy("article_link","desc")->get();
+		$rs->article_content = $this->filter_content_vnexpress($rs->article_content);
+		return view("articles.detail",compact("rs","relation","recommen"));
 	}
 
 	public function article_endless(){
@@ -93,6 +96,11 @@ class ArticlesController  extends BaseController
 				</div><!-- /.main-post -->
 			</div><!-- /.body-post -->
 		<?php
+	}
+
+	public function category_article($cid){
+		$rs = Articles::where("article_link","like","%$cid%")->paginate(15);
+		return view("articles.category",compact("rs"));
 	}
 
 	//============ ============  ============  ============

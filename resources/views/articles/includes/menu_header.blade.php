@@ -35,7 +35,7 @@
 											</div>
 											<span class="fullname">Maria Sharapova</span>
 										</div>
-										<ul class="options">
+										<ul class="options hidden">
 											<li><a href="{{config("app.theme_news")}}#">My Profile</a></li>
 											<li><a href="{{config("app.theme_news")}}#">My Account</a></li>
 											<li><a href="{{config("app.theme_news")}}#">My Saved Items</a></li>
@@ -55,85 +55,18 @@
 					<div class="col-md-9">
 						<nav id="mainnav" class="mainnav">
 							<ul class="menu">
-								<li class="has-children"><a href="/article">Trang chủ</a>
+								<li class=""><a href="/article">Trang chủ</a></li>
+								<li class="has-children"><a class="active" href="javascript:void()">Chuyên mục</a>
 									<ul class="sub-menu">
-										<li><a href="{{config("app.theme_news")}}index-banner.html">Home with Banner</a></li>
-										<li><a href="{{config("app.theme_news")}}index-custom.html">Home Customize</a></li>
-										<li class="has-children"><a href="{{config("app.theme_news")}}#">Third Level Item</a>
-											<ul class="sub-menu">
-												<li><a href="{{config("app.theme_news")}}#">Sublevel 1</a></li>
-												<li><a href="{{config("app.theme_news")}}#">Sublevel 2</a></li>
-												<li><a href="{{config("app.theme_news")}}#">Sublevel 3</a></li>
-												<li><a href="{{config("app.theme_news")}}#">Sublevel 4</a></li>
-												<li><a href="{{config("app.theme_news")}}#">Sublevel 5</a></li>
-											</ul><!-- /.submenu -->
-										</li>
+										<li><a href="/article/category/thoi-su">Thời sự</a></li>
+										<li><a href="/article/category/the-gioi">Thế giới</a></li>
+										<li><a href="/article/category/dulich">Du lịch</a></li>
+										<li><a href="/article/category/khoa-hoc">Khoa học</a></li>
+										<li><a href="/article/category/sohoa">Số hóa</a></li>
+										<li><a href="/article/category/suckhoe">Sức khỏe</a></li>
+										<li><a href="/article/category/giaitri">Giải trí</a></li>
 									</ul><!-- /.submenu -->
 								</li>
-								<li class="has-children"><a class="active" href="{{config("app.theme_news")}}#">Pages</a>
-									<ul class="sub-menu">
-										<li><a href="{{config("app.theme_news")}}article-endless.html">Articles</a></li>
-										<li><a href="{{config("app.theme_news")}}article-detail.html">Articles Detail</a></li>
-										<li><a href="{{config("app.theme_news")}}category-hide-navigation.html">Category Page</a></li>
-										<li><a href="{{config("app.theme_news")}}contact.html">Contact Page</a></li>
-										<li><a href="{{config("app.theme_news")}}about.html">About Page</a></li>
-										<li><a href="{{config("app.theme_news")}}login.html">Login Page</a></li>
-										<li><a href="{{config("app.theme_news")}}404.html">404 Page</a></li>
-									</ul><!-- /.submenu -->
-								</li>
-								<li class="gn-mega-menu"><a href="{{config("app.theme_news")}}category.html">Mega-Menu</a>
-									<div class="sub-menu">
-										<div class="container">
-											<div class="row">
-												<div class="col-md-12">
-													<div class="mega-item-wrap">
-														<div class="mega-item">
-															<img src="{{config("app.theme_news")}}images/thumbs/11.jpg" alt="image">	
-															<h5><a href="{{config("app.theme_news")}}#">Usability Testing for Mobile Is Easy</a></h5>
-														</div>
-														<div class="mega-item">
-															<img src="{{config("app.theme_news")}}images/thumbs/11-2.jpg" alt="image">	
-															<h5><a href="{{config("app.theme_news")}}#">Infinite Scrolling Is Not for Every Website</a></h5>
-														</div>
-														<div class="mega-item">
-															<img src="{{config("app.theme_news")}}images/thumbs/11-3.jpg" alt="image">	
-															<h5><a href="{{config("app.theme_news")}}#">Infinite Scrolling Is Not for Every Website</a></h5>
-														</div>
-														<div class="mega-item">
-															<img src="{{config("app.theme_news")}}images/thumbs/11-4.jpg" alt="image">	
-															<h5><a href="{{config("app.theme_news")}}#">Ecommerce UX: 3 Design Trends to Follow and 3 to Avoid</a></h5>
-														</div>
-														<div class="mega-item">
-															<img src="{{config("app.theme_news")}}images/thumbs/11-5.jpg" alt="image">	
-															<h5><a href="{{config("app.theme_news")}}#">University Websites: Top 10 Design Guidelines</a></h5>
-														</div>
-														<div class="mega-item">
-															<img src="{{config("app.theme_news")}}images/thumbs/11-6.jpg" alt="image">	
-															<h5><a href="{{config("app.theme_news")}}#">University Websites: Top 10 Design Guidelines</a></h5>
-														</div>
-													</div>
-													<div class="nav-mega-item">
-														In this category:
-														<a href="{{config("app.theme_news")}}#">All</a>
-														<a href="{{config("app.theme_news")}}#">Tech</a>
-														<a href="{{config("app.theme_news")}}#">Apps</a>
-														<a href="{{config("app.theme_news")}}#">Dev&amp;Design</a>
-														<a href="{{config("app.theme_news")}}#">Dev&amp;Design</a>
-														<a href="{{config("app.theme_news")}}#">Gadget</a>
-														<a href="{{config("app.theme_news")}}#">Mobile</a>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div><!-- /.submenu -->
-								</li>
-								<li class="has-children"><a href="{{config("app.theme_news")}}category.html">Category</a>
-									<ul class="sub-menu">
-										<li><a href="{{config("app.theme_news")}}category.html">Normal</a></li>
-										<li><a href="{{config("app.theme_news")}}category-hide-navigation.html">Hide Navigation</a></li>
-									</ul><!-- /.submenu -->
-								</li>
-								<li><a href="{{config("app.theme_news")}}ui-elements.html">UI-Elements</a></li>
 							</ul><!-- /.menu -->
 						</nav><!-- /nav -->
 					</div><!-- /.col-md-9 -->

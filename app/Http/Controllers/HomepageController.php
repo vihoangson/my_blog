@@ -365,20 +365,27 @@ class HomepageController  extends BaseController
 	//
 	//============ import_vnexpress() ============
 
-	public function test_case(){
 
-		$this->vnexpress_set_important_news();
+
+	public function test_case(){	
+		$this->vnexpress_rebuild_cat();
 	}
 
-	public function rebuild_content($start,$limit){
-		$a = new ArticlesController;
-		$rs = Articles::where("id",">",$start)->limit($limit)->get();
+	//============ ============  ============  ============ 
+	//  Khởi tạo article_cat từ link
+	//  
+	public function vnexpress_rebuild_cat(){
+		//Xử lý cái này: article_cat
+		$rs = Articles::all();
 		foreach ($rs as $key => $value) {
-			$content = $a -> filter_content_vnexpress($value->article_content);
-			$value->update(["article_content"=>$content]);
-			echo "[".$value->id."] ";
+			$match=[];
+			$pattern = "/tin-tuc\/thoi-su|tin-tuc\/the-gioi|kinhdoanh\/|giaitri\/|thethao|tin-tuc\/phap-luat|tin-tuc\/giao-duc|suckhoe|giadinh\/|dulich|tin-tuc\/khoa-hoc|tin-tuc\/khoa-hoc\/page\/2.html|sohoa\/|tin-tuc\/oto-xe-may|tin-tuc\/cong-dong|tin-tuc\/tam-su|tin-tuc\/cuoi/";
+			preg_match($pattern, $value->article_link,$match);
+			if(empty($match)) continue;
+			$value->update(["article_cat"=>$match[0]]);
+			echo $match[0].PHP_EOL;
+			echo $value->id.PHP_EOL;
 		}
-
 	}
 
 	public function vnexpress_set_important_news(){

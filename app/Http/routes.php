@@ -17,6 +17,7 @@ Route::get('/resume', function(){
 Route::get('blog-single-{id}.html', "HomepageController@show");
 Route::get('/article_detail/{id}', 'HomepageController@article_detail');
 
+
 Route::post('contact', "HomepageController@send_mail");
 
 Route::get('/blogs/', "admin\BlogsManagerController@index");
@@ -35,6 +36,7 @@ Route::get('/article/', 'ArticlesController@homepage');
 Route::get('/article/page/detail/{id}', 'ArticlesController@detail');
 Route::get('/article/detail/{id}', 'ArticlesController@detail_ajax');
 Route::get('/article/article-endless', 'ArticlesController@article_endless');
+Route::get('/article/category/{cid}', 'ArticlesController@category_article');
 
 Route::get('edit_db', "ArticlesController@edit_db");
 Route::get('update_main_img', "ArticlesController@update_main_img");
