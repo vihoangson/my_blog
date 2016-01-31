@@ -209,7 +209,7 @@ class HomepageController  extends BaseController
 	// **Công dụng: Import tin tức từ trang vnexpress.net**
 	// **Ngày tạo: 13/1/2016**
 	// **Tác giả: Santosan**
-	// open
+	// ope
 	public function import_vnexpress($case = null){
 		Log::info("Do log import_vnexpress in ".date("Y-m-d H:i:s"));
 		if(true){
@@ -295,7 +295,13 @@ class HomepageController  extends BaseController
 								$value->attr["href"] = "http://vnexpress.net".$value->attr["href"];
 							}
 
-							// Khởi tạo biến $dom2 với nội dung theo link $value->attr["href"]
+							//============ ============  ============  ============ 
+							//  Khởi tạo biến $dom2 với nội dung theo link $value->attr["href"]
+							// Bạn có thể dùng function get content của vihoangson
+							// Gist.github: https://gist.github.com/vihoangson/647d856380ac5ca353b0
+							// Desc: Function lấy nội dung html của trang web khác bằng cUrl
+							// Function curl_get($url)
+							// 
 							$dom2    = str_get_html(file_get_contents($value->attr["href"]));
 
 							$title   = $title;

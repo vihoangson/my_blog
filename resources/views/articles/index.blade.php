@@ -55,7 +55,9 @@
 						<div class="content-left">
 							<article class="post">
 								<div class="thumb">
-									<a href="{{config("app.theme_news")}}#"><img src="{{config("app.theme_news")}}images/thumbs/9.jpg" alt="img"></a>
+										<a href="/article/page/detail/{{$box_top[0]->id}}">
+											<img src="{{get_imgs($box_top[0]->article_imgs)}}" alt="{{$box_top[0]->article_title}}">
+										</a>
 								</div>
 								<div class="cat">
 									<a href="{{config("app.theme_news")}}">Mustreads</a>
@@ -72,8 +74,10 @@
 						</div><!-- /.content-left -->
 						<div class="content-right">
 							<article class="post">
-								<div class="thumb">
-									<a href="{{config("app.theme_news")}}#"><img src="{{config("app.theme_news")}}images/thumbs/4.jpg" alt="img"></a>
+								<div class="thumb">									
+										<a href="/article/page/detail/{{$box_top[1]->id}}">
+											<img src="{{get_imgs($box_top[1]->article_imgs)}}" alt="{{$box_top[1]->article_title}}">
+										</a>
 								</div>
 								<div class="cat">
 									<a href="{{config("app.theme_news")}}">Tech</a>
@@ -85,7 +89,9 @@
 							</article><!--  /.post -->
 							<article class="post">
 								<div class="thumb">
-									<a href="{{config("app.theme_news")}}#"><img src="{{config("app.theme_news")}}images/thumbs/4-2.jpg" alt="img"></a>
+										<a href="/article/page/detail/{{$box_top[2]->id}}">
+											<img src="{{get_imgs($box_top[2]->article_imgs)}}" alt="{{$box_top[2]->article_title}}">
+										</a>
 								</div>
 								<div class="cat">
 									<a href="{{config("app.theme_news")}}">Social media</a>
@@ -104,7 +110,9 @@
 						</div>
 						<article class="post">
 							<div class="thumb">
-								<a href="{{config("app.theme_news")}}#"><img src="{{config("app.theme_news")}}images/thumbs/7.jpg" alt="img"></a>
+									<a href="/article/page/detail/{{$highlights[0]->id}}">
+										<img src="{{get_imgs($highlights[0]->article_imgs)}}" alt="{{$highlights[0]->article_title}}">
+									</a>
 							</div>
 							<div class="cat">
 								<a href="{{config("app.theme_news")}}">Social media</a>
@@ -116,7 +124,9 @@
 						</article><!--  /.post -->
 						<article class="post last">
 							<div class="thumb">
-								<a href="{{config("app.theme_news")}}#"><img src="{{config("app.theme_news")}}images/thumbs/7-3.jpg" alt="img"></a>
+									<a href="/article/page/detail/{{$highlights[1]->id}}">
+										<img src="{{get_imgs($highlights[1]->article_imgs)}}" alt="{{$highlights[1]->article_title}}">
+									</a>
 							</div>
 							<div class="cat">
 								<a href="{{config("app.theme_news")}}">Social media</a>
@@ -128,7 +138,9 @@
 						</article><!--  /.post -->
 						<article class="post">
 							<div class="thumb">
-								<a href="{{config("app.theme_news")}}#"><img src="{{config("app.theme_news")}}images/thumbs/7-2.jpg" alt="img"></a>
+									<a href="/article/page/detail/{{$highlights[2]->id}}">
+										<img src="{{get_imgs($highlights[2]->article_imgs)}}" alt="{{$highlights[2]->article_title}}">
+									</a>
 							</div>
 							<div class="cat">
 								<a href="{{config("app.theme_news")}}">Social media</a>
@@ -140,7 +152,9 @@
 						</article><!--  /.post -->
 						<article class="post margin-b0 last">
 							<div class="thumb">
-								<a href="{{config("app.theme_news")}}#"><img src="{{config("app.theme_news")}}images/thumbs/7-4.jpg" alt="img"></a>
+									<a href="/article/page/detail/{{$highlights[3]->id}}">
+										<img src="{{get_imgs($highlights[3]->article_imgs)}}" alt="{{$highlights[3]->article_title}}">
+									</a>
 							</div>
 							<div class="cat">
 								<a href="{{config("app.theme_news")}}">Social media</a>
@@ -159,7 +173,9 @@
 						<div class="post-wrap">
 							<article class="post">
 								<div class="thumb">
-									<a href="{{config("app.theme_news")}}#"><img src="{{config("app.theme_news")}}images/thumbs/3.jpg" alt="img"></a>
+									<a href="/article/page/detail/{{$editors_picks[0]->id}}">
+										<img src="{{get_imgs($editors_picks[0]->article_imgs)}}" alt="{{$editors_picks[0]->article_title}}">
+									</a>
 								</div>
 								<div class="content">
 									<div class="cat">
@@ -175,7 +191,9 @@
 							</article><!--  /.post -->
 							<article class="post">
 								<div class="thumb">
-									<a href="{{config("app.theme_news")}}#"><img src="{{config("app.theme_news")}}images/thumbs/3-2.jpg" alt="img"></a>
+									<a href="/article/page/detail/{{$editors_picks[1]->id}}">
+										<img src="{{get_imgs($editors_picks[1]->article_imgs)}}" alt="{{$editors_picks[1]->article_title}}">
+									</a>
 								</div>
 								<div class="content">
 									<div class="cat">
@@ -191,7 +209,9 @@
 							</article><!--  /.post -->
 							<article class="post">
 								<div class="thumb">
-									<a href="{{config("app.theme_news")}}#"><img src="{{config("app.theme_news")}}images/thumbs/3-3.jpg" alt="img"></a>
+									<a href="{{config("app.theme_news")}}#">
+									<img src="{{config("app.theme_news")}}images/thumbs/3-3.jpg" alt="img">
+									</a>
 								</div>
 								<div class="content">
 									<div class="cat">
@@ -215,7 +235,9 @@
 						<div class="content-left">
 							<article class="post">
 								<div class="thumb">
-									<a href="{{config("app.theme_news")}}#"><img src="{{config("app.theme_news")}}images/thumbs/8.jpg" alt="img"></a>
+									<a href="/article/page/detail/{{$popular_posts[0]->id}}">
+										<img src="{{get_imgs($popular_posts[0]->article_imgs)}}" alt="{{$popular_posts[0]->article_title}}">
+									</a>
 								</div>
 								<div class="cat">
 									<a href="{{config("app.theme_news")}}">Mustreads</a>
@@ -233,7 +255,9 @@
 						<div class="content-right">
 							<article class="post">
 								<div class="thumb">
-									<a href="{{config("app.theme_news")}}#"><img src="{{config("app.theme_news")}}images/thumbs/2.jpg" alt="img"></a>
+									<a href="/article/page/detail/{{$popular_posts[1]->id}}">
+										<img src="{{get_imgs($popular_posts[1]->article_imgs)}}" alt="{{$popular_posts[1]->article_title}}">
+									</a>
 								</div>
 								<div class="content">
 									<h3><a href="/article/page/detail/{{$popular_posts[1]->id}}">{{$popular_posts[1]->article_title}}</a></h3>
@@ -242,7 +266,9 @@
 							</article><!--  /.post -->
 							<article class="post">
 								<div class="thumb">
-									<a href="{{config("app.theme_news")}}#"><img src="{{config("app.theme_news")}}images/thumbs/2-2.jpg" alt="img"></a>
+									<a href="/article/page/detail/{{$popular_posts[2]->id}}">
+										<img src="{{get_imgs($popular_posts[2]->article_imgs)}}" alt="{{$popular_posts[2]->article_title}}">
+									</a>
 								</div>
 								<div class="content">
 									<h3><a href="/article/page/detail/{{$popular_posts[2]->id}}">{{$popular_posts[2]->article_title}}</a></h3>
@@ -251,7 +277,9 @@
 							</article><!--  /.post -->
 							<article class="post">
 								<div class="thumb">
-									<a href="{{config("app.theme_news")}}#"><img src="{{config("app.theme_news")}}images/thumbs/2-3.jpg" alt="img"></a>
+									<a href="/article/page/detail/{{$popular_posts[3]->id}}">
+										<img src="{{get_imgs($popular_posts[3]->article_imgs)}}" alt="{{$popular_posts[3]->article_title}}">
+									</a>
 								</div>
 								<div class="content">
 									<h3><a href="/article/page/detail/{{$popular_posts[3]->id}}">{{$popular_posts[3]->article_title}}</a></h3>
@@ -260,7 +288,9 @@
 							</article><!--  /.post -->
 							<article class="post">
 								<div class="thumb">
-									<a href="{{config("app.theme_news")}}#"><img src="{{config("app.theme_news")}}images/thumbs/2-4.jpg" alt="img"></a>
+									<a href="/article/page/detail/{{$popular_posts[4]->id}}">
+										<img src="{{get_imgs($popular_posts[4]->article_imgs)}}" alt="{{$popular_posts[4]->article_title}}">
+									</a>
 								</div>
 								<div class="content">
 									<h3><a href="/article/page/detail/{{$popular_posts[4]->id}}">{{$popular_posts[4]->article_title}}</a></h3>
@@ -269,7 +299,9 @@
 							</article><!--  /.post -->
 							<article class="post">
 								<div class="thumb">
-									<a href="{{config("app.theme_news")}}#"><img src="{{config("app.theme_news")}}images/thumbs/2-5.jpg" alt="img"></a>
+									<a href="/article/page/detail/{{$popular_posts[5]->id}}">
+										<img src="{{get_imgs($popular_posts[5]->article_imgs)}}" alt="{{$popular_posts[5]->article_title}}">
+									</a>
 								</div>
 								<div class="content">
 									<h3><a href="/article/page/detail/{{$popular_posts[5]->id}}">{{$popular_posts[5]->article_title}}</a></h3>
@@ -278,7 +310,9 @@
 							</article><!--  /.post -->
 							<article class="post">
 								<div class="thumb">
-									<a href="{{config("app.theme_news")}}#"><img src="{{config("app.theme_news")}}images/thumbs/2-6.jpg" alt="img"></a>
+									<a href="/article/page/detail/{{$popular_posts[6]->id}}">
+										<img src="{{get_imgs($popular_posts[6]->article_imgs)}}" alt="{{$popular_posts[6]->article_title}}">
+									</a>
 								</div>
 								<div class="content">
 									<h3><a href="/article/page/detail/{{$popular_posts[6]->id}}">{{$popular_posts[6]->article_title}}</a></h3>
@@ -295,7 +329,9 @@
 							<ul>
 								<li>
 									<div class="thumb">
-										<a href="{{config("app.theme_news")}}"><img src="{{config("app.theme_news")}}images/thumbs/2.jpg" alt="img"></a>
+										<a href="/article/page/detail/{{$box_right_top[0]->id}}">
+											<img src="{{get_imgs($box_right_top[0]->article_imgs)}}" alt="{{$box_right_top[0]->article_title}}">
+										</a>
 									</div>
 									<div class="content">
 										<h3><a href="/article/page/detail/{{$box_right_top[0]->id}}">{{$box_right_top[0]->article_title}}</a></h3>
@@ -304,7 +340,9 @@
 								</li>
 								<li>
 									<div class="thumb">
-										<a href="{{config("app.theme_news")}}"><img src="{{config("app.theme_news")}}images/thumbs/2-2.jpg" alt="img"></a>
+										<a href="/article/page/detail/{{$box_right_top[1]->id}}">
+											<img src="{{get_imgs($box_right_top[1]->article_imgs)}}" alt="{{$box_right_top[1]->article_title}}">
+										</a>
 									</div>
 									<div class="content">
 										<h3><a href="/article/page/detail/{{$box_right_top[1]->id}}">{{$box_right_top[1]->article_title}}</a></h3>
@@ -313,7 +351,9 @@
 								</li>
 								<li>
 									<div class="thumb">
-										<a href="{{config("app.theme_news")}}"><img src="{{config("app.theme_news")}}images/thumbs/2-3.jpg" alt="img"></a>
+										<a href="/article/page/detail/{{$box_right_top[2]->id}}">
+											<img src="{{get_imgs($box_right_top[2]->article_imgs)}}" alt="{{$box_right_top[2]->article_title}}">
+										</a>
 									</div>
 									<div class="content">
 										<h3><a href="/article/page/detail/{{$box_right_top[2]->id}}">{{$box_right_top[2]->article_title}}</a></h3>
@@ -535,7 +575,9 @@
 						<div class="one-fourth gn-animation" data-animation="fadeInUp" data-animation-delay="0" data-animation-offset="75%">
 							<article class="post first">
 								<div class="thumb">
-									<a href="{{config("app.theme_news")}}#"><img src="{{config("app.theme_news")}}images/thumbs/5.jpg" alt="img"></a>
+									<a href="/article/page/detail/{{$trending[0]->id}}">
+										<img src="{{get_imgs($trending[0]->article_imgs)}}" alt="{{$trending[0]->article_title}}">
+									</a>
 								</div>
 								<span class="date">October 6, 2013</span>
 								<h3><a href="/article/page/detail/{{$trending[0]->id}}">{{$trending[0]->article_title}}</a></h3>
@@ -560,7 +602,9 @@
 						<div class="one-fourth gn-animation" data-animation="fadeInUp" data-animation-delay="0.2s" data-animation-offset="75%">
 							<article class="post first">
 								<div class="thumb">
-									<a href="{{config("app.theme_news")}}#"><img src="{{config("app.theme_news")}}images/thumbs/5-2.jpg" alt="img"></a>
+									<a href="/article/page/detail/{{$trending[5]->id}}">
+										<img src="{{get_imgs($trending[5]->article_imgs)}}" alt="{{$trending[5]->article_title}}">
+									</a>
 								</div>
 								<span class="date">October 6, 2013</span>
 								<h3><a href="/article/page/detail/{{$trending[5]->id}}">{{$trending[5]->article_title}}</a></h3>
@@ -581,7 +625,9 @@
 						<div class="one-fourth gn-animation" data-animation="fadeInUp" data-animation-delay="0.4s" data-animation-offset="75%">
 							<article class="post first">
 								<div class="thumb">
-									<a href="{{config("app.theme_news")}}#"><img src="{{config("app.theme_news")}}images/thumbs/5-3.jpg" alt="img"></a>
+									<a href="/article/page/detail/{{$trending[9]->id}}">
+										<img src="{{get_imgs($trending[9]->article_imgs)}}" alt="{{$trending[9]->article_title}}">
+									</a>
 								</div>
 								<span class="date">October 6, 2013</span>
 								<h3><a href="/article/page/detail/{{$trending[9]->id}}">{{$trending[9]->article_title}}</a></h3>
@@ -602,7 +648,9 @@
 						<div class="one-fourth last gn-animation" data-animation="fadeInUp" data-animation-delay="0.6s" data-animation-offset="75%">
 							<article class="post first">
 								<div class="thumb">
-									<a href="{{config("app.theme_news")}}#"><img src="{{config("app.theme_news")}}images/thumbs/5-4.jpg" alt="img"></a>
+									<a href="/article/page/detail/{{$trending[13]->id}}">
+										<img src="{{get_imgs($trending[13]->article_imgs)}}" alt="{{$trending[13]->article_title}}">
+									</a>
 								</div>
 								<span class="date">October 6, 2013</span>
 								<h3><a href="/article/page/detail/{{$trending[13]->id}}">{{$trending[13]->article_title}}</a></h3>
@@ -631,7 +679,9 @@
 						@foreach ($social_media as $element)
 							<article class="post">
 								<div class="thumb">
-									<a href="{{config("app.theme_news")}}#"><img src="{{config("app.theme_news")}}images/thumbs/6.jpg" alt="img"></a>
+									<a href="/article/page/detail/{{$element->id}}">
+										<img src="{{get_imgs($element->article_imgs)}}" alt="{{$element->article_title}}">
+									</a>
 								</div>
 								<div class="content">
 									<div class="cat">

@@ -1,7 +1,7 @@
-AuthType Basic
-AuthName "Authentication Required"
-AuthUserFile "./.htpasswd"
-Require valid-user
+# AuthType Basic
+# AuthName "Authentication Required"
+# AuthUserFile "C:\Users\Admin"
+# Require valid-user
 
 
 php_value max_execution_time 600

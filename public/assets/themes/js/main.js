@@ -1,5 +1,5 @@
 /* Loading Script */
-$(window).load(function() {
+$(window).load(function() {  
   "use strict";
     	$(".loader").delay(500).fadeOut();
     	$("#mask").delay(1000).fadeOut("slow");

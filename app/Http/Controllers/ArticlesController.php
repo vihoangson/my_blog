@@ -20,14 +20,30 @@ class ArticlesController  extends BaseController
 	public function homepage(){
 		//$rs            = Articles::limit(100)->orderBy("id","desc")->get();
 		$rs=[];
-		$box_top       = Articles::where("article_link","like","%kinh-te%")->limit(3)->orderBy("id","desc")->get();
-		$box_right_top = Articles::limit(3)->orderBy("id","desc")->get();
-		$most_popular  = Articles::limit(5)->orderBy("id","desc")->get();
-		$highlights    = Articles::limit(5)->orderBy("id","desc")->get();
-		$editors_picks = Articles::limit(3)->orderBy("id","desc")->get();
-		$popular_posts = Articles::limit(7)->orderBy("id","desc")->get();
-		$trending      = Articles::limit(17)->orderBy("id","desc")->get();
-		$social_media  = Articles::limit(4)->orderBy("id","desc")->get();
+		//============ ============  ============  ============ 
+		// "%tin-tuc/the-gioi%"
+		$box_top       = Articles::where("article_link","like","%tin-tuc/the-gioi%")->whereRaw("article_imgs != '' ")->where("article_imgs","!=","[]")->limit(3)->orderBy("article_imgs","desc")->get();
+		//============ ============  ============  ============ 
+		// "%tin-tuc/thoi-su%"
+		$box_right_top = Articles::where("article_link","like","%tin-tuc/thoi-su%")->whereRaw("article_imgs != '' ")->where("article_imgs","!=","[]")->limit(3)->orderBy("id","desc")->get();
+		//============ ============  ============  ============ 
+		// "%tin-tuc/the-gioi%"
+		$most_popular  = Articles::where("article_link","like","%tin-tuc/the-gioi%")->whereRaw("article_imgs != '' ")->where("article_imgs","!=","[]")->limit(5)->orderBy("id","desc")->get();
+		//============ ============  ============  ============ 
+		// "%dulich%"
+		$highlights    = Articles::where("article_link","like","%dulich%")->whereRaw("article_imgs != '' ")->where("article_imgs","!=","[]")->limit(5)->orderBy("id","desc")->get();
+		//============ ============  ============  ============ 
+		// "%khoa-hoc%"
+		$editors_picks = Articles::where("article_link","like","%khoa-hoc%")->whereRaw("article_imgs != '' ")->where("article_imgs","!=","[]")->limit(3)->orderBy("id","desc")->get();
+		//============ ============  ============  ============ 
+		// "%sohoa.%"
+		$popular_posts = Articles::where("article_link","like","%sohoa.%")->whereRaw("article_imgs != '' ")->where("article_imgs","!=","[]")->limit(7)->orderBy("id","desc")->get();
+		//============ ============  ============  ============ 
+		// "%suckhoe%"
+		$trending      = Articles::where("article_link","like","%suckhoe%")->whereRaw("article_imgs != '' ")->where("article_imgs","!=","[]")->limit(17)->orderBy("id","desc")->get();
+		//============ ============  ============  ============ 
+		// "%giaitri%"
+		$social_media  = Articles::where("article_link","like","%giaitri%")->whereRaw("article_imgs != '' ")->where("article_imgs","!=","[]")->limit(4)->orderBy("id","desc")->get();
 		return view("articles.index",compact("rs","box_top","box_right_top","most_popular","highlights","editors_picks","popular_posts","trending","social_media"));
 	}// End function index()
 
@@ -63,7 +79,7 @@ class ArticlesController  extends BaseController
 				<div class="main-post">
 					<div class="entry-post">
 						<?= $rs->article_content; ?>
-					</div><!-- /.entry-post -->
+					</div><!-- /.entry-post -->`
 					<div class="tags">
 						<h4>In this article:</h4>
 						<a href="#">Startups</a>
@@ -157,7 +173,7 @@ class ArticlesController  extends BaseController
 		//============  ============
 		// Lấy dữ liệu từ trong bảng
 		//============  ============
-		$rs = Articles::whereraw("article_imgs is null ")->limit(3000)->get();
+		$rs = Articles::whereraw("article_imgs is null ")->limit(300)->get();
 		//$rs = Articles::limit(3000)->get();
 
 		//============  ============

@@ -621,3 +621,21 @@
    });
 
 })(jQuery);
+
+$(window).load(function(){
+      $("div.thumb").each(function(){
+        if($(this).width() < $(this).height() ){
+          $(this).css("overflow","hidden");
+          $(this).height($(this).width()*202/305);  
+        }else{
+            $(this).css("overflow","hidden");
+            $(this).height($(this).width()*202/305);  
+        }
+      });
+      $("img").each(function(){
+        if($(this).attr("src")==""){
+            $(this).attr("src","http://placehold.it/600x400");
+            //$(this).remove();      
+        }
+      });
+});
