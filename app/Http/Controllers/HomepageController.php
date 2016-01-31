@@ -379,7 +379,7 @@ class HomepageController  extends BaseController
 		$rs = Articles::all();
 		foreach ($rs as $key => $value) {
 			$match=[];
-			$pattern = "/tin-tuc\/thoi-su|tin-tuc\/the-gioi|kinhdoanh\/|giaitri\/|thethao|tin-tuc\/phap-luat|tin-tuc\/giao-duc|suckhoe|giadinh\/|dulich|tin-tuc\/khoa-hoc|tin-tuc\/khoa-hoc\/page\/2.html|sohoa\/|tin-tuc\/oto-xe-may|tin-tuc\/cong-dong|tin-tuc\/tam-su|tin-tuc\/cuoi/";
+			$pattern = "/thoi-su|the-gioi|kinhdoanh|giaitri|thethao|phap-luat|giao-duc|suckhoe|giadinh|dulich|khoa-hoc|oto-xe-may|cong-dong|tam-su|cuoi/";
 			preg_match($pattern, $value->article_link,$match);
 			if(empty($match)) continue;
 			$value->update(["article_cat"=>$match[0]]);
