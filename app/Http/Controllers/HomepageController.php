@@ -40,6 +40,7 @@ class HomepageController  extends BaseController
 		];
 	}
 	public function index(){
+
 		//
 		// Thông tin các trang web đã từng làm
 		//

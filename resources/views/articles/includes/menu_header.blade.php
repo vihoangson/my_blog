@@ -58,13 +58,22 @@
 								<li class=""><a href="/article">Trang chủ</a></li>
 								<li class="has-children"><a class="active" href="javascript:void()">Chuyên mục</a>
 									<ul class="sub-menu">
+										<li><a href="/article/category/the-gioi">Tin thế giới</a></li>
 										<li><a href="/article/category/thoi-su">Thời sự</a></li>
-										<li><a href="/article/category/the-gioi">Thế giới</a></li>
 										<li><a href="/article/category/dulich">Du lịch</a></li>
 										<li><a href="/article/category/khoa-hoc">Khoa học</a></li>
-										<li><a href="/article/category/sohoa">Số hóa</a></li>
-										<li><a href="/article/category/suckhoe">Sức khỏe</a></li>
+										<li><a href="/article/category/kinh-nghiem">Kinh nghiệm</a></li>
+										<li><a href="/article/category/kinhdoanh">Kinh doanh</a></li>
 										<li><a href="/article/category/giaitri">Giải trí</a></li>
+										<li><a href="/article/category/giadinh">Gia đình</a></li>
+										<li><a href="/article/category/giao-duc">Giáo dục</a></li>
+										<li><a href="/article/category/cong-dong">Cộng đồng</a></li>
+										<li><a href="/article/category/thethao">Thể thao</a></li>
+										<li><a href="/article/category/cuoi">Cười</a></li>
+										<li><a href="/article/category/oto-xe-may">Ô tô xe máy</a></li>
+										<li><a href="/article/category/phap-luat">Pháp luật</a></li>
+										<li><a href="/article/category/suckhoe">Sức khỏe</a></li>
+										<li><a href="/article/category/tam-su">Tâm sự</a></li>
 									</ul><!-- /.submenu -->
 								</li>
 							</ul><!-- /.menu -->

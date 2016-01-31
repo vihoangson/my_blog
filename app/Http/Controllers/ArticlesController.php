@@ -13,7 +13,6 @@ use Log;
 
 class ArticlesController  extends BaseController
 {
-
 	public function __construct(){
 	}
 
