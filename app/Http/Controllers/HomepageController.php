@@ -349,19 +349,19 @@ class HomepageController  extends BaseController
 				} // End foreach $m
 			}// End foreach $this->array_site
 				// Dừng chương trình
+				// Lấy bài viết top
+		        $this->vnexpress_set_important_news();
+		        $c = new ArticlesController;
+		        // Lấy phần mở đầu
+		        $c->get_extra_content();
+		        // lấy hình ảnh chính
+		        $c->update_main_img();
 				die;
 			//
 			//  ============  ============
 		}// End if
 
 
-		// Lấy bài viết top
-        $this->vnexpress_set_important_news();
-        $c = new ArticlesController;
-        // Lấy phần mở đầu
-        $c->get_extra_content();
-        // lấy hình ảnh chính
-        $c->update_main_img();
 	}// End function import_vnexpress()
 	//
 	//============ import_vnexpress() ============
