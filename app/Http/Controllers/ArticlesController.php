@@ -149,6 +149,18 @@ class ArticlesController  extends BaseController
 			$dom->find(".block_timer_share",0)->outertext ="";
 		}
 
+		if($dom->find(".div-fbook")){
+			$dom->find(".div-fbook",0)->outertext ="";
+		}
+
+		if($dom->find(".content_box_category")){
+			$dom->find(".content_box_category",0)->outertext ="";
+		}
+
+		if($dom->find(".block_share_icon")){
+			$dom->find(".block_share_icon",0)->outertext ="";
+		}		
+
 		if($dom->find(".relative_new")){
 			$dom->find(".relative_new",0)->outertext ="";
 		}
