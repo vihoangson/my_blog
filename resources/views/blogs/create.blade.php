@@ -4,7 +4,11 @@
 @section("script_custom")
 <script src="/assets/bower_components/tinymce/tinymce.jquery.min.js"></script>
 <script src="/assets/bower_components/jquery.form.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="/assets/bower_components/tag-it/js/tag-it.min.js"></script>
 <script>
+
+
     tinymce.init({ 
         selector:'textarea.tinymce',
         plugins: [
@@ -13,7 +17,18 @@
         "insertdatetime media table contextmenu paste"
         ],
     });
-    $(document).ready(function() {  
+    $(document).ready(function() { 
+        //============ ============  ============  ============ 
+        // Tag-it JS
+        // Minimal
+        //
+            $('#myTags').tagit({
+                "allowSpaces":true,
+                 availableTags: ["c++", "java", "php", "javascript", "ruby", "python", "c"],
+                 autocomplete: {delay: 0, minLength: 2},
+            });
+        //
+        //============ ============  ============  ============ 
         var options = { 
             target:   '#output', 
             beforeSubmit:  beforeSubmit,
@@ -157,6 +172,7 @@
                                         <textarea name="blog_extra" class="form-control">{{(isset($rs->blog_extra)?$rs->blog_extra:"")}}</textarea>
                                         <textarea style="height:500px;" name="blog_content" class="tinymce">{{(isset($rs->blog_content)?$rs->blog_content:"")}}</textarea>
                                         <hr>
+                                        11111111<ul id="myTags"></ul>22222222222
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">

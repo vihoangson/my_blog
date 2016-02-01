@@ -8,7 +8,7 @@
 										</div>
 										<div class="col-md-7">
 											<div class="np-main">
-												<p>Go to next/previous page</p>
+												<p>{{trans("blog.ditoitronguoc")}}</p>
 												<div class="np-controls">
 													<a href="#" class="previous"><i class="fa fa-arrow-circle-left"></i></a>
 													<a href="#" class="next"><i class="fa fa-arrow-circle-right"></i></a>

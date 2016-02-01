@@ -122,12 +122,12 @@ class HomepageController  extends BaseController
 				"desc" =>"Tập đoàn quốc tế Showa",
 			],
 
-			[
-				"url"=>"http://asuchan.tv",
-				"img"=>"asuchan.tv.png",
-				"title"=>"asuchan.tv",
-				"desc" =>"Asuchan TV",
-			],
+			// [
+			// 	"url"=>"http://asuchan.tv",
+			// 	"img"=>"asuchan.tv.png",
+			// 	"title"=>"asuchan.tv",
+			// 	"desc" =>"Asuchan TV",
+			// ],
 
 		];
 		$skill_level = [

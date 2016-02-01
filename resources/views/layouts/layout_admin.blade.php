@@ -43,6 +43,9 @@
 	<!-- Style Switch -->
 	<link rel="stylesheet" type="text/css" href="<?= PATH_THEME; ?>css/colors/yellow-black.css" title="yellow" media="screen" />
 
+
+<link rel="stylesheet" type="text/css" href="/assets/bower_components/tag-it/css/jquery.tagit.css" title="" media="screen" />	
+<link rel="stylesheet" type="text/css" href="/assets/bower_components/tag-it/css/tagit.ui-zendesk.css" title="" media="screen" />	
 </head>
 <body>
 		<nav class="navbar navbar-default" role="navigation">

@@ -3,11 +3,11 @@
 		<div class="page-head">
 			<div class="row">
 				<div class="col-md-5">
-					<h3>Resume</h3>
+					<h3>{{trans("blog.resume")}}</h3>
 				</div>
 				<div class="col-md-7">
 					<div class="np-main">
-						<p>Go to next/previous page</p>
+						<p>{{trans("blog.ditoitronguoc")}}</p>
 						<div class="np-controls">
 							<a href="#" class="previous"><i class="fa fa-arrow-circle-left"></i></a>
 							<a href="#" class="next"><i class="fa fa-arrow-circle-right"></i></a>
@@ -17,7 +17,7 @@
 			</div>
 		</div>
 		<div class="resume-info hidden">
-			<h4>Education</h4>
+			<h4>{{trans("blog.daotao")}}</h4>
 			<div class="sep2"></div>
 			<ul>
 				<li>
@@ -40,7 +40,7 @@
 
 
 		<div class="resume-info">
-			<h4>Đã làm tại các Cty</h4>
+			<h4>Vị trí từng làm</h4>
 			<div class="sep2"></div>
 			<ul>
 				<li>
@@ -57,7 +57,7 @@
 		</div>
 
 		<div class="skills-info">
-			<h4>Skills</h4>
+			<h4>Kỹ năng</h4>
 			<div class="sep2"></div>
 			<ul>
 				<li>
@@ -127,12 +127,9 @@
 			</ul>
 		</div>
 		<br>
-		<div class="text-center">
-			<a href="#" class="btn btn-primary btn-lg"><i class="fa fa-user"></i> View my CV</a>
-		</div>
 		<br>
 		<div class="row skill-box">
-			<h4>Level</h4>
+			<h4>Trình độ</h4>
 			<div class="sep2"></div>
 			<style>
 			.skill-box * {
@@ -152,7 +149,9 @@
 				@endforeach
 			</div>
 		</div>
-
+		<div class="text-center">
+			<a href="#" class="btn btn-primary btn-lg"><i class="fa fa-user"></i> View my CV</a>
+		</div>
 
 
 	</div>

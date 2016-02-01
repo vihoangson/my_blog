@@ -66,11 +66,11 @@
 				</div>
 				<nav>
 				<ul class="navigation">
-					<li><a href="/#1">Profile <i class="fa fa-user"></i></a></li>
-					<li><a href="/#2">Work <i class="fa fa-briefcase"></i></a></li>
-					<li><a href="/#3">Resume <i class="fa fa-file-text"></i></a></li>
-					<li class="flex-active"><a href="/#4">Blog <i class="fa fa-comment"></i></a></li>
-					<li><a href="/#5">Contact <i class="fa fa-envelope"></i></a></li>
+					<li><a href="/#1">{{trans("blog.profile")}} <i class="fa fa-user"></i></a></li>
+					<li><a href="/#2">{{trans("blog.work")}} <i class="fa fa-briefcase"></i></a></li>
+					<li><a href="/#3">{{trans("blog.resume")}} <i class="fa fa-file-text"></i></a></li>
+					<li class="flex-active"><a href="/#4">{{trans("blog.blog")}} <i class="fa fa-comment"></i></a></li>
+					<li><a href="/#5">{{trans("blog.contact")}} <i class="fa fa-envelope"></i></a></li>
 				</ul>
 				</nav>
 			</div>
@@ -87,7 +87,7 @@
 										</div>
 										<div class="col-md-7">
 											<div class="np-main">
-												<p>Go to next/previous page</p>
+												<p>{{trans("blog.ditoitronguoc")}}</p>
 												<div class="np-controls">
 													<a href="./index.html#3" class="previous"><i class="fa fa-arrow-circle-left"></i></a>
 													<a href="./index.html#5" class="next"><i class="fa fa-arrow-circle-right"></i></a>

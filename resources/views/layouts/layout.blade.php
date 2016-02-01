@@ -67,11 +67,11 @@
 				</div>
 				<nav>
 				<ul class="navigation">
-					<li><a href="#">Profile <i class="fa fa-user"></i></a></li>
-					<li><a href="#">Work <i class="fa fa-briefcase"></i></a></li>
-					<li><a href="#">Resume <i class="fa fa-file-text"></i></a></li>
-					<li><a href="#">Blog <i class="fa fa-comment"></i></a></li>
-					<li><a href="#">Contact <i class="fa fa-envelope"></i></a></li>
+					<li><a href="#">{{trans("blog.profile")}} <i class="fa fa-user"></i></a></li>
+					<li><a href="#">{{trans("blog.work")}} <i class="fa fa-briefcase"></i></a></li>
+					<li><a href="#">{{trans("blog.resume")}} <i class="fa fa-file-text"></i></a></li>
+					<li><a href="#">{{trans("blog.blog")}} <i class="fa fa-comment"></i></a></li>
+					<li><a href="#">{{trans("blog.contact")}} <i class="fa fa-envelope"></i></a></li>
 				</ul>
 				</nav>
 			</div>
@@ -90,30 +90,34 @@
 						<!-- SECTION 1 - HOMEPAGE -->
 						<section class="no-display">
 							<div class="profile" id="1">
-								<h2>Hello, I am <span>Vi Hoàng Sơn</span><br>PHP Developer</h2>
+								<div>
+									<span id="english">English</span>
+									<span id="vietnamese">Tiếng Việt</span>
+								</div>
+								<h2>{{ trans("blog.xinchao") }} <span>Vi Hoàng Sơn</span><br> {{ trans("blog.laptrinhphp") }}</h2>
 								<div class="sep1"></div>
-								<p>Tôi có kinh nghiệm trên 5 năm với vị trí lập trình viên website PHP. Niềm đam mê của tôi là được tìm tòi những điều mới mẻ và tạo ra những sản phẩm tốt nhất. Thông qua những dự án đã làm tôi có nhiều kỹ năng với các nền tảng frameword PHP như Laravel, Sympony, Codeigniter ... </p>
+								<p>{{trans("blog.gioithieubanthan")}}</p>
 								<div class="personal-info col-md-12 no-padding">
-									<h4>Personal Info</h4>
+									<h4>{{trans("blog.thongtincanhan")}}</h4>
 									<div class="sep2"></div>
 									<ul>
 										<li>
-											<div class="p-info"><em>name</em><span>Vi Hoàng Sơn</span></div>
+											<div class="p-info"><em>{{trans("blog.name")}}</em><span>Vi Hoàng Sơn</span></div>
 										</li>
 										<li>
-											<div class="p-info"><em>date of birth</em><span>October 06, 1986</span></div>
+											<div class="p-info"><em>{{trans("blog.date_of_birth")}}</em><span>October 06, 1986</span></div>
 										</li>
 										<li>
-											<div class="p-info"><em>e-mail</em><span>vihoangson@gmail.com</span></div>
+											<div class="p-info"><em>{{trans("blog.e_mail")}}</em><span>vihoangson@gmail.com</span></div>
 										</li>
 										<li>
-											<div class="p-info"><em>address</em><span>178/7p Hậu Giang Tp.HCM</span></div>
+											<div class="p-info"><em>{{trans("blog.address")}}</em><span>178/7p Hậu Giang Tp.HCM</span></div>
 										</li>
 										<li>
-											<div class="p-info"><em>phone</em><span>0121-885-1144</span></div>
+											<div class="p-info"><em>{{trans("blog.phone")}}</em><span>0121-885-1144</span></div>
 										</li>
 										<li>
-											<div class="p-info"><em>website</em><span><a href='http://www.vihoangson.com'>www.vihoangson.com</a></span></div>
+											<div class="p-info"><em>{{trans("blog.website")}}</em><span><a href='http://www.vihoangson.com'>www.vihoangson.com</a></span></div>
 										</li>
 									</ul>
 								</div>
@@ -128,11 +132,11 @@
 								<div class="page-head">
 									<div class="row">
 										<div class="col-md-5">
-											<h3>Portfolio</h3>
+											<h3>{{trans("blog.cacduandathuchien")}}</h3>
 										</div>
 										<div class="col-md-7">
 											<div class="np-main">
-												<p>Go to next/previous page</p>
+												<p>{{trans("blog.ditoitronguoc")}}</p>
 												<div class="np-controls">
 													<a href="#" class="previous"><i class="fa fa-arrow-circle-left"></i></a>
 													<a href="#" class="next"><i class="fa fa-arrow-circle-right"></i></a>
@@ -144,7 +148,7 @@
 								<div class="portfolio-wrap">
 									<div class="row">
 										<ul id="filter-list" class="clearfix">
-											<li class="filter" data-filter="all"><i class="fa fa-th"></i> All</li>
+											<li class="filter" data-filter="all"><i class="fa fa-th"></i> {{trans("blog.tatca")}}</li>
 											<li class="filter hidden" data-filter="webdesign">Web Design</li>
 											<li class="filter hidden" data-filter="appicon">App Icons</li>
 											<li class="filter hidden" data-filter="iosappui">iOS App UI</li>
@@ -169,11 +173,11 @@
 								<div class="page-head">
 									<div class="row">
 										<div class="col-md-5">
-											<h3>Contact Us</h3>
+											<h3>{{trans("blog.contact")}}</h3>
 										</div>
 										<div class="col-md-7">
 											<div class="np-main">
-												<p>Go to next/previous page</p>
+												<p>{{trans("blog.ditoitronguoc")}}</p>
 												<div class="np-controls">
 													<a href="#" class="previous"><i class="fa fa-arrow-circle-left"></i></a>
 													<a href="#" class="next"><i class="fa fa-arrow-circle-right"></i></a>
@@ -188,8 +192,8 @@
 									</div>
 								</div>
 								<div class="contact-info">
-									<h4>Thông tin liên hệ</h4>
-									<p>Bạn có thể liên hệ với tôi theo thông tin bên dưới</p>
+									<h4>{{trans("blog.thongtinlienhe")}}Thông tin liên hệ</h4>
+									<p>{{trans("blog.bancothelienhevoithoi")}}Bạn có thể liên hệ với tôi theo thông tin bên dưới</p>
 									<ul>
 										<li><i class="fa fa-home"></i> 178/7p Hậu Giang F6 Q6 Tp.HCM</li>
 										<li><i class="fa fa-phone"></i> +84 01218851144</li>
@@ -197,7 +201,7 @@
 									</ul>
 								</div>
 								<div class="contact-form">
-									<h4>Send us a message</h4>
+									<h4>{{trans("blog.guitinnhan")}}Send us a message</h4>
 									<form id="contactForm" action="/contact" method="post">
 										<input name="_token" value="{{csrf_token()}}" type="hidden">
 										<div class="row">
@@ -208,18 +212,18 @@
 											</div>
 											<div class="col-md-8">
 												<textarea name="message" id="message" rows="6" placeholder="Message"></textarea>
-												<button type="submit">Send Message</button>
+												<button type="submit">{{trans("blog.guitin")}}Send Message</button>
 											</div>
 										</div>
 									</form>
 									<div id="successMessage" class="successmessage">
-										<p><span class="success-ico"></span> Thanks for sending your message! We'll get back to you shortly.</p>
+										<p><span class="success-ico"></span> {{trans("blog.camonbandaguithu")}}Thanks for sending your message! We'll get back to you shortly.</p>
 									</div>
 									<div id="failureMessage" class="errormessage">
-										<p><span class="error-ico"></span> There was a problem sending your message. Please try again.</p>
+										<p><span class="error-ico"></span> {{trans("blog.loidaxayra")}}There was a problem sending your message. Please try again.</p>
 									</div>
 									<div id="incompleteMessage" class="statusMessage">
-										<p>Please complete all the fields in the form before sending.</p>
+										<p>{{trans("blog.vuilongdiendaydu")}}Please complete all the fields in the form before sending.</p>
 									</div>
 								</div>
 							</div>
