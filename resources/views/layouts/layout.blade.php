@@ -16,11 +16,11 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 	<!-- Favicons -->
-	<link rel="shortcut icon" href="<?= PATH_THEME; ?>img/favicon.ico">
-	<link rel="apple-touch-icon" href="<?= PATH_THEME; ?>img/apple-touch-icon.png">
-	<link rel="apple-touch-icon" sizes="72x72" href="<?= PATH_THEME; ?>img/apple-touch-icon-72x72.png">
-	<link rel="apple-touch-icon" sizes="114x114" href="<?= PATH_THEME; ?>img/apple-touch-icon-114x114.png">
-	<link rel="apple-touch-icon" sizes="144x144" href="<?= PATH_THEME; ?>img/apple-touch-icon-144x144.png">
+	<link rel="shortcut icon" href="{{PATH_THEME}}img/favicon.ico">
+	<link rel="apple-touch-icon" href="{{PATH_THEME}}img/apple-touch-icon.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="{{PATH_THEME}}img/apple-touch-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="{{PATH_THEME}}img/apple-touch-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="{{PATH_THEME}}img/apple-touch-icon-144x144.png">
 
 	<!-- Google Webfonts -->
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,600,700,800,700italic,600italic' rel='stylesheet' type='text/css'>
@@ -31,39 +31,47 @@
 	<![endif]-->
 
 	<!-- Bootstrap Core CSS -->
-	<link href="<?= PATH_THEME; ?>css/bootstrap.css" rel="stylesheet">
+	<link href="{{PATH_THEME}}css/bootstrap.css" rel="stylesheet">
 
 	<!-- Theme Styles CSS-->
-	<link href="<?= PATH_THEME; ?>font-awesome/css/font-awesome.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="<?= PATH_THEME; ?>css/style.css" >
-	<link rel="stylesheet" href="<?= PATH_THEME; ?>css/flexslider.css"/>
-	<link rel="stylesheet" href="<?= PATH_THEME; ?>css/nivo-lightbox.css" />
-	<link rel="stylesheet" href="<?= PATH_THEME; ?>images/themes/default/default.css" />
-	<link rel="stylesheet" href="<?= PATH_THEME; ?>css/animate.css" />
-	<script src="<?= PATH_THEME; ?>js/jquery-1.11.3.min.js"></script>
+	<link href="{{PATH_THEME}}font-awesome/css/font-awesome.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="{{PATH_THEME}}css/style.css" >
+	<link rel="stylesheet" href="{{PATH_THEME}}css/flexslider.css"/>
+	<link rel="stylesheet" href="{{PATH_THEME}}css/nivo-lightbox.css" />
+	<link rel="stylesheet" href="{{PATH_THEME}}images/themes/default/default.css" />
+	<link rel="stylesheet" href="{{PATH_THEME}}css/animate.css" />
+	<script src="{{PATH_THEME}}js/jquery-1.11.3.min.js"></script>
 	<!--[if lt IE 9]>
 	<script src="/js/libs/html5.js"></script>
 	<![endif]-->
 
 	<!-- Style Switch -->
-	<link rel="stylesheet" type="text/css" href="<?= PATH_THEME; ?>css/colors/yellow-black.css" title="yellow" media="screen" />
-
+	<link rel="stylesheet" type="text/css" href="{{PATH_THEME}}css/colors/yellow-black.css" title="yellow" media="screen" />
+<script>
+$(document).ready(function() {
+	$(".lang_box span#vietnamese").click(function(){
+		location.href = "/change_lang/vi";
+	});
+	$(".lang_box span#english").click(function(){
+		location.href = "/change_lang/en";
+	});
+});
+</script>
 </head>
 <body>
 <!-- LOADING MASK -->
 <div id="mask">   
     <div class="loader">
-        <img src="<?= PATH_THEME; ?>images/loading.gif" alt='loading'>
+        <img src="{{PATH_THEME}}images/loading.gif" alt='loading'>
     </div>
 </div>
-
 <!-- MAIN CONTENT -->
 <div class="main-content">
 	<div class="container no-padding">
 		<div class="row">
 			<div class="col-md-3 l-content">
 				<div class="profile-pic">
-					<div class="pic-bg"><img src="<?= PATH_THEME; ?>images/profile-avatar.png" class="img-responsive" alt=""/></div>
+					<div class="pic-bg"><img src="{{PATH_THEME}}images/profile-avatar.png" class="img-responsive" alt=""/></div>
 				</div>
 				<nav>
 				<ul class="navigation">
@@ -75,14 +83,17 @@
 				</ul>
 				</nav>
 			</div>
-<script>
-	$(".navigation> li:nth-child(4)").click(function(){
-		$(".img-responsive").each(function(){
-			var src = $(this).data("src");
-			$(this).attr("src",src);
-		});
-	});
-</script>
+			<script>
+				// ============ ============  ============  ============ 
+				// Click selector block then load image preview in article
+				// ============ ============  ============  ============ 
+				$(".navigation> li:nth-child(4)").click(function(){
+					$(".img-responsive").each(function(){
+						var src = $(this).data("src");
+						$(this).attr("src",src);
+					});
+				});
+			</script>
 			<div class="col-md-9 r-content">
 				<div class="flexslider">
 					<div class="slides">
@@ -90,10 +101,10 @@
 						<!-- SECTION 1 - HOMEPAGE -->
 						<section class="no-display">
 							<div class="profile" id="1">
-								<div>
+								{{-- <div class="lang_box">
 									<span id="english">English</span>
 									<span id="vietnamese">Tiếng Việt</span>
-								</div>
+								</div> --}}
 								<h2>{{ trans("blog.xinchao") }} <span>Vi Hoàng Sơn</span><br> {{ trans("blog.laptrinhphp") }}</h2>
 								<div class="sep1"></div>
 								<p>{{trans("blog.gioithieubanthan")}}</p>
@@ -186,14 +197,10 @@
 										</div>
 									</div>
 								</div>
-								<div class="map">
-									<div class="gmap">
-										<div id="map"></div>
-									</div>
-								</div>
+								<br>
 								<div class="contact-info">
-									<h4>{{trans("blog.thongtinlienhe")}}Thông tin liên hệ</h4>
-									<p>{{trans("blog.bancothelienhevoithoi")}}Bạn có thể liên hệ với tôi theo thông tin bên dưới</p>
+									{{-- <h4>{{trans("blog.thongtinlienhe")}}</h4> --}}
+									<p>{{trans("blog.bancothelienhevoithoi")}}</p>
 									<ul>
 										<li><i class="fa fa-home"></i> 178/7p Hậu Giang F6 Q6 Tp.HCM</li>
 										<li><i class="fa fa-phone"></i> +84 01218851144</li>
@@ -201,7 +208,7 @@
 									</ul>
 								</div>
 								<div class="contact-form">
-									<h4>{{trans("blog.guitinnhan")}}Send us a message</h4>
+									<h4>{{trans("blog.guitinnhan")}}</h4>
 									<form id="contactForm" action="/contact" method="post">
 										<input name="_token" value="{{csrf_token()}}" type="hidden">
 										<div class="row">
@@ -212,18 +219,18 @@
 											</div>
 											<div class="col-md-8">
 												<textarea name="message" id="message" rows="6" placeholder="Message"></textarea>
-												<button type="submit">{{trans("blog.guitin")}}Send Message</button>
+												<button type="submit">{{trans("blog.guitin")}}</button>
 											</div>
 										</div>
 									</form>
 									<div id="successMessage" class="successmessage">
-										<p><span class="success-ico"></span> {{trans("blog.camonbandaguithu")}}Thanks for sending your message! We'll get back to you shortly.</p>
+										<p><span class="success-ico"></span> {{trans("blog.camonbandaguithu")}}</p>
 									</div>
 									<div id="failureMessage" class="errormessage">
-										<p><span class="error-ico"></span> {{trans("blog.loidaxayra")}}There was a problem sending your message. Please try again.</p>
+										<p><span class="error-ico"></span> {{trans("blog.loidaxayra")}}</p>
 									</div>
 									<div id="incompleteMessage" class="statusMessage">
-										<p>{{trans("blog.vuilongdiendaydu")}}Please complete all the fields in the form before sending.</p>
+										<p>{{trans("blog.vuilongdiendaydu")}}</p>
 									</div>
 								</div>
 							</div>
@@ -256,20 +263,20 @@
 
 <!-- JavaScript -->
 
-<script src="<?= PATH_THEME; ?>js/bootstrap.js"></script>
-<script src="<?= PATH_THEME; ?>js/jquery.flexslider.js"></script>
-<script src="<?= PATH_THEME; ?>js/jquery.easing.js"></script>
-<script src="<?= PATH_THEME; ?>js/jquery.mixitup.min.js"></script>
-<script src="<?= PATH_THEME; ?>js/nivo-lightbox.min.js"></script>
-<script src="<?= PATH_THEME; ?>js/jquery.appear.js"></script>
-<script src="<?= PATH_THEME; ?>js/jquery.inview.js"></script>
-<script src="<?= PATH_THEME; ?>js/main.js"></script>
-<script src="<?= PATH_THEME; ?>js/contact.js"></script>
-<script src="<?= PATH_THEME; ?>js/animations.js"></script>
+<script src="{{PATH_THEME}}js/bootstrap.js"></script>
+<script src="{{PATH_THEME}}js/jquery.flexslider.js"></script>
+<script src="{{PATH_THEME}}js/jquery.easing.js"></script>
+<script src="{{PATH_THEME}}js/jquery.mixitup.min.js"></script>
+<script src="{{PATH_THEME}}js/nivo-lightbox.min.js"></script>
+<script src="{{PATH_THEME}}js/jquery.appear.js"></script>
+<script src="{{PATH_THEME}}js/jquery.inview.js"></script>
+<script src="{{PATH_THEME}}js/main.js"></script>
+<script src="{{PATH_THEME}}js/contact.js"></script>
+<script src="{{PATH_THEME}}js/animations.js"></script>
 
 @if(Config::get('myblog.map_google'))	
 	<script src="http://maps.google.com/maps/api/js?sensor=true"></script>
-	<script src="<?= PATH_THEME; ?>js/gmaps.js"></script>
+	<script src="{{PATH_THEME}}js/gmaps.js"></script>
 @endif
 <!-- 
  -->

@@ -19,7 +19,7 @@ Route::get('/article_detail/{id}', 'HomepageController@article_detail');
 
 
 Route::post('contact', "HomepageController@send_mail");
-
+Route::get('/change_lang/{lang}', "admin\BlogsManagerController@change_lang");
 Route::get('/blogs/', "admin\BlogsManagerController@index");
 Route::get('/blogs/create', "admin\BlogsManagerController@create");
 Route::get('/blogs/{id}/edit', 'admin\BlogsManagerController@edit');
@@ -37,6 +37,9 @@ Route::get('/article/page/detail/{id}', 'ArticlesController@detail');
 Route::get('/article/detail/{id}', 'ArticlesController@detail_ajax');
 Route::get('/article/article-endless', 'ArticlesController@article_endless');
 Route::get('/article/category/{cid}', 'ArticlesController@category_article');
+
+Route::get('/article/admin', 'admin\ArticlesController@index');
+
 
 Route::get('edit_db', "ArticlesController@edit_db");
 Route::get('update_main_img', "ArticlesController@update_main_img");

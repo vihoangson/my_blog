@@ -6,9 +6,13 @@ use App\Models\Blogs;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Image;
+use Session;
 
 class BlogsManagerController extends Controller
 {
+    public function __contruct(){
+    }
+
     private $prefix_redirect = "";
     /**
      * Display a listing of the resource.
@@ -165,5 +169,16 @@ class BlogsManagerController extends Controller
                 echo "file nhỏ";
             }
         }
+    }
+
+    public function change_lang($lang=null){
+        if($lang=="vi"){
+            Session::put("current_lang","vi");
+            return redirect("/");
+        }else{
+            Session::put("current_lang","en");
+            return redirect("/");
+        }
+
     }
 }
