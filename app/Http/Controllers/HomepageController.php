@@ -245,6 +245,7 @@ class HomepageController  extends BaseController
 				$dom = str_get_html(file_get_contents($value_site));
 				// Lấy ra tất cả các tag a có trong link $value_site
 				$m = $dom->find("a");
+
 				// foreach tất cả các tag a có trong link $value_site
 				foreach ($m as $key => $value) {
 
@@ -315,6 +316,45 @@ class HomepageController  extends BaseController
 							if($dom2->find("#left_calculator",0)){
 								$content = $dom2->find("#left_calculator",0)->innertext();
 							}
+							//============ ============  ============ ============
+							// LẤY NỘI DUNG CHI TIẾT TRANG
+							//  $value->attr["href"]
+							//  Output: $title;$content;$link;
+							//============ ============  ============ ============
+							//
+								// Khởi tạo biến $dom2 với nội dung theo link $value->attr["href"]
+								$dom2    = str_get_html(file_get_contents($value->attr["href"]));
+
+								$title   = $title;
+								$link    = $value->attr["href"];
+
+								// Rửa tổng biến $content
+								$content="";
+								//============  ============
+								// $name_dom_title
+								// Biến bao của tag title
+								// Lưu ý: có thể thay đổi khi layout trang đích thay đổi
+								//============ ============
+								$name_dom_title = ".title_news h1";
+
+								//============  ============
+								// $name_dom_content
+								// Biến bao của tag content
+								// Lưu ý: có thể thay đổi khi layout trang đích thay đổi
+								//============ ============
+								$name_dom_content = "#left_calculator";
+
+								// Tìm phần tử đầu tiên trong dom có giá trị là #left_calculator
+								if($dom2->find($name_dom_content,0)){
+									$content = $dom2->find($name_dom_content,0)->innertext();
+								}
+							//
+							//============ ============  ============ ============
+							// LẤY NỘI DUNG CHI TIẾT TRANG
+							//  $value->attr["href"]
+							//  Output: $title;$content;$link;
+							//============ ============  ============ ============
+
 
 							//============  ============
 							// Save vào DB
