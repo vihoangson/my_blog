@@ -119,49 +119,36 @@
 
 									<div class="comments-wrap">
 										<h4>5 Comments</h4>
-										<ul>
-											<li>
-												<div class="comment-avatar"><img src="<?= PATH_THEME; ?>images/xtra/1.jpg" class="img-responsive" alt=""/></div>
-												<div class="comment-info">
-													<h6>Collis Ta'eed <span>47 minutes ago</span></h6>
-													<p>Testing the comments</p>
-													<a class="reply" href="#">reply</a>
-												</div>
-											</li>
-											<li class="sub-comment">
-												<div class="comment-avatar"><img src="<?= PATH_THEME; ?>images/xtra/2.jpg" class="img-responsive" alt=""/></div>
-												<div class="comment-info">
-													<h6>jeffrey Way <span>47 minutes ago</span></h6>
-													<p>Works good</p>
-													<a class="reply" href="#">reply</a>
-												</div>
-											</li>
-											<li class="sub-sub-comment">
-												<div class="comment-avatar"><img src="<?= PATH_THEME; ?>images/xtra/3.jpg" class="img-responsive" alt=""/></div>
-												<div class="comment-info">
-													<h6>John Smith <span>47 minutes ago</span></h6>
-													<p>lorem ipsum dolor sit amet</p>
-													<a class="reply" href="#">reply</a>
-												</div>
-											</li>
-											<li>
-												<div class="comment-avatar"><img src="<?= PATH_THEME; ?>images/xtra/1.jpg" class="img-responsive" alt=""/></div>
-												<div class="comment-info">
-													<h6>Collis Ta'eed <span>47 minutes ago</span></h6>
-													<p>dolor sit amet</p>
-													<a class="reply" href="#">reply</a>
-												</div>
-											</li>
+										<ul id="comment-box">
+												<li style="display:none;">
+													<div class="comment-avatar"><img src="" class="img-responsive" alt=""/></div>
+													<div class="comment-info">
+														<h6><span></span> <span>47 minutes ago</span></h6>
+														<p class="comment_content"></p>
+														<a class="reply" href="#" data-id="">reply</a>
+													</div>
+												</li>
+											@foreach($comment as $key => $value)
+												<li>
+													<div class="comment-avatar"><img src="{{"http://www.gravatar.com/avatar/".md5($value->comment_email)}}?d=identicon" class="img-responsive" alt=""/></div>
+													<div class="comment-info">
+														<h6><span>{{$value->comment_name}}</span> <span>47 minutes ago</span></h6>
+														<p class="comment_content">{{$value->comment_content}}</p>
+														<a class="reply" href="#" data-id="{{$value->id}}">reply</a>
+													</div>
+												</li>
+											@endforeach
 										</ul>
 									</div>
 									<div class="contact-form">
 										<h4>Leave a comment</h4>
-										<form>
+										<form id="form_comment">
 											<div class="row">
 												<div class="col-md-4">
-													<input type="text" placeholder="name">
-													<input type="text" placeholder="e-mail">
-													<input type="text" placeholder="website">
+													<input type="text" placeholder="name" name="name">
+													<input type="text" placeholder="e-mail" name="e-mail">
+													<input type="text" placeholder="website" name="website">
+													<input type="hidden" placeholder="website" name="comment_blogs_id" value="{!! $rs->id !!}">
 												</div>
 												<div class="col-md-8">
 													<textarea rows="6" placeholder="Message"></textarea>
@@ -202,15 +189,42 @@
 <script src="<?= PATH_THEME; ?>js/jquery.mCustomScrollbar.concat.min.js"></script>
 <script src="<?= PATH_THEME; ?>js/animations.js"></script>
 <script>
-jQuery(document).ready(function($) {
-	$(window).load(function(){
-		$(".item").mCustomScrollbar({
-			theme:"dark"
-		});
-	});
-});
+// jQuery(document).ready(function($) {
+// 	$(window).load(function(){
+// 		$(".item").mCustomScrollbar({
+// 			theme:"dark"
+// 		});
+// 	});
+// });
 </script>
+<script>
+	$("#form_comment").submit(function(){
+		var data_param = {
+						"comment_name" : $("[name='name']").val(),
+						"comment_email" : $("[name='e-mail']").val(),
+						"comment_content" :  $("textarea").val(),
+						"comment_blogs_id" : $("[name='comment_blogs_id']").val(),
+					};
+		$.post('/ajax/save', data_param , function(data_string, textStatus, xhr) {
+				data = JSON.parse(data_string);
 
+				if(Object.keys(data).length > 0){
+					m = $("#comment-box li:first").clone();
+					m.find("img").attr("src",data.comment_img);
+					m.find(".comment-info .comment_content").text($("textarea").val());
+					m.find(".comment-info h6 span:first").text($("[name='name']").val());
+					m.find(".comment-info .reply").data("id",data.id);
+					m.show();
+					$("#comment-box").append(m);
+					$("[name='name']").val("");
+					$("[name='e-mail']").val("");
+					$("textarea").val("");
+				}else{
+				}
+		});
+		return false;
+	});
+</script>
 
 </body>
 </html>

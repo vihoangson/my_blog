@@ -17,6 +17,8 @@ Route::get('/resume', function(){
 Route::get('blog-single-{id}.html', "HomepageController@show");
 Route::get('/article_detail/{id}', 'HomepageController@article_detail');
 
+Route::post('/ajax/save', "ajax\CommentController@save");
+Route::get('/ajax/save', "ajax\CommentController@save");
 
 Route::post('contact', "HomepageController@send_mail");
 Route::get('/change_lang/{lang}', "admin\BlogsManagerController@change_lang");

@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 use App\Models\Blogs;
 use App\Models\Articles;
+use App\Models\Comment;
 use App\Http\Controllers\ArticlesController;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
@@ -177,20 +178,19 @@ class HomepageController  extends BaseController
 	}
 
 	public function show($id){
-		$rs = Blogs::find($id);
-		return view("blog_sigle",compact("rs"));
+		$rs      = Blogs::find($id);
+		$comment = Comment::where("comment_blogs_id",$id)->get();
+		return view("blog_sigle",compact("rs","comment"));
 	}
 
 	public function send_mail(Request $request){
 		$data = ($request->all());
 
 		$body = "
-
 		<p><b>SenderName</b>: ".$data["senderName"]."</p>
 		<p><b>SenderEmail</b>: ".$data["senderEmail"]."</p>
 		<p><b>Subject</b>: ".$data["subject"]."</p>
 		<p><b>Message</b>:  ".$data["message"]."</p>
-
 		";
 
 		$data = array(
@@ -444,7 +444,6 @@ class HomepageController  extends BaseController
 		}
 		//
 		//============  ============
-
 	}
 
 }
