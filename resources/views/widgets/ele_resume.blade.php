@@ -46,12 +46,12 @@
 				<li>
 					<h5>Lập trình viên tại công ty Vihan</h5>
 					<span class="year"><i class="fa fa-calendar"></i> 2010 - 2014</span>
-					<p> Lầp trình viên </p>
+					<p><b>Vị trí:</b> Lập trình viên </p>
 				</li>
 				<li>
 					<h5>Lập trình viên tại công ty Cybridge Asia</h5>
 					<span class="year"><i class="fa fa-calendar"></i> 2014 - 2016</span>
-					<p> Lầp trình viên </p>
+					<p><b>Vị trí:</b> Lập trình viên </p>
 				</li>
 			</ul>
 		</div>
