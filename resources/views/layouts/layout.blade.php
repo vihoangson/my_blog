@@ -10,7 +10,7 @@
 	<meta name="description" content="Multipress - Responsive Multipurpose HTML5 Template">
 	<meta name="author" content="">
 
-	<title> @yield("title","Premium Layers - Responsive HTML5 vCard Template")</title>
+	<title> @yield("title","Without requirements or design, programming is the art of adding bugs to an empty text file")</title>
 
 	<!-- Mobile Meta -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,8 +23,8 @@
 	<link rel="apple-touch-icon" sizes="144x144" href="{{PATH_THEME}}img/apple-touch-icon-144x144.png">
 
 	<!-- Google Webfonts -->
-	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,600,700,800,700italic,600italic' rel='stylesheet' type='text/css'>
-	<link href='http://fonts.googleapis.com/css?family=Neuton:400,200,300' rel='stylesheet' type='text/css'>
+	<link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,600,700,800,700italic,600italic' rel='stylesheet' type='text/css'>
+	<link href='//fonts.googleapis.com/css?family=Neuton:400,200,300' rel='stylesheet' type='text/css'>
 
 	<!--[if lt IE 9]>
 	<script src="/js/libs/respond.min.js"></script>
@@ -122,13 +122,13 @@ $(document).ready(function() {
 											<div class="p-info"><em>{{trans("blog.e_mail")}}</em><span>vihoangson@gmail.com</span></div>
 										</li>
 										<li>
-											<div class="p-info"><em>{{trans("blog.address")}}</em><span>178/7p Hậu Giang Tp.HCM</span></div>
+											<div class="p-info"><em>{{trans("blog.address")}}</em><span>Tp.HCM</span></div>
 										</li>
 										<li>
 											<div class="p-info"><em>{{trans("blog.phone")}}</em><span>0121-885-1144</span></div>
 										</li>
 										<li>
-											<div class="p-info"><em>{{trans("blog.website")}}</em><span><a href='http://www.vihoangson.com'>www.vihoangson.com</a></span></div>
+											<div class="p-info"><em>{{trans("blog.website")}}</em><span><a href='//www.vihoangson.com'>www.vihoangson.com</a></span></div>
 										</li>
 									</ul>
 								</div>
@@ -202,7 +202,7 @@ $(document).ready(function() {
 									{{-- <h4>{{trans("blog.thongtinlienhe")}}</h4> --}}
 									<p>{{trans("blog.bancothelienhevoithoi")}}</p>
 									<ul>
-										<li><i class="fa fa-home"></i> 178/7p Hậu Giang F6 Q6 Tp.HCM</li>
+										<li><i class="fa fa-home"></i> Tp.HCM</li>
 										<li><i class="fa fa-phone"></i> +84 01218851144</li>
 										<li><i class="fa fa-envelope"></i> vihoangson@gmail.com</li>
 									</ul>
@@ -275,7 +275,7 @@ $(document).ready(function() {
 <script src="{{PATH_THEME}}js/animations.js"></script>
 
 @if(Config::get('myblog.map_google'))	
-	<script src="http://maps.google.com/maps/api/js?sensor=true"></script>
+	<script src="//maps.google.com/maps/api/js?sensor=true"></script>
 	<script src="{{PATH_THEME}}js/gmaps.js"></script>
 @endif
 <!-- 
