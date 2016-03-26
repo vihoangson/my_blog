@@ -17,7 +17,9 @@ class HomepageController  extends BaseController
 	public $array_site;
 
 	public function __construct(){
-		define("LOG_INFO_FLAG_IMPORT", false);
+		if(!defined("LOG_INFO_FLAG_IMPORT")){
+			define("LOG_INFO_FLAG_IMPORT", false);
+		}
 		//parent::__construct();
 		$this->array_site = [
 			0 => "http://vnexpress.net/tin-tuc/thoi-su",

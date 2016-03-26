@@ -1,0 +1,11 @@
+@extends("news.layouts.layout_blog_detail")
+<?php
+$title=$rs->blog_title;
+$image="/uploads/".$rs->blog_image;
+$content_news=$rs->blog_content;
+//$image=$rs->blog_;
+?>
+@section("title_page")
+@endsection
+@section("content_page")
+@endsection

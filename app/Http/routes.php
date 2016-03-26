@@ -52,7 +52,7 @@ Route::get('/bootstrapcdn', function(){
 });
 
 
-
+Route::controller("news","NewsController");
 /*
 |--------------------------------------------------------------------------
 | Application Routes

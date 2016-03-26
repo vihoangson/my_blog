@@ -243,7 +243,7 @@ $(document).ready(function() {
 				<footer>
 					<div class="row">
 						<div class="col-md-7">
-							<p>&copy; 2014 <a href='/blogs'>Vi Hoàng Sơn</a>. All Rights Reserved</p>
+							<p>&copy; 2014 <a href='/'>Vi Hoàng Sơn</a>. All Rights Reserved</p>
 						</div>
 						<div class="col-md-5">
 							<ul class="social">

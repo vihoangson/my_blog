@@ -2,6 +2,7 @@
 
 define('LARAVEL_START', microtime(true));
 define('PATH_THEME', '/assets/themes/');
+define('PATH_THEME_NEWS', '/templates/globalnews/');
 /*
 |--------------------------------------------------------------------------
 | Register The Composer Auto Loader

@@ -149,8 +149,8 @@
 				@endforeach
 			</div>
 		</div>
-		<div class="text-center">
-			<a href="#" class="btn btn-primary btn-lg"><i class="fa fa-user"></i> View my CV</a>
+		<div class="text-center" style="margin-bottom:10px">
+			<a href="https://docs.google.com/document/d/1UXBX0MHyqF9v3k6UgwfL3RH0Xvoy6IBwHomhMB_j8M4/edit?usp=sharing" class="btn btn-primary btn-lg"><i class="fa fa-user"></i> View my CV</a>
 		</div>
 
 
