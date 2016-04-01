@@ -44,7 +44,7 @@ class NewsController  extends BaseController
 		$comment->comment_name     = $comment_name;
 		$comment->comment_email    = $comment_email;
 		$comment->comment_content  = $comment_content;
-		$comment->comment_create   = date();
+		$comment->comment_create   = date("Y/m/d");
 		$comment->comment_blogs_id = $blog_id;
 		$comment->save();
 		$message= "Saved";
