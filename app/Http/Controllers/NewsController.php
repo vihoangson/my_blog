@@ -20,8 +20,6 @@ class NewsController  extends BaseController
 	}
 
 	public function anyIndex(){
-		dd(\Auth::user());
-		die;
 		$rs = Blogs::all();
 		return view("news.index")->withRs($rs);
 	}
