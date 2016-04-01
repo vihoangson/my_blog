@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use Mail;
 use Log;
+
 class NewsController  extends BaseController
 {
 
@@ -19,12 +20,35 @@ class NewsController  extends BaseController
 	}
 
 	public function anyIndex(){
+		dd(\Auth::user());
+		die;
 		$rs = Blogs::all();
-		return view("news.index",compact("rs"));
+		return view("news.index")->withRs($rs);
+	}
+
+	public function getLogout(){
+		\Auth::logout();
+		return redirect("/news");
 	}
 
 	public function anyDetail($id){
-		$rs = Blogs::find($id);
-		return view("news.detail",compact("rs"));
+		$blogs = Blogs::find($id);
+		$comments = $blogs->comments;
+		return view("news.detail")->withBlogs($blogs)->withComments($comments);
+	}
+
+	public function postSaveComment(Request $request){
+		$comment_name    = $request->get("comment_name");
+		$comment_email   = $request->get("comment_email");
+		$comment_content = $request->get("comment_content");
+		$blog_id         = $request->get("blog_id");
+		$comment = new Comment();
+		$comment->comment_name     = $comment_name;
+		$comment->comment_email    = $comment_email;
+		$comment->comment_content  = $comment_content;
+		$comment->comment_blogs_id = $blog_id;
+		$comment->save();
+		$message= "Saved";
+		return redirect('/news/detail/'.$blog_id)->withMessage($message);
 	}
 }

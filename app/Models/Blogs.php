@@ -10,4 +10,7 @@ class Blogs extends Model
 	//protected $guarded = ["videos_title"];
 	protected $guarded = [];
     //
+    public function comments(){
+    	return $this->hasMany('App\Models\Comment','comment_blogs_id');
+    }
 }

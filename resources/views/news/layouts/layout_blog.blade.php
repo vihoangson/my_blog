@@ -30,6 +30,8 @@
     <![endif]-->
 </head>
 <body>
+<h1></h1>
+{{Auth::user()}}
 <!-- preloader start -->
 <div id="preloader">
   <div id="status"></div>
