@@ -1,6 +1,6 @@
-@extends("news.layouts.layout_blog")
+@extends("news.layouts.app")
 @section("title_page","My Blog")
-@section("content_page")
+@section("content")
 	<div class="row">
 		<div class="col-sm-16">
 			<div class="grid-container">

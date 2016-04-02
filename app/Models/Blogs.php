@@ -11,6 +11,7 @@ class Blogs extends Model
 	protected $guarded = [];
     //
     public function comments(){
-    	return $this->hasMany('App\Models\Comment','comment_blogs_id');
+		return $this->hasMany('App\Models\Comment','comment_blogs_id');
     }
+
 }

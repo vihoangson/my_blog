@@ -127,37 +127,39 @@
 				</div>
 			</div>
 			<!-- activities end -->
-			<!-- radio start -->
-			<div class="col-sm-16 bt-space wow fadeInUp animated" data-wow-delay="1s" data-wow-offset="100">
-				<div class="main-title-outer pull-left">
-					<div class="main-title">globalnews radio</div>
+			@if(false)
+				<!-- radio start -->
+				<div class="col-sm-16 bt-space wow fadeInUp animated" data-wow-delay="1s" data-wow-offset="100">
+					<div class="main-title-outer pull-left">
+						<div class="main-title">globalnews radio</div>
+					</div>
+					<iframe width="100%" height="166" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/172078992&amp;color=e74c3c&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false"></iframe>
 				</div>
-				<iframe width="100%" height="166" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/172078992&amp;color=e74c3c&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false"></iframe>
-			</div>
-			<!-- radio end -->
-			<!-- calendar start -->
-			<div class="col-sm-16 bt-space wow fadeInUp animated" data-wow-delay="1s" data-wow-offset="50">
-				<div class="single pull-left"></div>
-			</div>
-			<!-- calendar end -->
-			<!-- flicker imgs start -->
-			<div class="col-sm-16 bt-space wow fadeInUp animated" data-wow-delay="1s" data-wow-offset="35">
-				<div class="main-title-outer pull-left">
-					<div class="main-title">flicker images</div>
+				<!-- radio end -->
+				<!-- calendar start -->
+				<div class="col-sm-16 bt-space wow fadeInUp animated" data-wow-delay="1s" data-wow-offset="50">
+					<div class="single pull-left"></div>
 				</div>
-				<ul class="list-inline">
-					<li><a href="https://flic.kr/p/pGKEzR" target="_blank"><img class="img-responsive" src="https://farm4.staticflickr.com/3944/15557385115_2d191a5cc7_s.jpg" width="55" height="55" alt=""/></a></li>
-					<li><a href="https://flic.kr/p/pq5PiE" target="_blank"><img class="img-responsive" src="https://farm4.staticflickr.com/3956/15368741148_ef02d92a65_s.jpg" width="55" height="55" alt=""/></a></li>
-					<li><a href="https://flic.kr/p/pq9rDD" target="_blank"><img class="img-responsive" src="https://farm6.staticflickr.com/5608/15369448747_fd3f69cbb7_s.jpg" width="55" height="55" alt=""/></a></li>
-					<li><a href="https://flic.kr/p/pGM4yz" target="_blank"><img class="img-responsive" src="https://farm4.staticflickr.com/3946/15557657525_da199f6917_s.jpg" width="55" height="55" alt=""/></a></li>
-					<li><a href="https://flic.kr/p/pH6FJ4" target="_blank"><img class="img-responsive" src="https://farm4.staticflickr.com/3953/15561291195_e7ecf7d3a1_s.jpg" width="55" height="55" alt=""/></a></li>
-					<li><a href="https://flic.kr/p/pqoKFn" target="_blank"><img class="img-responsive" src="https://farm4.staticflickr.com/3953/15372240967_9ee086188c_s.jpg" width="55" height="55" alt=""/></a></li>
-					<li><a href="https://flic.kr/p/pGHh6g" target="_blank"><img class="img-responsive" src="https://farm4.staticflickr.com/3944/15556919225_c7d99f9667_s.jpg" width="55" height="55" alt=""/></a></li>
-					<li><a href="https://flic.kr/p/pqxJZC" target="_blank"><img class="img-responsive" src="https://farm4.staticflickr.com/3939/15373994670_8c756abcb0_s.jpg" width="55" height="55" alt=""/></a></li>
-					<li><a href="https://flic.kr/p/pEPtj9" target="_blank"><img class="img-responsive" src="https://farm4.staticflickr.com/3938/15535494656_d04ef318a0_s.jpg" width="55" height="55" alt=""/></a></li>
-					<li><a href="https://flic.kr/p/pqjpxX" target="_blank"><img class="img-responsive" src="https://farm6.staticflickr.com/5605/15371392809_5069f8772d_s.jpg" width="55" height="55" alt=""/></a></li>
-				</ul>
-			</div>
+				<!-- calendar end -->
+				<!-- flicker imgs start -->
+				<div class="col-sm-16 bt-space wow fadeInUp animated" data-wow-delay="1s" data-wow-offset="35">
+					<div class="main-title-outer pull-left">
+						<div class="main-title">flicker images</div>
+					</div>
+					<ul class="list-inline">
+						<li><a href="https://flic.kr/p/pGKEzR" target="_blank"><img class="img-responsive" src="https://farm4.staticflickr.com/3944/15557385115_2d191a5cc7_s.jpg" width="55" height="55" alt=""/></a></li>
+						<li><a href="https://flic.kr/p/pq5PiE" target="_blank"><img class="img-responsive" src="https://farm4.staticflickr.com/3956/15368741148_ef02d92a65_s.jpg" width="55" height="55" alt=""/></a></li>
+						<li><a href="https://flic.kr/p/pq9rDD" target="_blank"><img class="img-responsive" src="https://farm6.staticflickr.com/5608/15369448747_fd3f69cbb7_s.jpg" width="55" height="55" alt=""/></a></li>
+						<li><a href="https://flic.kr/p/pGM4yz" target="_blank"><img class="img-responsive" src="https://farm4.staticflickr.com/3946/15557657525_da199f6917_s.jpg" width="55" height="55" alt=""/></a></li>
+						<li><a href="https://flic.kr/p/pH6FJ4" target="_blank"><img class="img-responsive" src="https://farm4.staticflickr.com/3953/15561291195_e7ecf7d3a1_s.jpg" width="55" height="55" alt=""/></a></li>
+						<li><a href="https://flic.kr/p/pqoKFn" target="_blank"><img class="img-responsive" src="https://farm4.staticflickr.com/3953/15372240967_9ee086188c_s.jpg" width="55" height="55" alt=""/></a></li>
+						<li><a href="https://flic.kr/p/pGHh6g" target="_blank"><img class="img-responsive" src="https://farm4.staticflickr.com/3944/15556919225_c7d99f9667_s.jpg" width="55" height="55" alt=""/></a></li>
+						<li><a href="https://flic.kr/p/pqxJZC" target="_blank"><img class="img-responsive" src="https://farm4.staticflickr.com/3939/15373994670_8c756abcb0_s.jpg" width="55" height="55" alt=""/></a></li>
+						<li><a href="https://flic.kr/p/pEPtj9" target="_blank"><img class="img-responsive" src="https://farm4.staticflickr.com/3938/15535494656_d04ef318a0_s.jpg" width="55" height="55" alt=""/></a></li>
+						<li><a href="https://flic.kr/p/pqjpxX" target="_blank"><img class="img-responsive" src="https://farm6.staticflickr.com/5605/15371392809_5069f8772d_s.jpg" width="55" height="55" alt=""/></a></li>
+					</ul>
+				</div>
+			@endif
 			<!-- flicker imgs end -->
 		</div>
 	</div>

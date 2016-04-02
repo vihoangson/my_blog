@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -55,7 +54,7 @@
 </div>
 <!-- /END THEME SWITCHER--> <!-- wrapper start -->
 <div class="wrapper"><!-- header toolbar start -->
-  <div class="header-toolbar">
+  <div class="header-toolbar hidden">
     <div class="container">
       <div class="row">
         <div class="col-md-16 text-uppercase">
@@ -85,7 +84,7 @@
     <!-- header start -->
     <div class="container header">
       <div class="row">
-        <div class="col-sm-5 col-md-5 wow fadeInUpLeft animated"><a class="navbar-brand" href="index.html">globalnews</a></div>
+        <div class="col-sm-5 col-md-5 wow fadeInUpLeft animated"><a class="navbar-brand" href="/news">globalnews</a></div>
         <div class="col-sm-11 col-md-11 hidden-xs text-right"><img src="{{PATH_THEME_NEWS}}images/ads/468-60-ad.gif" width="468" height="60" alt=""/></div>
       </div>
     </div>
@@ -127,12 +126,13 @@
   <!-- bage header Start -->
   <div class="container">
     <div class="page-header">
-      <h1>Section Topic Details </h1>
-      <ol class="breadcrumb">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Pages</a></li>
-        <li class="active">Section Topic Details</li>
-      </ol>
+      <h1>@yield("title_page_h1","Trang blog cá nhân")</h1>
+      @section("breadcrumb")
+        <ol class="breadcrumb">
+          <li><a href="/news">Trang chủ</a></li>
+          <li class="active">Trang blog cá nhân</li>
+        </ol>
+      @show
     </div>
   </div>
   <!-- bage header End -->
@@ -172,11 +172,11 @@
           <div class="col-sm-6 subscribe-info wow fadeInDown animated" data-wow-delay="1s" data-wow-offset="40">
             <div class="row">
               <div class="col-sm-16">
-                <div class="f-title">globalnews theme</div>
-                <p>Lorem Ipsum has been the standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </p>
+                <div class="f-title">Trang cá nhân của tôi</div>
+                <p>Rất vui khi được chia sẻ với mọi người </p>
               </div>
               <div class="col-sm-16">
-                <div class="f-title">subscribe to news letter</div>
+                <div class="f-title">Nhận thư khi có cập nhật mới</div>
                 <form class="form-inline">
                   <input type="email" class="form-control" id="input-email" placeholder="Type your e-mail adress">
                   <button type="submit" class="btn"> <span class="ion-paper-airplane text-danger"></span> </button>
@@ -206,45 +206,21 @@
           <div class="col-sm-5 recent-posts  wow fadeInDown animated" data-wow-delay="1s" data-wow-offset="40">
             <div class="f-title">recent posts</div>
             <ul class="list-unstyled">
-              <li> <a href="#">
-                <div class="row">
-                  <div class="col-sm-4"><img class="img-thumbnail pull-left" src="{{PATH_THEME_NEWS}}images/footer-recent/f-recent-1.jpg" width="70" height="70" alt=""/> </div>
-                  <div class="col-sm-12">
-                    <h4>The evolution of the apple ..</h4>
-                    <div class="f-sub-info">
-                      <div class="time"><span class="ion-android-data icon"></span>Dec 16 2014</div>
-                      <div class="comments"><span class="ion-chatbubbles icon"></span>351</div>
-                      <div class="stars"><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star-half"></span></div>
+               @foreach($blog_bottom_footer as $blog)
+                <li> <a href="#">
+                  <div class="row">
+                    <div class="col-sm-4"><img class="img-thumbnail pull-left" src="/uploads/{{$blog->blog_image}}" width="70" height="70" alt=""/> </div>
+                    <div class="col-sm-12">
+                      <h4>{{$blog->blog_title}}</h4>
+                      <div class="f-sub-info">
+                        <div class="time"><span class="ion-android-data icon"></span>{{$blog->created_at->format("M d y")}}</div>
+                        <div class="comments"><span class="ion-chatbubbles icon"></span>351</div>
+                        <div class="stars"><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star-half"></span></div>
+                      </div>
                     </div>
                   </div>
-                </div>
-                </a> </li>
-              <li> <a href="#">
-                <div class="row">
-                  <div class="col-sm-4 "><img class="img-thumbnail pull-left" src="{{PATH_THEME_NEWS}}images/footer-recent/f-recent-2.jpg" width="70" height="70" alt=""/> </div>
-                  <div class="col-sm-12">
-                    <h4>The evolution of the apple ..</h4>
-                    <div class="f-sub-info">
-                      <div class="time"><span class="ion-android-data icon"></span>Dec 16 2014</div>
-                      <div class="comments"><span class="ion-chatbubbles icon"></span>351</div>
-                      <div class="stars"><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star-half"></span></div>
-                    </div>
-                  </div>
-                </div>
-                </a> </li>
-              <li> <a href="#">
-                <div class="row">
-                  <div class="col-sm-4"><img class="img-thumbnail pull-left" src="{{PATH_THEME_NEWS}}images/footer-recent/f-recent-3.jpg" width="70" height="70" alt=""/> </div>
-                  <div class="col-sm-12">
-                    <h4>The evolution of the apple ..</h4>
-                    <div class="f-sub-info">
-                      <div class="time"><span class="ion-android-data icon"></span>Dec 16 2014</div>
-                      <div class="comments"><span class="ion-chatbubbles icon"></span>351</div>
-                      <div class="stars"><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star-half"></span></div>
-                    </div>
-                  </div>
-                </div>
-                </a> </li>
+                  </a> </li>
+               @endforeach
             </ul>
           </div>
         </div>
@@ -257,14 +233,8 @@
             <div class="row">
               <div class="col-sm-10 col-xs-16 f-nav wow fadeInDown animated" data-wow-delay="0.5s" data-wow-offset="10">
                 <ul class="list-inline ">
-                  <li> <a href="#"> Home </a> </li>
-                  <li> <a href="#"> Business </a> </li>
-                  <li> <a href="#"> Science </a> </li>
-                  <li> <a href="#"> Lifestyle </a> </li>
-                  <li> <a href="#"> Politics </a> </li>
-                  <li> <a href="#"> Sport </a> </li>
-                  <li> <a href="#">short codes</a> </li>
-                  <li> <a href="#"> Contact </a> </li>
+                  <li> <a href="/news"> Trang chủ </a> </li>
+                  <li> <a href="/"> Liên hệ </a> </li>
                 </ul>
               </div>
               <div class="col-sm-6 col-xs-16 copyrights text-right wow fadeInDown animated" data-wow-delay="0.5s" data-wow-offset="10">© 2014 GLOBALNEWS THEME - ALL RIGHTS RESERVED</div>
@@ -272,9 +242,9 @@
           </div>
           <div class="col-sm-16 f-social  wow fadeInDown animated" data-wow-delay="1s" data-wow-offset="10">
             <ul class="list-inline">
-              <li> <a href="#"><span class="ion-social-twitter"></span></a> </li>
-              <li> <a href="#"><span class="ion-social-facebook"></span></a> </li>
-              <li> <a href="#"><span class="ion-social-instagram"></span></a> </li>
+              <li> <a href="http://fb.com/vihoangson"><span class="ion-social-twitter"></span></a> </li>
+              <li> <a href="http://fb.com/vihoangson"><span class="ion-social-facebook"></span></a> </li>
+              <li> <a href="http://fb.com/vihoangson"><span class="ion-social-instagram"></span></a> </li>
             </ul>
           </div>
         </div>

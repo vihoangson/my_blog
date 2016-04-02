@@ -31,8 +31,9 @@ class NewsController  extends BaseController
 
 	public function anyDetail($id){
 		$blogs = Blogs::find($id);
+		$relate_blogs = Blogs::limit(3)->get();
 		$comments = $blogs->comments;
-		return view("news.detail")->withBlogs($blogs)->withComments($comments);
+		return view("news.detail")->withBlogs($blogs)->withComments($comments)->withRelateBlog($relate_blogs);
 	}
 
 	public function postSaveComment(Request $request){

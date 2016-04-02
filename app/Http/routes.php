@@ -78,15 +78,12 @@
 | kernel and includes session state, CSRF protection, and more.
 |
 */
-
 Route::group(['middleware' => ['web']], function () {
-
 	Route::controllers([
 		'auth' => 'Auth\AuthController',
 		'password' => 'Auth\PasswordController',
 	]);
-
-	Route::controller("news","NewsController");
-
 });
+
+Route::controller("news","NewsController");
 
