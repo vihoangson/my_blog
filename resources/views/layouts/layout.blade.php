@@ -3,6 +3,7 @@
 <!--[if IE 9]>			<html class="ie ie9"> <![endif]-->
 <!--[if gt IE 9]><!-->	<html> <!--<![endif]-->
 <head>
+
 	<!-- Meta -->
 	<meta charset="utf-8">
 	<meta name="keywords" content="HTML5 Template" />
@@ -77,11 +78,22 @@ $(document).ready(function() {
 					<li><a href="#">{{trans("blog.profile")}} <i class="fa fa-user"></i></a></li>
 					<li><a href="#">{{trans("blog.work")}} <i class="fa fa-briefcase"></i></a></li>
 					<li><a href="#">{{trans("blog.resume")}} <i class="fa fa-file-text"></i></a></li>
-					<li><a href="/news">{{trans("blog.blog")}} <i class="fa fa-comment"></i></a></li>
+					<li><a href="#">{{trans("blog.blog")}} <i class="fa fa-comment"></i></a></li>
 					<li><a href="#">{{trans("blog.contact")}} <i class="fa fa-envelope"></i></a></li>
 				</ul>
 				</nav>
 			</div>
+			<script>
+				// ============ ============  ============  ============ 
+				// Click selector block then load image preview in article
+				// ============ ============  ============  ============ 
+				$(".navigation> li:nth-child(4)").click(function(){
+					$(".img-responsive").each(function(){
+						var src = $(this).data("src");
+						$(this).attr("src",src);
+					});
+				});
+			</script>
 			<div class="col-md-9 r-content">
 				<div class="flexslider">
 					<div class="slides">
