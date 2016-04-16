@@ -346,5 +346,10 @@
 <script src="{{PATH_THEME_NEWS}}js/enquire.js"></script> 
 <!--custom functions--> 
 <script src="{{PATH_THEME_NEWS}}js/custom-fun.js"></script>
+<script>
+  function debug_page(){
+    $(".hidden").removeClass("hidden");
+  }
+</script>
 </body>
 </html>

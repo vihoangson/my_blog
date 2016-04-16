@@ -17,15 +17,16 @@
         "insertdatetime media table contextmenu paste"
         ],
     });
-    $(document).ready(function() { 
+    $(document).ready(function() {
         //============ ============  ============  ============ 
         // Tag-it JS
         // Minimal
         //
             $('#myTags').tagit({
-                "allowSpaces":true,
-                 availableTags: ["c++", "java", "php", "javascript", "ruby", "python", "c"],
-                 autocomplete: {delay: 0, minLength: 2},
+                fieldName: "tags[]",
+                allowSpaces:true,
+                availableTags: ["c++", "java", "php", "javascript", "ruby", "python", "c"],
+                autocomplete: {delay: 0, minLength: 2},
             });
         //
         //============ ============  ============  ============ 
@@ -112,20 +113,18 @@
     </div>
 </div>
 @endsection
-@section("detail_page")
+@section("content")
 
-
-
-<section class="row post_page_sidebar post_page_sidebar1">
-    <div class="container">
-        <div class="row">
+<section class=" post_page_sidebar post_page_sidebar1">
+    <div class="">
+        <div class="">
             <div class="">
                 <div class="author_details row m0">
 
                     <div class="modal fade" id="modal-id-upload">
                         <div class="modal-dialog">
                             <div class="modal-content">
-                                <form action="/blogs/post_popup_img" onSubmit="return false" method="post" enctype="multipart/form-data" id="MyUploadForm">
+                                <form action="/admin/blogs/post_popup_img" onSubmit="return false" method="post" enctype="multipart/form-data" id="MyUploadForm">
                                     <div class="modal-header">
                                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                         <h4 class="modal-title"><i class="fa fa-upload"></i> Upload file</h4>
@@ -137,10 +136,10 @@
                                             {{-- <img src="images/ajax-loader.gif" id="loading-img" style="display:none;" alt="Please Wait"/> --}}
 
 
-<div class="progress">
-  <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
-  </div>
-</div>
+                                            <div class="progress">
+                                              <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+                                              </div>
+                                            </div>
 
                                             <div id="progressbox" style="display:none;"><div id="progressbar"></div ><div id="statustxt">0%</div></div>
                                             <div id="output"></div>
@@ -155,7 +154,7 @@
                         </div>
                     </div>
 
-                    <form action="/blogs/{{(isset($rs->id)?$rs->id."/edit":"post_newblog")}}" method="POST" role="form" enctype="multipart/form-data">
+                    <form action="/admin/blogs/{{(isset($rs->id)?$rs->id."/edit":"post_newblog")}}" method="POST" role="form" enctype="multipart/form-data">
                         <div class="row">
                             <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
                                 <div class="">
@@ -172,7 +171,14 @@
                                         <textarea name="blog_extra" class="form-control">{{(isset($rs->blog_extra)?$rs->blog_extra:"")}}</textarea>
                                         <textarea style="height:500px;" name="blog_content" class="tinymce">{{(isset($rs->blog_content)?$rs->blog_content:"")}}</textarea>
                                         <hr>
-                                        11111111<ul id="myTags"></ul>22222222222
+                                        <h2>Tags</h2>
+                                        <ul id="myTags">
+                                            @if($rs->blog_tags!="")
+                                                @foreach(explode(",",$rs->blog_tags) as $tag)
+                                                <li>{{$tag}}</li>
+                                                @endforeach
+                                            @endif
+                                        </ul>
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">

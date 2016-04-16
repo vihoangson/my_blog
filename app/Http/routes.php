@@ -37,15 +37,15 @@
 
 	Route::post('contact', "HomepageController@send_mail");
 	Route::get('/change_lang/{lang}', "admin\BlogsManagerController@change_lang");
-	Route::get('./admin/blogs/', "admin\BlogsManagerController@index");
-	Route::get('./admin/blogs/create', "admin\BlogsManagerController@create");
-	Route::get('./admin/blogs/{id}/edit', 'admin\BlogsManagerController@edit');
-	Route::put('./admin/blogs/{id}/edit', 'admin\BlogsManagerController@update');
-	Route::get('./admin/blogs/{id}/view', 'admin\BlogsManagerController@show');
-	Route::get('./admin/blogs/delete/{id}', 'admin\BlogsManagerController@destroy');
-	Route::post('./admin/blogs/post_newblog', "admin\BlogsManagerController@store");
-	Route::post('./admin/blogs/post_popup_img', 'admin\BlogsManagerController@post_popup_img');
-	Route::get('./admin/blogs/popup_img', 'admin\BlogsManagerController@popup_img');
+	Route::get('/admin/blogs/', "admin\BlogsManagerController@index");
+	Route::get('/admin/blogs/create', "admin\BlogsManagerController@create");
+	Route::get('/admin/blogs/{id}/edit', 'admin\BlogsManagerController@edit');
+	Route::put('/admin/blogs/{id}/edit', 'admin\BlogsManagerController@update');
+	Route::get('/admin/blogs/{id}/view', 'admin\BlogsManagerController@show');
+	Route::get('/admin/blogs/delete/{id}', 'admin\BlogsManagerController@destroy');
+	Route::post('/admin/blogs/post_newblog', "admin\BlogsManagerController@store");
+	Route::post('/admin/blogs/post_popup_img', 'admin\BlogsManagerController@post_popup_img');
+	Route::get('/admin/blogs/popup_img', 'admin\BlogsManagerController@popup_img');
 
 	Route::get('/article/list', 'ArticlesController@index');
 	Route::get('/article/', 'ArticlesController@homepage');

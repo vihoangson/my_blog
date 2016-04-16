@@ -22,7 +22,7 @@ class BlogsManagerController extends Controller
     public function index()
     {
         $rs = Blogs::orderBy("id","desc")->get();
-        return view("blogs.index",compact("rs"));
+        return view("admin.blogs.index",compact("rs"));
     }
 
     /**
@@ -33,7 +33,7 @@ class BlogsManagerController extends Controller
     public function create()
     {
         //
-        return view("blogs.create");
+        return view("admin.blogs.create");
     }
 
     /**
@@ -52,7 +52,7 @@ class BlogsManagerController extends Controller
         ];
         $this->upload_file_blog($request,$data);
         Blogs::create($data);
-        return redirect($this->prefix_redirect."/blogs");
+        return redirect($this->prefix_redirect."/admin/blogs");
     }
 
     /**
@@ -64,7 +64,7 @@ class BlogsManagerController extends Controller
     public function show($id)
     {
         $rs = Blogs::find($id);
-        return view("blogs.show",compact("rs"));
+        return view("admin.blogs.show",compact("rs"));
     }
 
     /**
@@ -76,7 +76,7 @@ class BlogsManagerController extends Controller
     public function edit($id)
     {
         $rs = Blogs::find($id);
-        return view("blogs.create",compact("rs"));
+        return view("admin.blogs.create",compact("rs"));
     }
 
     /**
@@ -88,16 +88,21 @@ class BlogsManagerController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if($request->has("tags")){
+            $tags = implode(",",$request->get("tags"));
+        }
+
         $rs = $request->all();
         $data = [
             "blog_title"    => $rs["blog_title"],
             "blog_content"  => $rs["blog_content"],
             "blog_extra"    => $rs["blog_extra"],
             "blog_show_img" => $request->get("show_img"),
+            "blog_tags"     => $tags,
         ];
         $this->upload_file_blog($request,$data);
         Blogs::where("id",$id)->update($data);
-        return redirect($this->prefix_redirect.'/blogs/'.$id."/edit");
+        return redirect($this->prefix_redirect.'/admin/blogs/'.$id."/edit");
     }
 
     private function upload_file_blog($request,&$data){
