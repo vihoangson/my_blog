@@ -97,12 +97,14 @@
 									}
 								}
 								$("article.ele-blog a").click(function(event) {
+									$("#modal-id .modal-title").html("Loading");
+									$("#modal-id .modal-body").html("Loading <i class=\"fa fa-refresh fa-spin\"></i>");
+									$("#modal-id").modal("show");
 									$.get($(this).attr("href"), function(data) {
 										var json_rs = JSON.parse(data)
 										$("#modal-id .modal-title").html(json_rs.blog_title);
 										$("#modal-id .modal-body").html(json_rs.blog_content);
 										$("#modal-id img").css({maxWidth:'100%',height:"auto"});
-										$("#modal-id").modal("show");
 									});
 									event.preventDefault();
 								});
