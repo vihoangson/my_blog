@@ -51,7 +51,7 @@ class BlogsManagerController extends Controller
         ];
         $this->upload_file_blog($request,$data);
         Blogs::create($data);
-        return redirect($this->prefix_redirect."/admin/blogs");
+        return redirect($this->prefix_redirect."/blogs");
     }
 
     /**
@@ -101,7 +101,7 @@ class BlogsManagerController extends Controller
         ];
         $this->upload_file_blog($request,$data);
         Blogs::where("id",$id)->update($data);
-        return redirect($this->prefix_redirect.'/admin/blogs/'.$id."/edit");
+        return redirect($this->prefix_redirect.'/blogs/'.$id."/edit");
     }
 
     private function upload_file_blog($request,&$data){
