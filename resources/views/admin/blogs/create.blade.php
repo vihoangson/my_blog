@@ -6,97 +6,10 @@
 <script src="/assets/bower_components/jquery.form.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js" type="text/javascript" charset="utf-8"></script>
 <script src="/assets/bower_components/tag-it/js/tag-it.min.js"></script>
-<script>
+<script src="/assets/js/admin_blogs_create.js"></script>
 
-
-    tinymce.init({ 
-        selector:'textarea.tinymce',
-        plugins: [
-        "advlist autolink lists link image charmap print preview anchor",
-        "searchreplace visualblocks code fullscreen",
-        "insertdatetime media table contextmenu paste"
-        ],
-    });
-    $(document).ready(function() {
-        //============ ============  ============  ============ 
-        // Tag-it JS
-        // Minimal
-        //
-            $('#myTags').tagit({
-                fieldName: "tags[]",
-                allowSpaces:true,
-                availableTags: ["c++", "java", "php", "javascript", "ruby", "python", "c"],
-                autocomplete: {delay: 0, minLength: 2},
-            });
-        //
-        //============ ============  ============  ============ 
-        var options = { 
-            target:   '#output', 
-            beforeSubmit:  beforeSubmit,
-            uploadProgress: OnProgress, //upload progress callback 
-            success:       afterSuccess,
-            resetForm: true  
-        }; 
-        $('#MyUploadForm').submit(function() { 
-            $(this).ajaxSubmit(options);            
-            return false; 
-        });
-    });
-    function afterSuccess(){
-        $(".progress-bar").css({"width":"0%"});
-        $("#output").load("/blogs/popup_img",function (){
-            click_img();
-        });
-    }
-    function beforeSubmit(){
-        //$("#progressbox").show();
-        //$("#output").load("/blogs/popup_img");
-
-    }
-    function OnProgress(event, position, total, percentComplete)
-    {
-        $(".progress-bar").css({"width":percentComplete+"%"});
-        
-    }
-    $(".button-media").click(function(event) {
-        $("#modal-id .modal-body").html('<div class="loading_box"><h3><i class="fa fa-refresh fa-spin"></i> Loading...</h3></div>');
-        $.ajax({
-            url: '/blogs/popup_img',
-            type: 'GET',
-            dataType: 'html',
-            data: {param1: 'value1'},
-        })
-        .done(function(data) {
-            $(".loading_box").remove();
-            $("#modal-id  .modal-body").html(data);
-            click_img();
-        })
-        .fail(function() {
-            console.log("error");
-        });
-
-        $("#modal-id").modal();
-    });
-
-    function click_img(){
-        $("img").click(function(){
-            var html_img = "<p><img class='img_in_content' src='"+$(this).attr("src")+"'></p>";
-            var $body = $(tinymce.activeEditor.getBody());
-            var sel = tinyMCE.activeEditor.selection;
-            sel.setContent(html_img);  
-            $("#modal-id").modal('hide');
-            $("#modal-id-upload").modal('hide');
-
-        });
-    }
-    $(".bton-upload").click(function(){
-        $("#output").load("/blogs/popup_img",function (){
-            click_img();
-        });
-        $("#modal-id-upload").modal();
-    });
-</script>
 <style>.navbar-fixed-top{display: none}</style>
+
 <div class="modal fade" id="modal-id">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -130,7 +43,7 @@
                                         <h4 class="modal-title"><i class="fa fa-upload"></i> Upload file</h4>
                                     </div>
                                     <div class="modal-body">
-                                        <div class='box-upload'>                        
+                                        <div class='box-upload'>
                                             <input name="_token" value="{{csrf_token()}}" type="hidden">
                                             <input name="userfile" id="imageInput" class="form-control" type="file" />
                                             {{-- <img src="images/ajax-loader.gif" id="loading-img" style="display:none;" alt="Please Wait"/> --}}
@@ -173,7 +86,7 @@
                                         <hr>
                                         <h2>Tags</h2>
                                         <ul id="myTags">
-                                            @if($rs->blog_tags!="")
+                                            @if(isset($rs->blog_tags))
                                                 @foreach(explode(",",$rs->blog_tags) as $tag)
                                                 <li>{{$tag}}</li>
                                                 @endforeach
