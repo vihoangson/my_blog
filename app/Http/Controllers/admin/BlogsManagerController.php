@@ -97,7 +97,7 @@ class BlogsManagerController extends Controller
             "blog_content"  => $rs["blog_content"],
             "blog_extra"    => $rs["blog_extra"],
             "blog_show_img" => $request->get("show_img"),
-            "blog_tags"     => (isset($tags)?$tags:""),
+            "blog_tags"     => (isset($tags)?$tags:$rs["blog_title"]),
         ];
         $this->upload_file_blog($request,$data);
         Blogs::where("id",$id)->update($data);
