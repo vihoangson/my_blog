@@ -665,19 +665,22 @@
     <!-- Toastr -->
     <script src="<?= PATH_THEME_ADMIN; ?>js/plugins/toastr/toastr.min.js"></script>
 
+@section("custom_js_footer")
+@show
 
     <script>
         $(document).ready(function() {
-            setTimeout(function() {
-                toastr.options = {
-                    closeButton: true,
-                    progressBar: true,
-                    showMethod: 'slideDown',
-                    timeOut: 4000
-                };
-                toastr.success('Responsive Admin Theme', 'Welcome to INSPINIA');
-
-            }, 1300);
+            @if(false)
+                setTimeout(function() {
+                    toastr.options = {
+                        closeButton: true,
+                        progressBar: true,
+                        showMethod: 'slideDown',
+                        timeOut: 400
+                    };
+                    toastr.success('Responsive Admin Theme', 'Welcome to INSPINIA');
+                }, 130);
+            @endif
 
 
             var data1 = [

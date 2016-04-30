@@ -39,6 +39,8 @@
 	Route::get('/change_lang/{lang}', "admin\BlogsManagerController@change_lang");
 	Route::get('/admin/blogs/', "admin\BlogsManagerController@index");
 	Route::get('/admin/blogs/create', "admin\BlogsManagerController@create");
+	Route::post('/admin/blogs/create', "admin\BlogsManagerController@create");
+
 	Route::get('/admin/blogs/{id}/edit', 'admin\BlogsManagerController@edit');
 	Route::put('/admin/blogs/{id}/edit', 'admin\BlogsManagerController@update');
 	Route::get('/admin/blogs/{id}/view', 'admin\BlogsManagerController@show');

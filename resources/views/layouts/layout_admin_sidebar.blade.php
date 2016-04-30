@@ -22,7 +22,7 @@
 			<a href="index.html"><i class="fa fa-th-large"></i> <span class="nav-label">Admin CP</span> <span class="fa arrow"></span></a>
 			<ul class="nav nav-second-level">
 				<li class="active"><a href="/admin/blogs">All blogs</a></li>
-				<li class="active"><a href="/admin/blogs"><i class="fa fa-plus"></i>  Add blogs</a></li>
+				<li class="active"><a href="/admin/blogs/create"><i class="fa fa-plus"></i>  Add blogs</a></li>
 			</ul>
 		</li>
 	</ul>

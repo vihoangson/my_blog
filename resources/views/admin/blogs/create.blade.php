@@ -118,3 +118,16 @@
 </section>
 @stop
 
+@section("custom_js_footer")
+<script>
+    setTimeout(function() {
+        toastr.options = {
+            closeButton: true,
+            progressBar: true,
+            showMethod: 'slideDown',
+            timeOut: 400
+        };
+        toastr.success('Responsive Admin Theme', 'Welcome to INSPINIA');
+    }, 130);
+</script>
+@stop
