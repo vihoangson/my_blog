@@ -59,6 +59,24 @@
 								background: rgb(253, 229, 138);
 							}
 						</style>
+
+
+						<div class="modal fade" id="modal-id">
+							<div class="modal-dialog modal-lg">
+								<div class="modal-content">
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+										<h4 class="modal-title">Modal title</h4>
+									</div>
+									<div class="modal-body">
+										
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+									</div>
+								</div>
+							</div>
+						</div>
 						<script>
 							$(document).ready(function() {
 
@@ -77,5 +95,16 @@
 										$(".breadcrumb_btn > div[data-id='"+localStorage["id_c"]+"']").addClass('hover');
 									}
 								}
+								$("article.ele-blog a").click(function(event) {
+									$.get($(this).attr("href"), function(data) {
+										var json_rs = JSON.parse(data)
+										$("#modal-id .modal-title").html(json_rs.blog_title);
+										$("#modal-id .modal-body").html(json_rs.blog_content);
+										$("#modal-id img").css({maxWidth:'100%',height:"auto"});
+										$("#modal-id").modal("show");
+									});
+									event.preventDefault();
+								});
 							});
 						</script>
+

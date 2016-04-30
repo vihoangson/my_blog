@@ -1,4 +1,4 @@
-	<article>
+	<article class='ele-blog'>
 		<div class="row">
 			<div class="col-md-5">
 				<img src="" data-src="{{(isset($value->blog_image)?"/uploads/".$value->blog_image:"")}}" class="img-responsive" alt=""/>

@@ -88,4 +88,5 @@ Route::group(['middleware' => ['web']], function () {
 });
 
 Route::controller("news","NewsController");
+Route::controller("doajax","ajax\DoajaxController");
 

@@ -3,7 +3,6 @@
 <!--[if IE 9]>			<html class="ie ie9"> <![endif]-->
 <!--[if gt IE 9]><!-->	<html> <!--<![endif]-->
 <head>
-
 	<!-- Meta -->
 	<meta charset="utf-8">
 	<meta name="keywords" content="HTML5 Template" />
