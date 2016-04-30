@@ -13,7 +13,7 @@ class BlogsManagerController extends Controller
     public function __contruct(){
     }
 
-    private $prefix_redirect = "";
+    private $prefix_redirect = "/admin";
     /**
      * Display a listing of the resource.
      *
