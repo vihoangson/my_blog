@@ -78,6 +78,7 @@
 							</div>
 						</div>
 						<script>
+						
 							$(document).ready(function() {
 
 								set_entry_blog();

@@ -174,13 +174,19 @@ class HomepageController  extends BaseController
 
 	public function show($id){
 		$rs      = Blogs::find($id);
+		if(!$rs) {
+			echo json_encode([
+				"blog_title"=>"Not found",
+				"blog_content"=>"Not found",
+			]);
+			return;
+		}
 		$comment = Comment::where("comment_blogs_id",$id)->get();
 		echo json_encode([
 			"blog_title"=>$rs->blog_title,
 			"blog_content"=>$rs->blog_content,
 		]);
 		die;
-		return view("blog_sigle",compact("rs","comment"));
 	}
 
 	public function send_mail(Request $request){
