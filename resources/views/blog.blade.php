@@ -109,5 +109,10 @@
 									event.preventDefault();
 								});
 							});
+							$(document).on("keydown",function(event){
+								if(event.which==27){
+									$("#modal-id").modal("hide");
+								}
+							})
 						</script>
 
