@@ -3,7 +3,7 @@
 return [
 	'xinchao'               => 'Xin chào tôi là',
 	'laptrinhphp'           => 'Lập trình viên PHP',
-	'gioithieubanthan'      =>"Tôi có kinh nghiệm trên 5 năm với vị trí lập trình viên website PHP. Niềm đam mê của tôi là được tìm tòi những điều mới mẻ và tạo ra những sản phẩm tốt nhất. Thông qua những dự án đã làm tôi có nhiều kỹ năng với các nền tảng frameword PHP như Laravel, Sympony, Codeigniter ... ",
+	'gioithieubanthan'      =>"Tôi có kinh nghiệm trên 5 năm với vị trí lập trình viên website PHP. Niềm đam mê của tôi là được tìm tòi những điều mới mẻ và tạo ra những sản phẩm tốt nhất. Thông qua những dự án đã làm tôi có nhiều kỹ năng với các nền tảng framework PHP như Laravel, Sympony, Codeigniter ... ",
 	'name'                  => "Họ và tên",
 	'date_of_birth'         => "Sinh ngày",
 	'e_mail'                => "Email",
