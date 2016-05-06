@@ -106,7 +106,10 @@
                                         <input type="file" name="userfile">
                                         {!! (isset($rs->blog_image)?"<div class='thumbnail'><img style='width:100px;' src='/uploads/".$rs->blog_image."'></div>":"") !!}
                                     </div>
-                                    <p> <input type="checkbox" name="show_img" value="1" {!! (( isset($rs->blog_show_img) && (int)$rs->blog_show_img != 1)?"":"checked=true") !!}> Hiển thị hình ra trang chi tiết</p>
+                                    <p>
+                                    <p><a class="btn btn-default" href="https://vihoangson.wordpress.com/wp-admin/upload.php" target="_blank">Upload img to wordpress</a></p>
+
+                                    <input type="checkbox" name="show_img" value="1" {!! (( isset($rs->blog_show_img) && (int)$rs->blog_show_img != 1)?"":"checked=true") !!}> Hiển thị hình ra trang chi tiết</p>
                                 </div>
                             </div>
                         </div>
