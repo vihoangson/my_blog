@@ -18,31 +18,46 @@ class ArticlesController  extends BaseController
 
 	public function homepage(){
 		//$rs            = Articles::limit(100)->orderBy("id","desc")->get();
-		$rs=[];
+		//$rs=[];
 		//============ ============  ============  ============ 
 		// "%tin-tuc/the-gioi%"
-		$box_top       = Articles::where("article_mode","1")->whereRaw("article_imgs != '' ")->where("article_imgs","!=","[]")->limit(3)->orderBy("article_imgs","desc")->get();
+		//$box_top       = Articles::where("article_mode","1")->whereRaw("article_imgs != '' ")->where("article_imgs","!=","[]")->limit(20)->orderBy("article_imgs","desc")->get();
+		$box_top       = Articles::limit(20)->orderBy("article_imgs","desc")->get();
 		//============ ============  ============  ============ 
 		// "%tin-tuc/thoi-su%"
-		$box_right_top = Articles::where("article_link","like","%tin-tuc/thoi-su%")->whereRaw("article_imgs != '' ")->where("article_imgs","!=","[]")->limit(3)->orderBy("id","desc")->get();
+		//$box_right_top = Articles::where("article_link","like","%tin-tuc/thoi-su%")->whereRaw("article_imgs != '' ")->where("article_imgs","!=","[]")->limit(3)->orderBy("id","desc")->get();
+		$box_right_top=$box_top;
+		
 		//============ ============  ============  ============ 
 		// "%tin-tuc/the-gioi%"
-		$most_popular  = Articles::where("article_link","like","%tin-tuc/the-gioi%")->whereRaw("article_imgs != '' ")->where("article_imgs","!=","[]")->limit(5)->orderBy("id","desc")->get();
+		//$most_popular  = Articles::where("article_link","like","%tin-tuc/the-gioi%")->whereRaw("article_imgs != '' ")->where("article_imgs","!=","[]")->limit(5)->orderBy("id","desc")->get();
+		$most_popular=$box_top;
+		
 		//============ ============  ============  ============ 
 		// "%dulich%"
-		$highlights    = Articles::where("article_link","like","%dulich%")->whereRaw("article_imgs != '' ")->where("article_imgs","!=","[]")->limit(5)->orderBy("id","desc")->get();
+		//$highlights    = Articles::where("article_link","like","%dulich%")->whereRaw("article_imgs != '' ")->where("article_imgs","!=","[]")->limit(5)->orderBy("id","desc")->get();
+		$highlights=$box_top;
+		
 		//============ ============  ============  ============ 
 		// "%khoa-hoc%"
-		$editors_picks = Articles::where("article_link","like","%khoa-hoc%")->whereRaw("article_imgs != '' ")->where("article_imgs","!=","[]")->limit(3)->orderBy("id","desc")->get();
+		//$editors_picks = Articles::where("article_link","like","%khoa-hoc%")->whereRaw("article_imgs != '' ")->where("article_imgs","!=","[]")->limit(3)->orderBy("id","desc")->get();
+		$editors_picks=$box_top;
+		
 		//============ ============  ============  ============ 
 		// "%sohoa.%"
-		$popular_posts = Articles::where("article_link","like","%sohoa.%")->whereRaw("article_imgs != '' ")->where("article_imgs","!=","[]")->limit(7)->orderBy("id","desc")->get();
+		//$popular_posts = Articles::where("article_link","like","%sohoa.%")->whereRaw("article_imgs != '' ")->where("article_imgs","!=","[]")->limit(7)->orderBy("id","desc")->get();
+		$popular_posts=$box_top;
+		
 		//============ ============  ============  ============ 
 		// "%suckhoe%"
-		$trending      = Articles::where("article_link","like","%suckhoe%")->whereRaw("article_imgs != '' ")->where("article_imgs","!=","[]")->limit(17)->orderBy("id","desc")->get();
+		//$trending      = Articles::where("article_link","like","%suckhoe%")->whereRaw("article_imgs != '' ")->where("article_imgs","!=","[]")->limit(17)->orderBy("id","desc")->get();
+		$trending=$box_top;
+		
 		//============ ============  ============  ============ 
 		// "%giaitri%"
-		$social_media  = Articles::where("article_link","like","%giaitri%")->whereRaw("article_imgs != '' ")->where("article_imgs","!=","[]")->limit(4)->orderBy("id","desc")->get();
+		//$social_media  = Articles::where("article_link","like","%giaitri%")->whereRaw("article_imgs != '' ")->where("article_imgs","!=","[]")->limit(4)->orderBy("id","desc")->get();
+		$social_media=$box_top;
+
 		return view("articles.index",compact("rs","box_top","box_right_top","most_popular","highlights","editors_picks","popular_posts","trending","social_media"));
 	}// End function index()
 
