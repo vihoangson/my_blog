@@ -251,10 +251,13 @@ class HomepageController  extends BaseController
 				$dom = str_get_html(file_get_contents($value_site));
 				// Lấy ra tất cả các tag a có trong link $value_site
 				$m = $dom->find("a");
-
+				$count_success=0;
 				// foreach tất cả các tag a có trong link $value_site
 				foreach ($m as $key => $value) {
-
+					if($count_success>20){
+						echo "Over 10 result".PHP_EOL;
+						continue;
+					}
 					// Nếu tồn tại href thì vào trong
 					if(!empty($value->attr["href"])){
 
@@ -383,6 +386,7 @@ class HomepageController  extends BaseController
 									if(LOG_INFO_FLAG_IMPORT){
 										Log::info("!!! Saved: ".$title);
 									}
+									$count_success++;
 								}else{
 									if(LOG_INFO_FLAG_IMPORT){
 										Log::info("!!! Could't Save: ".$title);
