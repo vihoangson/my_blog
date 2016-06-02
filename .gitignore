@@ -4,3 +4,4 @@ Homestead.yaml
 Homestead.json
 .sqlite
 .env
+public/uploads/*
