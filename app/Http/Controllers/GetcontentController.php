@@ -15,16 +15,30 @@ use App\Http\Requests;
 use Mail;
 use Log;
 
+/**
+ * @property string name_dom_content
+ */
 class GetcontentController extends BaseController {
     public $array_site;
 
-    const MAX_SAVE_ONE_TIME = 20;
+    const MAX_SAVE_ONE_TIME = 10;
 
     public function __construct() {
         if ( ! defined( "LOG_INFO_FLAG_IMPORT" ) ) {
             define( "LOG_INFO_FLAG_IMPORT", false );
         }
-        //parent::__construct();
+    }
+
+    //============  ============
+    // ****** Function import_vnexpress() ******
+    // **Công dụng: Import tin tức từ trang vnexpress.net**
+    // **Ngày tạo: 13/1/2016**
+    // **Tác giả: Santosan**
+    // ope
+    public function import_vnexpress( $case = null ) {
+
+        $this->main_page = "http://vnexpress.net";
+
         $this->array_site = [
             0  => "http://vnexpress.net/tin-tuc/thoi-su",
             1  => "http://vnexpress.net/tin-tuc/the-gioi",
@@ -45,27 +59,52 @@ class GetcontentController extends BaseController {
             16 => "http://vnexpress.net/tin-tuc/tam-su/page/3.html",
             17 => "http://vnexpress.net/tin-tuc/cuoi",
         ];
+
+        $this->name_dom_content = "#left_calculator";
+
+        $this->import_articles($case);
+        // Dừng chương trình
+        // Lấy bài viết top
+        $this->vnexpress_set_important_news();
     }
 
-    public function send_mail( Request $request ) {
-        $data = ( $request->all() );
+    public function import_motthegioi( $case = null ) {
 
-        $body = "
-		<p><b>SenderName</b>: " . $data["senderName"] . "</p>
-		<p><b>SenderEmail</b>: " . $data["senderEmail"] . "</p>
-		<p><b>Subject</b>: " . $data["subject"] . "</p>
-		<p><b>Message</b>:  " . $data["message"] . "</p>
-		";
+        $this->main_page = "http://motthegioi.vn";
 
-        $data = array(
-            'body' => $body,
-        );
+        $this->array_site = [
+            0 => "http://motthegioi.vn"
+        ];
 
-        Mail::send( 'emails.welcome', $data, function ( $message ) {
-            $message->from( 'info@vihoangson.com', 'Vi Hoàng Sơn' );
-            $message->to( 'vihoangson@gmail.com' )->subject( 'Email từ My Blog ' . date( "Y-m-d H:i:s" ) );
-        } );
-        echo "success";
+        $this->name_dom_content = ".article-body";
+
+        $this->import_articles($case);
+    }
+
+    public function import_dantri( $case = null ) {
+
+        $this->main_page = "http://dantri.com.vn";
+
+        $this->array_site = [
+            0 => "http://dantri.com.vn"
+        ];
+
+        $this->name_dom_content = ".detail-content";
+
+        $this->import_articles($case);
+    }
+
+    public function import_kenh14( $case = null ) {
+
+        $this->main_page = "http://kenh14.vn";
+
+        $this->array_site = [
+            0 => "http://kenh14.vn"
+        ];
+
+        $this->name_dom_content = ".klw-new-content";
+
+        $this->import_articles($case);
     }
 
     //============  ============
@@ -74,12 +113,11 @@ class GetcontentController extends BaseController {
     // **Ngày tạo: 13/1/2016**
     // **Tác giả: Santosan**
     // ope
-    public function import_vnexpress( $case = null ) {
+    public function import_articles( $case = null ) {
+
         Log::info( "Do log import_vnexpress in " . date( "Y-m-d H:i:s" ) );
         if ( true ) {
-            //============  ============
-            //
-            //
+
             if ( empty( $this->array_site ) ) {
                 echo "List null";
 
@@ -95,151 +133,31 @@ class GetcontentController extends BaseController {
              * Lấy link search
              * VD: http://vnexpress.net
              */
+            $array_site_array = [];
             switch ( $case ) {
                 case "home":
-                    $array_site_a[0] = "http://vnexpress.net";
+                    $array_site_array[0] = $this->main_page;
                     break;
                 case "all":
-                    $array_site_a = $this->array_site;
+                    $array_site_array = $this->array_site;
                     break;
                 default:
-                    $array_site_a[0] = $this->array_site[ (int) $case ];
+                    $array_site_array[0] = $this->array_site[ (int) $case ];
                     break;
             }
 
             // foreach tất cả phần tử trong mảng $this->array_site
-            foreach ( $array_site_a as $key_site => $value_site ) {
+            foreach ( $array_site_array as $key_site => $value_site ) {
 
-                $count_success = 0;
-                $link_article  = $this->get_string_link_by_url( $value_site );
-
-                // foreach tất cả các tag a có trong link $value_site
-                foreach ( $link_article as $key => $value ) {
-
-                    if ( $count_success > self::MAX_SAVE_ONE_TIME ) {
-                        echo "Over ".self::MAX_SAVE_ONE_TIME." result" . PHP_EOL;
-                        continue;
-                    }
-
-                    // Nếu tồn tại href thì vào trong
-                    if ( ! empty( $value->attr["href"] ) ) {
-
-                        // Kiểm tra đúng: link có phần tử cuối là .html và độ dài từ 10 ký tự trở lên
-                        if ( preg_match( "/.{10,}\.html$/", $value->attr["href"] ) ) {
-
-                            // Log ban đầu
-                            echo "=== Link: " . $value->attr["href"] . PHP_EOL;
-                            if ( LOG_INFO_FLAG_IMPORT ) {
-                                Log::info( "Link: " . $value->attr["href"] );
-                            }
-
-                            if ( ! $title = $this->get_title( $value ) ) {
-                                continue;
-                            }
-
-
-                            if ( ! $this->check_valid_by_dom( $value ) ) {
-                                if ( LOG_INFO_FLAG_IMPORT ) {
-                                    Log::info( "exit :1 __ " . $title );
-                                }
-                                continue;
-                            }
-
-
-                            // Nếu link là đường dẫn tương đối thì thêm domain vào
-                            if ( preg_match( "/^\//", $value->attr["href"] ) ) {
-                                $value->attr["href"] = "http://vnexpress.net" . $value->attr["href"];
-                            }
-
-                            //============ ============  ============  ============
-                            //  Khởi tạo biến $dom2 với nội dung theo link $value->attr["href"]
-                            // Bạn có thể dùng function get content của vihoangson
-                            // Gist.github: https://gist.github.com/vihoangson/647d856380ac5ca353b0
-                            // Desc: Function lấy nội dung html của trang web khác bằng cUrl
-                            // Function curl_get($url)
-                            //
-                            //
-                            // LẤY NỘI DUNG CHI TIẾT TRANG
-                            //  $value->attr["href"]
-                            //  Output: $title;$content;$link;
-                            //============ ============  ============ ============
-                            //
-
-                            // Khởi tạo biến $dom2 với nội dung theo link $value->attr["href"]
-                            $link = $value->attr["href"];
-
-                            $dom2 = str_get_html( file_get_contents( $link ) );
-
-
-                            // Rửa tổng biến $content
-                            $content = "";
-
-                            //============  ============
-                            // $name_dom_content
-                            // Biến bao của tag content
-                            // Lưu ý: có thể thay đổi khi layout trang đích thay đổi
-                            //============ ============
-                            $name_dom_content = "#left_calculator";
-
-                            // Tìm phần tử đầu tiên trong dom có giá trị là #left_calculator
-                            if ( $dom2->find( $name_dom_content, 0 ) ) {
-                                $content = $dom2->find( $name_dom_content, 0 )->innertext();
-                            }
-                            //
-                            //============ ============  ============ ============
-                            // LẤY NỘI DUNG CHI TIẾT TRANG
-                            //  $value->attr["href"]
-                            //  Output: $title;$content;$link;
-                            //============ ============  ============ ============
-
-
-                            //============  ============
-                            // Save vào DB
-                            //
-                            if ( $content == "" ) {
-                                $dom2->clear();
-                                if ( LOG_INFO_FLAG_IMPORT ) {
-                                    Log::info( "exit : Content rỗng" );
-                                }
-                                continue;
-                            }
-
-                            $data_article = [
-                                "article_title"   => $title,
-                                "article_content" => $content,
-                                "article_link"    => $link,
-                            ];
-                            if ( Articles::create( $data_article ) ) {
-                                echo "!!! Saved: " . $title . PHP_EOL;
-                                if ( LOG_INFO_FLAG_IMPORT ) {
-                                    Log::info( "!!! Saved: " . $title );
-                                }
-                                $count_success ++;
-                            } else {
-                                if ( LOG_INFO_FLAG_IMPORT ) {
-                                    Log::info( "!!! Could't Save: " . $title );
-                                }
-                            }
-                            //
-                            //============  ============
-                        }
-                    }
-                } // End foreach $m
-            }// End foreach $this->array_site
-
-            // Dừng chương trình
-            // Lấy bài viết top
-            $this->vnexpress_set_important_news();
+                $this->save_articles($value_site);
+            }
 
             // Lấy phần mở đầu
             $this->get_extra_content();
-            // lấy hình ảnh chính
+
+            // Lấy hình ảnh chính
             $this->update_main_img();
-            //
-            //  ============  ============
         }
-
-
     }
 
     // Lấy các bản tin và show ra hình chính
@@ -248,8 +166,7 @@ class GetcontentController extends BaseController {
         //============  ============
         // Lấy dữ liệu từ trong bảng
         //============  ============
-        $rs = Articles::whereraw( "article_imgs is null " )->limit( 300 )->get();
-        //$rs = Articles::limit(3000)->get();
+        $rs = Articles::whereraw( "article_imgs is null " )->orderBy('id desc')->limit( 300 )->get();
 
         //============  ============
         //  Vòng lập duyệt toàn bộ array
@@ -329,6 +246,46 @@ class GetcontentController extends BaseController {
             //
             //  ============ ============  ============  ============
         }
+    }
+
+    // ============ ============  ============  ============
+    // Bỏ tất cả những thứ trên đầu của content
+    // Desc: Loại bỏ các mục thừa không cần thiết của article_content
+    //
+    public function filter_content_vnexpress($content){
+        $dom = str_get_html($content);
+        if($dom->find(".title_news")){
+            $dom->find(".title_news",0)->outertext ="";
+        }
+
+        if($dom->find(".block_timer_share")){
+            $dom->find(".block_timer_share",0)->outertext ="";
+        }
+
+        if($dom->find(".div-fbook")){
+            $dom->find(".div-fbook",0)->outertext ="";
+        }
+
+        if($dom->find(".content_box_category")){
+            $dom->find(".content_box_category",0)->outertext ="";
+        }
+
+        if($dom->find(".block_share_icon")){
+            $dom->find(".block_share_icon",0)->outertext ="";
+        }
+
+        if($dom->find(".relative_new")){
+            $dom->find(".relative_new",0)->outertext ="";
+        }
+        if($dom->find(".title_div_fbook")){
+            $dom->find(".title_div_fbook",0)->outertext ="";
+        }
+        if($dom->find(".Normal")){
+            $dom->find(".Normal",0)->outertext ="";
+        }
+        $return = $dom->__toString();
+        $dom->clear();
+        return $return;
     }
 
     /**
@@ -420,20 +377,166 @@ class GetcontentController extends BaseController {
      *
      */
     public function vnexpress_set_important_news() {
-        //============  ============
-        //  Tạo column mới: article_mode
-        //
         $html           = file_get_contents( "http://vnexpress.net" );
         $dom            = str_get_html( $html );
         $link_important = $dom->find( ".line_col_midnews_top .content_scoller li a" );
         foreach ( $link_important as $key => $value ) {
             if ( Articles::where( "article_link", $value->attr["href"] )->update( [ "article_mode" => 1 ] ) ) {
                 echo ( Articles::where( "article_link", $value->attr["href"] )->first()->article_title ) . PHP_EOL;
-                // echo $value->attr["href"].PHP_EOL;
             }
         }
-        //
-        //============  ============
     }
 
+    /**
+     *
+     *
+     * @param $value_site Tên site
+     * Ex: http://vnexpress.net
+     *
+     * @return void
+     */
+    private function save_articles($value_site) {
+        $count_success = 0;
+        $link_article  = $this->get_string_link_by_url( $value_site );
+
+        // foreach tất cả các tag a có trong link $value_site
+        foreach ( $link_article as $key => $value ) {
+            if(preg_match('/(#|javascript)/',$value->attr["href"]) ) continue;
+            if ( $count_success > self::MAX_SAVE_ONE_TIME ) {
+                echo "Over ".self::MAX_SAVE_ONE_TIME." result" . PHP_EOL;
+                continue;
+            }
+
+            // Nếu không tồn tại href thì bỏ qua trong
+            if ( empty( $value->attr["href"] ) ) {
+                continue;
+            }
+
+            // Kiểm tra đúng: link có phần tử cuối là .html và độ dài từ 10 ký tự trở lên
+            if ( true ) {
+            //if ( preg_match( "/.{10,}\.html$/", $value->attr["href"] ) ) {
+
+                // Log ban đầu
+                echo "=== Link: " . $value->attr["href"] . PHP_EOL;
+                if ( LOG_INFO_FLAG_IMPORT ) {
+                    Log::info( "Link: " . $value->attr["href"] );
+                }
+
+                if ( ! $title = $this->get_title( $value ) ) {
+                    continue;
+                }
+
+
+                if ( ! $this->check_valid_by_dom( $value ) ) {
+                    if ( LOG_INFO_FLAG_IMPORT ) {
+                        Log::info( "exit :1 __ " . $title );
+                    }
+                    continue;
+                }
+
+
+                // Nếu link là đường dẫn tương đối thì thêm domain vào
+                if ( preg_match( "/^\//", $value->attr["href"] ) ) {
+                    $value->attr["href"] = $this->main_page . $value->attr["href"];
+                }
+
+                //============ ============  ============  ============
+                //  Khởi tạo biến $dom2 với nội dung theo link $value->attr["href"]
+                // Bạn có thể dùng function get content của vihoangson
+                // Gist.github: https://gist.github.com/vihoangson/647d856380ac5ca353b0
+                // Desc: Function lấy nội dung html của trang web khác bằng cUrl
+                // Function curl_get($url)
+                //
+                //
+                // LẤY NỘI DUNG CHI TIẾT TRANG
+                //  $value->attr["href"]
+                //  Output: $title;$content;$link;
+                //============ ============  ============ ============
+                //
+
+                // Khởi tạo biến $dom2 với nội dung theo link $value->attr["href"]
+                $link = $value->attr["href"];
+
+                $dom2 = str_get_html( file_get_contents( $link ) );
+
+
+                // Rửa tổng biến $content
+                $content = "";
+
+                //============  ============
+                // $name_dom_content
+                // Biến bao của tag content
+                // Lưu ý: có thể thay đổi khi layout trang đích thay đổi
+                //============ ============
+
+
+                // Tìm phần tử đầu tiên trong dom có giá trị là #left_calculator
+                if ( $dom2->find( $this->name_dom_content, 0 ) ) {
+                    $content = $dom2->find( $this->name_dom_content, 0 )->innertext();
+                }
+                //
+                //============ ============  ============ ============
+                // LẤY NỘI DUNG CHI TIẾT TRANG
+                //  $value->attr["href"]
+                //  Output: $title;$content;$link;
+                //============ ============  ============ ============
+
+
+                //============  ============
+                // Save vào DB
+                //
+                if ( $content == "" ) {
+                    $dom2->clear();
+                    if ( LOG_INFO_FLAG_IMPORT ) {
+                        Log::info( "exit : Content rỗng" );
+                    }
+                    continue;
+                }
+
+                $data_article = [
+                    "article_title"   => $title,
+                    "article_content" => $content,
+                    "article_link"    => $link,
+                ];
+                if ( Articles::create( $data_article ) ) {
+                    echo "!!! Saved: " . $title . PHP_EOL;
+                    if ( LOG_INFO_FLAG_IMPORT ) {
+                        Log::info( "!!! Saved: " . $title );
+                    }
+                    $count_success ++;
+                } else {
+                    if ( LOG_INFO_FLAG_IMPORT ) {
+                        Log::info( "!!! Could't Save: " . $title );
+                    }
+                }
+                //
+                //============  ============
+            }
+        } // End foreach $m
+
+    }
+
+    /**
+     * @param Request $request
+     */
+    public function send_mail( Request $request ) {
+        $data = ( $request->all() );
+
+        $body = "
+		<p><b>SenderName</b>: " . $data["senderName"] . "</p>
+		<p><b>SenderEmail</b>: " . $data["senderEmail"] . "</p>
+		<p><b>Subject</b>: " . $data["subject"] . "</p>
+		<p><b>Message</b>:  " . $data["message"] . "</p>
+		";
+
+        $data = array(
+            'body' => $body,
+        );
+
+        Mail::send( 'emails.welcome', $data, function ( $message ) {
+            $message->from( 'info@vihoangson.com', 'Vi Hoàng Sơn' );
+            $message->to( 'vihoangson@gmail.com' )->subject( 'Email từ My Blog ' . date( "Y-m-d H:i:s" ) );
+        } );
+        echo "success";
+    }
 }

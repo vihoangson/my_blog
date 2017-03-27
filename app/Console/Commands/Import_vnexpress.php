@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Http\Controllers\GetcontentController;
 use Illuminate\Console\Command;
 use Illuminate\Foundation\Inspiring;
 use App\Http\Controllers\HomepageController;
@@ -14,7 +15,7 @@ class Import_vnexpress extends Command
      *
      * @var string
      */
-    protected $signature = 'import_vnexpress:santo {myc}';
+    protected $signature = 'import_vnexpress {myc}';
 
     /**
      * The console command description.
@@ -31,7 +32,11 @@ class Import_vnexpress extends Command
     public function handle()
     {
         $myc = $this->argument('myc');
-        $h = new HomepageController;
-        $h->import_vnexpress($myc);
+        $h = new GetcontentController();
+
+        $h->import_kenh14($myc);
+        //$h->import_dantri($myc);
+        //$h->import_motthegioi($myc);
+        //$h->import_vnexpress($myc);
     }
 }

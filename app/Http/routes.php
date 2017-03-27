@@ -39,6 +39,7 @@
 
 	Route::post('contact', "HomepageController@send_mail");
 	Route::get('/change_lang/{lang}', "admin\BlogsManagerController@change_lang");
+    Route::get('/admin', "admin\DashboardController@index");
 	Route::get('/admin/blogs/', "admin\BlogsManagerController@index");
 	Route::get('/admin/blogs/create', "admin\BlogsManagerController@create");
 	Route::post('/admin/blogs/create', "admin\BlogsManagerController@create");

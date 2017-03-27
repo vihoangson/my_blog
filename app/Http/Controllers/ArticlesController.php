@@ -18,6 +18,7 @@ class ArticlesController  extends BaseController
 
 	public function import_vnexpress(){
         $g = new GetcontentController;
+        $g->name_dom_content = "#left_calculator";
         $g->import_vnexpress('home');
     }
 
@@ -163,21 +164,7 @@ class ArticlesController  extends BaseController
 		$dom->clear();
 		return $return;
 	}
-	//
-	//============ ============  ============  ============
 
-
-	//============ ============  ============  ============
-
-	//
-	//============ ============  ============  ============
-
-	//============ ============  ============  ============
-
-	//
-	//  ============ ============  ============  ============
-
-	//============  ============
 	//  Hàm check tất cả hình còn sống không
 	public function article_imgs_check_img_exist(){
 		// Dùng get_headers để kiểm tra
