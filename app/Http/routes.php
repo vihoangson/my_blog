@@ -13,6 +13,8 @@
 
 	Route::get('/', "HomepageController@index");
 
+	Route::get('/import_vnexpress', "ArticlesController@import_vnexpress");
+
 
 
 	Route::group(['middleware' => ['auth']], function()

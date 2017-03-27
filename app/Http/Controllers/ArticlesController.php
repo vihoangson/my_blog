@@ -16,6 +16,11 @@ class ArticlesController  extends BaseController
 	public function __construct(){
 	}
 
+	public function import_vnexpress(){
+        $g = new GetcontentController;
+        $g->import_vnexpress('home');
+    }
+
 	public function homepage(){
 		//$rs            = Articles::limit(100)->orderBy("id","desc")->get();
 		//$rs=[];
@@ -117,45 +122,7 @@ class ArticlesController  extends BaseController
 		return view("articles.category",compact("rs"));
 	}
 
-	//============ ============  ============  ============
-	// Update db phần mở đầu của mỗi bản tin
-	//
-	public function get_extra_content(){
 
-		$rs = Articles::whereraw("article_extra_content is null")->limit(500)->get();
-		foreach ($rs as $key => $value) {
-			$content = $value->article_content;
-			$strip_text = trim(strip_tags($content));
-			if(preg_match("/^Thứ/", $strip_text)){
-				// ============ ============  ============  ============
-				// Bỏ tất cả những thứ trên đầu
-				//
-				echo PHP_EOL."== Filter_content_vnexpress ==".PHP_EOL;
-
-				//Loại bỏ các mục thừa không cần thiết của article_content
-				$content  = $this->filter_content_vnexpress($content);
-
-				//update lại article_content
-				$value->update(["article_content"=>$content]);
-
-			}
-			// Lọc bỏ hết tag
-			$extra_text = trim(strip_tags($content));
-
-			// ============ ============  ============  ============
-				if(empty($value->article_extra_content)){
-					// Lưu vào csdl
-					if($value->update(["article_extra_content" => $extra_text])){
-						echo "<p>done</p>".PHP_EOL;
-					}else{
-						echo "<p>error</p>".PHP_EOL;
-					}
-				}
-
-			//
-			//  ============ ============  ============  ============
-		}
-	}
 
 	// ============ ============  ============  ============
 	// Bỏ tất cả những thứ trên đầu của content
@@ -201,56 +168,12 @@ class ArticlesController  extends BaseController
 
 
 	//============ ============  ============  ============
-	// Lấy các bản tin và show ra hình chính
-	//
-	public function update_main_img(){
-		//============  ============
-		// Lấy dữ liệu từ trong bảng
-		//============  ============
-		$rs = Articles::whereraw("article_imgs is null ")->limit(300)->get();
-		//$rs = Articles::limit(3000)->get();
 
-		//============  ============
-		//  Vòng lập duyệt toàn bộ array
-			foreach ($rs as $key => $value) {
-				//============  ============
-				//  Chuyen thanh mang json
-				//============  ============
-				$article_imgs = json_encode((array)$this->get_main_img($value->article_content));
-				//============  ============
-				// Update vào cột article_imgs
-				//============  ============
-				if($value->update(["article_imgs"=>$article_imgs])){
-					echo "[done]";
-				}else{
-					echo "[error]";
-				}
-				echo PHP_EOL;
-			}
-		//
-		//============  ============
-	}
 	//
 	//============ ============  ============  ============
 
 	//============ ============  ============  ============
-	//  Function lấy các hình chính trong content
-	public function get_main_img($content){
-		$return=[];
-		//============  ============
-		// Match các link có trong bài viết
-		//============  ============
-		preg_match_all("/<img(.+?)src=[\"'](.+?)[\"']/",$content,$match);
-		foreach ($match[2] as $key => $value) {
-			//============  ============
-			// Lọc ra các từ không cần thiết
-			//============  ============
-			if(!(preg_match("/(icons\/social_|img_blank|icon_)/", $value))){
-				$return[] = $value;
-			}
-		}
-		return $return;
-	}
+
 	//
 	//  ============ ============  ============  ============
 
