@@ -21,7 +21,7 @@ class DashboardController extends Controller {
      */
     public function index() {
 
-        $articles = Articles::limit(10)->get();
+        $articles = Articles::limit(10)->orderBy('id','desc')->get();
 
         return view( "admin.sample", compact(
             'articles'

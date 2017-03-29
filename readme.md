@@ -24,7 +24,7 @@ import_vnexpress:santo home
 
 3. Chuyen permission cho 2 folder storage / bootstrap/cache
 
-
+4. Copy file db
 
 ## Laravel PHP Framework
 =======================

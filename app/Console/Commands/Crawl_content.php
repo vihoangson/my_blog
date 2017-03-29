@@ -31,9 +31,10 @@ class Crawl_content extends Command {
     public function handle() {
         $myc = $this->argument( 'myc' );
         $h   = new GetcontentController();
-for($i=0;$i<17;$i++){
-    $h->import_vnexpress($i);
-}
+
+        for($i=0;$i<17;$i++){
+            $h->import_kenh14($i);
+        }
         return;
 
         $h->import_kenh14($myc);

@@ -64,6 +64,14 @@ class ArticlesController extends BaseController {
         return view( "articles.index", compact( "rs", "box_top", "box_right_top", "most_popular", "highlights", "editors_picks", "popular_posts", "trending", "social_media" ) );
     }// End function index()
 
+    public function homepage2() {
+        $array_get_db = ["rs", "box_top", "box_right_top", "most_popular", "highlights", "editors_picks", "popular_posts", "trending", "social_media"];
+        foreach ($array_get_db as $keyword){
+            $db_news[$keyword] = Articles::where( "article_mode", "1" )->where('article_link','like',$keyword)->whereRaw( "article_imgs != '' " )->where( "article_imgs", "!=", "[]" )->limit( 20 )->orderBy( "article_imgs", "desc" )->get();
+        }
+        return view( "articles.index", compact( "db_news" ) );
+    }// End function index()
+
     public function detail( $id ) {
         $rs                  = Articles::find( $id );
         $relation            = Articles::limit( 4 )->orderBy( "id", "desc" )->get();
