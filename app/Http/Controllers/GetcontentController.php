@@ -107,6 +107,32 @@ class GetcontentController extends BaseController {
         $this->import_articles($case);
     }
 
+    public function import_nuocmy( $case = null ) {
+
+        $this->main_page = "http://www.nuocmy.info";
+
+        $this->array_site = [
+            0 => "http://www.nuocmy.info"
+        ];
+
+        $this->name_dom_content = ".entry-content";
+
+        $this->import_articles($case);
+    }
+
+    public function import_benhtat( $case = null ) {
+
+        $this->main_page = "https://benhtat.net";
+
+        $this->array_site = [
+            0 => "https://benhtat.net"
+        ];
+
+        $this->name_dom_content = ".td-post-content";
+
+        $this->import_articles($case);
+    }
+
     //============  ============
     // ****** Function import_vnexpress() ******
     // **Công dụng: Import tin tức từ trang vnexpress.net**
@@ -319,7 +345,7 @@ class GetcontentController extends BaseController {
      */
     private function get_string_link_by_url( $url ) {
         // Khởi tạo biến dom của link $url
-        $dom = str_get_html( file_get_contents( $url ) );
+        $dom = str_get_html( @file_get_contents( $url ) );
 
         // Lấy ra tất cả các tag a có trong link $value_site
         $return = $dom->find( "a" );
@@ -377,7 +403,7 @@ class GetcontentController extends BaseController {
      *
      */
     public function vnexpress_set_important_news() {
-        $html           = file_get_contents( "http://vnexpress.net" );
+        $html           = @file_get_contents( "http://vnexpress.net" );
         $dom            = str_get_html( $html );
         $link_important = $dom->find( ".line_col_midnews_top .content_scoller li a" );
         foreach ( $link_important as $key => $value ) {
@@ -457,8 +483,11 @@ class GetcontentController extends BaseController {
                 // Khởi tạo biến $dom2 với nội dung theo link $value->attr["href"]
                 $link = $value->attr["href"];
 
-                $dom2 = str_get_html( file_get_contents( $link ) );
+                $dom2 = str_get_html( @file_get_contents( $link ) );
 
+                if(!$dom2){
+                    continue;
+                }
 
                 // Rửa tổng biến $content
                 $content = "";

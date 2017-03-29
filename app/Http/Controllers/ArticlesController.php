@@ -17,9 +17,7 @@ class ArticlesController  extends BaseController
 	}
 
 	public function import_vnexpress(){
-        $g = new GetcontentController;
-        $g->name_dom_content = "#left_calculator";
-        $g->import_vnexpress('home');
+echo 123;
     }
 
 	public function homepage(){

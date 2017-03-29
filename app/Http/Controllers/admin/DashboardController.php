@@ -18,7 +18,7 @@ class DashboardController extends Controller
     public function index()
     {
         //$articles = Articles::where("")->all();
-        $articles = Articles::where("article_link","like","%kenh14.%")->get();
+        $articles = Articles::where("article_link","like","%benhtat%")->get();
         foreach ($articles as $article){
             echo "<div style='color:red;font-size:50px;'>".$article->article_title."</div>";
             echo "<br>";
