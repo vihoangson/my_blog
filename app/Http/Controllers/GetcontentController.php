@@ -21,7 +21,14 @@ use Log;
 class GetcontentController extends BaseController {
     public $array_site;
 
-    const MAX_SAVE_ONE_TIME = 1;
+    /**
+     * @var string
+     * "#.{10,}\.html$#"
+     * https://benhtat.net/tin-tuc/ra-duong-gheo-gai-phat-300k-say-xin-gay-roi-phat-1-trieu-cac-dan-chong-ra-duong-nho-can-1295.html
+     */
+    private $pattern_link_detail = "#.{10,}\.html$#";
+
+    const MAX_SAVE_ONE_TIME = 100;
 
     public function __construct() {
         if ( ! defined( "LOG_INFO_FLAG_IMPORT" ) ) {
@@ -97,9 +104,11 @@ class GetcontentController extends BaseController {
     public function import_kenh14( $case = null ) {
 
         $this->main_page = "http://kenh14.vn";
+        // http://kenh14.vn/nguoi-viet-dau-tien-bi-dinh-lien-co-the-tro-thanh-giao-su-thinh-giang-tai-nhat-ban-20170328235949418
+        $this->pattern_link_detail = "#[0-9]{3,}\.chn$#";
 
         $this->array_site = [
-            0 => "http://kenh14.vn",
+            0 => "http://kenh14.vn/xa-hoi.chn",
         ];
 
         $this->name_dom_content = ".klw-new-content";
@@ -123,7 +132,7 @@ class GetcontentController extends BaseController {
     public function import_benhtat( $case = null ) {
 
         $this->main_page = "https://benhtat.net";
-
+        //https://benhtat.net/tin-tuc/ra-duong-gheo-gai-phat-300k-say-xin-gay-roi-phat-1-trieu-cac-dan-chong-ra-duong-nho-can-1295.html
         $this->array_site = [
             0 => "https://benhtat.net",
         ];
@@ -150,7 +159,7 @@ class GetcontentController extends BaseController {
                 return;
             }
 
-            if ( empty( $case ) ) {
+            if ( is_null( $case ) ) {
                 echo "Nhap gia tri";
 
                 return;
@@ -431,7 +440,8 @@ class GetcontentController extends BaseController {
             $link_href = $value->attr["href"];
 
             // todo: check detail page
-            if ( ! preg_match( "#.{10,}\.html$#", $link_href ) ) {
+
+            if ( ! preg_match( $this->pattern_link_detail, $link_href ) ) {
                 continue;
             }
 

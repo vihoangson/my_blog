@@ -32,9 +32,10 @@ class Crawl_content extends Command {
         $myc = $this->argument( 'myc' );
         $h   = new GetcontentController();
 
+        $h->import_kenh14($myc);
+        return;
         $h->import_benhtat( $myc );
         $h->import_nuocmy($myc);
-        $h->import_kenh14($myc);
         $h->import_dantri($myc);
         $h->import_motthegioi($myc);
         $h->import_vnexpress($myc);

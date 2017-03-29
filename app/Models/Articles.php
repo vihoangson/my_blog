@@ -9,4 +9,10 @@ class Articles extends Model {
     //protected $guarded = ["videos_title"];
     protected $guarded = [];
     //
+
+    //getDateBeginSaleFormatedAttribute
+    public function getArticleContentFormatedAttribute(){
+
+        return substr(strip_tags($this->attributes['article_content']),0,200);
+    }
 }
