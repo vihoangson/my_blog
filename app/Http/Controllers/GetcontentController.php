@@ -108,7 +108,19 @@ class GetcontentController extends BaseController {
         $this->pattern_link_detail = "#[0-9]{3,}\.chn$#";
 
         $this->array_site = [
-            0 => "http://kenh14.vn/xa-hoi.chn",
+            0 => 'http://kenh14.vn/star.chn',
+            1 => 'http://kenh14.vn/tv-show.chn',
+            2 => 'http://kenh14.vn/cine.chn',
+            3 => 'http://kenh14.vn/musik.chn',
+            4 => 'http://kenh14.vn/fashion.chn',
+            5 => 'http://kenh14.vn/doi-song.chn',
+            6 => 'http://kenh14.vn/doi-song/du-lich.chn',
+            7 => 'http://kenh14.vn/xa-hoi.chn',
+            8 => 'http://kenh14.vn/the-gioi.chn',
+            9 => 'http://kenh14.vn/tram-yeu.chn',
+            10 => 'http://kenh14.vn/la-cool.chn',
+            11 => 'http://kenh14.vn/hoc-duong.chn',
+            12 => 'http://kenh14.vn/video.chn',
         ];
 
         $this->name_dom_content = ".klw-new-content";

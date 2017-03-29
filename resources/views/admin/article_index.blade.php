@@ -1,7 +1,11 @@
 @extends("layouts/layout_admin_article")
-@section("title","Video")
-@section("breadcrumbs","11111")
-@section("detail_page")
 
-@stop
+@section("title","Video")
+@endsection
+
+@section("breadcrumbs","11111")
+@endsection
+
+@section("detail_page")
+@endsection
 
