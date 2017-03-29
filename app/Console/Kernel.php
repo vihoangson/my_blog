@@ -13,7 +13,7 @@ class Kernel extends ConsoleKernel {
      */
     protected $commands = [
         Commands\Inspire::class,
-        Commands\Import_vnexpress::class,
+        Commands\Crawl_content::class,
         Commands\Update_extra_text::class,
     ];
 
@@ -25,7 +25,7 @@ class Kernel extends ConsoleKernel {
      * @return void
      */
     protected function schedule( Schedule $schedule ) {
-        $schedule->command( 'import_vnexpress:santo home' )
-                 ->cron( "0 */3 * * * *" );//3h chạy 1 lần
+//        $schedule->command( 'Crawl_content:santo home' )
+//                 ->cron( "0 */3 * * * *" );//3h chạy 1 lần
     }
 }

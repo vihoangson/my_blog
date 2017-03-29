@@ -8,20 +8,20 @@ use Illuminate\Foundation\Inspiring;
 use App\Http\Controllers\HomepageController;
 use App\Http\Controllers\ArticlesController;
 
-class Import_vnexpress extends Command {
+class Crawl_content extends Command {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'import_vnexpress {myc}';
+    protected $signature = 'crawl_content';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Import_vnexpress 1: do || 2: undo';
+    protected $description = 'crawl_content 1: do || 2: undo';
 
     /**
      * Execute the console command.
@@ -30,9 +30,8 @@ class Import_vnexpress extends Command {
      */
     public function handle() {
         $myc = $this->argument( 'myc' );
-        $h   = new GetcontentController();
-
-        $h->import_benhtat( $myc );
+//        $h   = new GetcontentController();
+//        $h->import_benhtat( $myc );
 //        $h->import_nuocmy($myc);
 //        $h->import_kenh14($myc);
 //        $h->import_dantri($myc);
