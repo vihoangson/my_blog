@@ -436,12 +436,12 @@ class GetcontentController extends BaseController {
             }
 
             // todo: check exist link in db
-            $article_exist = Articles::where( 'article_link', 'like', '%' . $link_href . '%' )->get();
-            if ( count( $article_exist ) > 0 ) {
+            $article_exist = Articles::where( 'article_link', 'like', '%' . $link_href . '%' )->count();
+            if ( $article_exist > 0 ) {
                 continue;
             }
 
-            if ( preg_match( '/(#|javascript)/', $value->attr["href"] ) ) {
+            if ( preg_match( '/(#|javascript)/', $link_href ) ) {
                 continue;
             }
             if ( $count_success > self::MAX_SAVE_ONE_TIME ) {
@@ -450,16 +450,16 @@ class GetcontentController extends BaseController {
             }
 
             // Nếu không tồn tại href thì bỏ qua trong
-            if ( empty( $value->attr["href"] ) ) {
+            if ( empty( $link_href ) ) {
                 continue;
             }
 
             // Kiểm tra đúng: link có phần tử cuối là .html và độ dài từ 10 ký tự trở lên
             if ( true ) {
                 // Log ban đầu
-                echo "=== Link: " . $value->attr["href"] . PHP_EOL;
+                echo "=== Link: " . $link_href . PHP_EOL;
                 if ( LOG_INFO_FLAG_IMPORT ) {
-                    Log::info( "Link: " . $value->attr["href"] );
+                    Log::info( "Link: " . $link_href );
                 }
 
                 if ( ! $title = $this->get_title( $value ) ) {
@@ -476,12 +476,12 @@ class GetcontentController extends BaseController {
 
 
                 // Nếu link là đường dẫn tương đối thì thêm domain vào
-                if ( preg_match( "/^\//", $value->attr["href"] ) ) {
-                    $value->attr["href"] = $this->main_page . $value->attr["href"];
+                if ( preg_match( "/^\//", $link_href ) ) {
+                    $link_href = $this->main_page . $link_href;
                 }
 
                 //============ ============  ============  ============
-                //  Khởi tạo biến $dom2 với nội dung theo link $value->attr["href"]
+                //  Khởi tạo biến $dom2 với nội dung theo link $link_href
                 // Bạn có thể dùng function get content của vihoangson
                 // Gist.github: https://gist.github.com/vihoangson/647d856380ac5ca353b0
                 // Desc: Function lấy nội dung html của trang web khác bằng cUrl
@@ -489,15 +489,15 @@ class GetcontentController extends BaseController {
                 //
                 //
                 // LẤY NỘI DUNG CHI TIẾT TRANG
-                //  $value->attr["href"]
+                //  $link_href
                 //  Output: $title;$content;$link;
                 //============ ============  ============ ============
                 //
 
-                // Khởi tạo biến $dom2 với nội dung theo link $value->attr["href"]
-                $link = $value->attr["href"];
+                // Khởi tạo biến $dom2 với nội dung theo link $link_href
+                $link = $link_href;
 
-                $dom2 = str_get_html( @file_get_contents( $link ) );
+                $dom2 = str_get_html( @file_get_contents( $link_href ) );
 
                 if ( ! $dom2 ) {
                     continue;
@@ -538,9 +538,15 @@ class GetcontentController extends BaseController {
 
                 $data_article = [
                     "article_title"   => strip_tags( $title ),
-                    "article_content" => preg_replace( '#<script(.*?)>(.*?)</script>#is', '', $content ),
+                    "article_content" => $content,
                     "article_link"    => $link,
                 ];
+
+                $data_article['article_title'] = strip_tags( $data_article['article_title'] );
+
+                $data_article['article_content'] = preg_replace( '#<script(.*?)>(.*?)</script>#is', '', $data_article['article_content'] );
+                $data_article['article_content'] = preg_replace( '#<!-- (.*?) -->#is', '', $data_article['article_content'] );
+                $data_article['article_content'] = preg_replace( '#class=\'(.*?)\'#is', '', $data_article['article_content'] );
 
                 if ( Articles::create( $data_article ) ) {
                     echo "!!! Saved: " . $title . PHP_EOL;

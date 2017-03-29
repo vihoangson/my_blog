@@ -15,13 +15,8 @@ class DashboardController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        //$articles = Articles::where("")->all();
-        $articles = Articles::limit( 1000, 2000 )->get();
-        foreach ( $articles as $article ) {
-            echo '<h1>' . $article->article_title . '</h1>';
-            echo '<div>' . $article->article_content . '</div>';
-            echo '<hr>';
-        }
+
+
     }
 
     /**
