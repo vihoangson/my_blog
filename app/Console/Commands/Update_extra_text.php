@@ -7,8 +7,7 @@ use Illuminate\Foundation\Inspiring;
 use App\Http\Controllers\HomepageController;
 use App\Http\Controllers\ArticlesController;
 
-class Update_extra_text extends Command
-{
+class Update_extra_text extends Command {
     /**
      * The name and signature of the console command.
      *
@@ -28,9 +27,8 @@ class Update_extra_text extends Command
      *
      * @return mixed
      */
-    public function handle()
-    {
-    	$c = new ArticlesController;
-    	$c->get_extra_content();
+    public function handle() {
+        $c = new ArticlesController;
+        $c->get_extra_content();
     }
 }

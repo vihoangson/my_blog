@@ -8,8 +8,7 @@ use Illuminate\Foundation\Inspiring;
 use App\Http\Controllers\HomepageController;
 use App\Http\Controllers\ArticlesController;
 
-class Import_vnexpress extends Command
-{
+class Import_vnexpress extends Command {
     /**
      * The name and signature of the console command.
      *
@@ -29,12 +28,11 @@ class Import_vnexpress extends Command
      *
      * @return mixed
      */
-    public function handle()
-    {
-        $myc = $this->argument('myc');
-        $h = new GetcontentController();
+    public function handle() {
+        $myc = $this->argument( 'myc' );
+        $h   = new GetcontentController();
 
-        $h->import_benhtat($myc);
+        $h->import_benhtat( $myc );
 //        $h->import_nuocmy($myc);
 //        $h->import_kenh14($myc);
 //        $h->import_dantri($myc);

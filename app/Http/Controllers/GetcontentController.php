@@ -21,7 +21,7 @@ use Log;
 class GetcontentController extends BaseController {
     public $array_site;
 
-    const MAX_SAVE_ONE_TIME = 10;
+    const MAX_SAVE_ONE_TIME = 100;
 
     public function __construct() {
         if ( ! defined( "LOG_INFO_FLAG_IMPORT" ) ) {
@@ -62,7 +62,7 @@ class GetcontentController extends BaseController {
 
         $this->name_dom_content = "#left_calculator";
 
-        $this->import_articles($case);
+        $this->import_articles( $case );
         // Dừng chương trình
         // Lấy bài viết top
         $this->vnexpress_set_important_news();
@@ -73,12 +73,12 @@ class GetcontentController extends BaseController {
         $this->main_page = "http://motthegioi.vn";
 
         $this->array_site = [
-            0 => "http://motthegioi.vn"
+            0 => "http://motthegioi.vn",
         ];
 
         $this->name_dom_content = ".article-body";
 
-        $this->import_articles($case);
+        $this->import_articles( $case );
     }
 
     public function import_dantri( $case = null ) {
@@ -86,12 +86,12 @@ class GetcontentController extends BaseController {
         $this->main_page = "http://dantri.com.vn";
 
         $this->array_site = [
-            0 => "http://dantri.com.vn"
+            0 => "http://dantri.com.vn",
         ];
 
         $this->name_dom_content = ".detail-content";
 
-        $this->import_articles($case);
+        $this->import_articles( $case );
     }
 
     public function import_kenh14( $case = null ) {
@@ -99,12 +99,12 @@ class GetcontentController extends BaseController {
         $this->main_page = "http://kenh14.vn";
 
         $this->array_site = [
-            0 => "http://kenh14.vn"
+            0 => "http://kenh14.vn",
         ];
 
         $this->name_dom_content = ".klw-new-content";
 
-        $this->import_articles($case);
+        $this->import_articles( $case );
     }
 
     public function import_nuocmy( $case = null ) {
@@ -112,12 +112,12 @@ class GetcontentController extends BaseController {
         $this->main_page = "http://www.nuocmy.info";
 
         $this->array_site = [
-            0 => "http://www.nuocmy.info"
+            0 => "http://www.nuocmy.info",
         ];
 
         $this->name_dom_content = ".entry-content";
 
-        $this->import_articles($case);
+        $this->import_articles( $case );
     }
 
     public function import_benhtat( $case = null ) {
@@ -125,12 +125,12 @@ class GetcontentController extends BaseController {
         $this->main_page = "https://benhtat.net";
 
         $this->array_site = [
-            0 => "https://benhtat.net"
+            0 => "https://benhtat.net",
         ];
 
         $this->name_dom_content = ".td-post-content";
 
-        $this->import_articles($case);
+        $this->import_articles( $case );
     }
 
     //============  ============
@@ -173,9 +173,9 @@ class GetcontentController extends BaseController {
             }
 
             // foreach tất cả phần tử trong mảng $this->array_site
+            // $value_site: http://abc.com
             foreach ( $array_site_array as $key_site => $value_site ) {
-
-                $this->save_articles($value_site);
+                $this->save_articles( $value_site );
             }
 
             // Lấy phần mở đầu
@@ -192,7 +192,7 @@ class GetcontentController extends BaseController {
         //============  ============
         // Lấy dữ liệu từ trong bảng
         //============  ============
-        $rs = Articles::whereraw( "article_imgs is null " )->orderBy('id desc')->limit( 300 )->get();
+        $rs = Articles::whereraw( "article_imgs is null " )->orderBy( 'id desc' )->limit( 300 )->get();
 
         //============  ============
         //  Vòng lập duyệt toàn bộ array
@@ -278,39 +278,40 @@ class GetcontentController extends BaseController {
     // Bỏ tất cả những thứ trên đầu của content
     // Desc: Loại bỏ các mục thừa không cần thiết của article_content
     //
-    public function filter_content_vnexpress($content){
-        $dom = str_get_html($content);
-        if($dom->find(".title_news")){
-            $dom->find(".title_news",0)->outertext ="";
+    public function filter_content_vnexpress( $content ) {
+        $dom = str_get_html( $content );
+        if ( $dom->find( ".title_news" ) ) {
+            $dom->find( ".title_news", 0 )->outertext = "";
         }
 
-        if($dom->find(".block_timer_share")){
-            $dom->find(".block_timer_share",0)->outertext ="";
+        if ( $dom->find( ".block_timer_share" ) ) {
+            $dom->find( ".block_timer_share", 0 )->outertext = "";
         }
 
-        if($dom->find(".div-fbook")){
-            $dom->find(".div-fbook",0)->outertext ="";
+        if ( $dom->find( ".div-fbook" ) ) {
+            $dom->find( ".div-fbook", 0 )->outertext = "";
         }
 
-        if($dom->find(".content_box_category")){
-            $dom->find(".content_box_category",0)->outertext ="";
+        if ( $dom->find( ".content_box_category" ) ) {
+            $dom->find( ".content_box_category", 0 )->outertext = "";
         }
 
-        if($dom->find(".block_share_icon")){
-            $dom->find(".block_share_icon",0)->outertext ="";
+        if ( $dom->find( ".block_share_icon" ) ) {
+            $dom->find( ".block_share_icon", 0 )->outertext = "";
         }
 
-        if($dom->find(".relative_new")){
-            $dom->find(".relative_new",0)->outertext ="";
+        if ( $dom->find( ".relative_new" ) ) {
+            $dom->find( ".relative_new", 0 )->outertext = "";
         }
-        if($dom->find(".title_div_fbook")){
-            $dom->find(".title_div_fbook",0)->outertext ="";
+        if ( $dom->find( ".title_div_fbook" ) ) {
+            $dom->find( ".title_div_fbook", 0 )->outertext = "";
         }
-        if($dom->find(".Normal")){
-            $dom->find(".Normal",0)->outertext ="";
+        if ( $dom->find( ".Normal" ) ) {
+            $dom->find( ".Normal", 0 )->outertext = "";
         }
         $return = $dom->__toString();
         $dom->clear();
+
         return $return;
     }
 
@@ -417,19 +418,34 @@ class GetcontentController extends BaseController {
      *
      *
      * @param $value_site Tên site
-     * Ex: http://vnexpress.net
+     *                    Ex: http://vnexpress.net
      *
      * @return void
      */
-    private function save_articles($value_site) {
+    private function save_articles( $value_site ) {
         $count_success = 0;
         $link_article  = $this->get_string_link_by_url( $value_site );
 
         // foreach tất cả các tag a có trong link $value_site
         foreach ( $link_article as $key => $value ) {
-            if(preg_match('/(#|javascript)/',$value->attr["href"]) ) continue;
+            $link_href = $value->attr["href"];
+
+            // todo: check detail page
+            if ( ! preg_match( "#.{10,}\.html$#", $link_href ) ) {
+                continue;
+            }
+
+            // todo: check exist link in db
+            $article_exist = Articles::where( 'article_link', 'like', '%' . $link_href . '%' )->get();
+            if ( count( $article_exist ) > 0 ) {
+                continue;
+            }
+
+            if ( preg_match( '/(#|javascript)/', $value->attr["href"] ) ) {
+                continue;
+            }
             if ( $count_success > self::MAX_SAVE_ONE_TIME ) {
-                echo "Over ".self::MAX_SAVE_ONE_TIME." result" . PHP_EOL;
+                echo "Over " . self::MAX_SAVE_ONE_TIME . " result" . PHP_EOL;
                 continue;
             }
 
@@ -440,8 +456,6 @@ class GetcontentController extends BaseController {
 
             // Kiểm tra đúng: link có phần tử cuối là .html và độ dài từ 10 ký tự trở lên
             if ( true ) {
-            //if ( preg_match( "/.{10,}\.html$/", $value->attr["href"] ) ) {
-
                 // Log ban đầu
                 echo "=== Link: " . $value->attr["href"] . PHP_EOL;
                 if ( LOG_INFO_FLAG_IMPORT ) {
@@ -485,7 +499,7 @@ class GetcontentController extends BaseController {
 
                 $dom2 = str_get_html( @file_get_contents( $link ) );
 
-                if(!$dom2){
+                if ( ! $dom2 ) {
                     continue;
                 }
 
@@ -523,10 +537,11 @@ class GetcontentController extends BaseController {
                 }
 
                 $data_article = [
-                    "article_title"   => $title,
-                    "article_content" => $content,
+                    "article_title"   => strip_tags( $title ),
+                    "article_content" => preg_replace( '#<script(.*?)>(.*?)</script>#is', '', $content ),
                     "article_link"    => $link,
                 ];
+
                 if ( Articles::create( $data_article ) ) {
                     echo "!!! Saved: " . $title . PHP_EOL;
                     if ( LOG_INFO_FLAG_IMPORT ) {
