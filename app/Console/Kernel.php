@@ -13,7 +13,7 @@ class Kernel extends ConsoleKernel {
      */
     protected $commands = [
         Commands\Inspire::class,
-        Commands\Import_vnexpress::class,
+        Commands\Crawl_content::class,
         Commands\Update_extra_text::class,
     ];
 

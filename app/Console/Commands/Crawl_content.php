@@ -8,13 +8,13 @@ use Illuminate\Foundation\Inspiring;
 use App\Http\Controllers\HomepageController;
 use App\Http\Controllers\ArticlesController;
 
-class Import_vnexpress extends Command {
+class Crawl_content extends Command {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'import_vnexpress {myc}';
+    protected $signature = 'crawl_content {myc}';
 
     /**
      * The console command description.
@@ -33,10 +33,10 @@ class Import_vnexpress extends Command {
         $h   = new GetcontentController();
 
         $h->import_benhtat( $myc );
-//        $h->import_nuocmy($myc);
-//        $h->import_kenh14($myc);
-//        $h->import_dantri($myc);
-//        $h->import_motthegioi($myc);
-//        $h->import_vnexpress($myc);
+        $h->import_nuocmy($myc);
+        $h->import_kenh14($myc);
+        $h->import_dantri($myc);
+        $h->import_motthegioi($myc);
+        $h->import_vnexpress($myc);
     }
 }

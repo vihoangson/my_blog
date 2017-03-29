@@ -21,7 +21,7 @@ use Log;
 class GetcontentController extends BaseController {
     public $array_site;
 
-    const MAX_SAVE_ONE_TIME = 100;
+    const MAX_SAVE_ONE_TIME = 1;
 
     public function __construct() {
         if ( ! defined( "LOG_INFO_FLAG_IMPORT" ) ) {
