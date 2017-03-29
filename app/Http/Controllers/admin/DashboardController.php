@@ -9,21 +9,24 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 class DashboardController extends Controller {
+
+    public function __construct(){
+        parent::__construct();
+    }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        $articles = Articles::limit(10)->get();
-        return view( "admin.sample", compact('articles'));
 
-        $articles = Articles::limit( 100 )->orderBy( 'id', 'desc' )->get();
-        foreach ( $articles as $article ) {
-            echo '<h1>' . $article->article_title . '</h1>';
-            echo $article->article_content_formated;
-            echo "<hr>";
-        }
+        $articles = Articles::limit(10)->get();
+
+        return view( "admin.sample", compact(
+            'articles'
+        ));
+
     }
 
     /**

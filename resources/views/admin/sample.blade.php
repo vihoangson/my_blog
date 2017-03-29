@@ -1,4 +1,4 @@
-@extends("layouts.sample")
+@extends("layouts.layout_admin")
 
 @section("content")
     @if(isset($articles))
